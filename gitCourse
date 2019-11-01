@@ -91,6 +91,7 @@ If the file is in staging area and we don’t want a coming and revert back to w
 
 git reset HEAD <fileName>
 
+//--------------------------
 
 To discard the changes in working directory
 git  checkout -- <fileName>
@@ -108,3 +109,125 @@ Git mv fileName newFileName
 First, check that your origin is set by running
 
 git remote -v
+
+For adding origin
+git remote add origin <originName>
+eg. git remote add origin https://github.com/vijayv19/jamaPunji.git
+
+//-------------------------------------------------------------------
+
+git pull --rebase origin master
+
+//-------------------------------------------------
+
+ Comparing between the Staging Area and the Git Repository (Last Commit)
+ git diff --staged HEAD
+
+ Comparing Working Directory and the Staging Area
+  git diff
+
+Comparing Working Directory and Git Repository (Last Commit)
+ git diff HEAD
+
+Limiting Comparsons to one File
+ git diff -- <fileName>
+ eg.  git diff -- README.md
+
+Comparing Between Commits 
+ git log --oneline --graph --decorate
+ git log --oneline  => it gives all commits id with commit message
+
+ git diff commitId1 HEAD
+
+ HEAD is last commit in the current branch.
+
+
+ git diff HEAD HEAD^  ==> this compare HEAD and HEAD-1(Just prior to the last commit) 
+
+//----------------------------------------------------------------------------------------------
+
+Comparing Between Local and Remote Master Branches
+
+ git diff master origin/master
+
+//----------------------------------------------------------------------------------------------
+
+Branching And Merging
+
+git branch -a => it will display all the local and remote branches.
+
+git branch <branchName> => it will create a new branch
+
+git checkout <branchName> => it will switched to a other branch
+
+git branch -m <branchName> <newbranchName> => it will rename the branch
+
+git branch -m <branchName> <newbranchName> => it will rename the branch
+
+git branch -d <branchName> => it will delete the branch
+
+git checkout -b <branchName> => it will create a new branch and swithced to that branch
+
+
+git merge <branchName> => it will merge all the chages of <branchName> with currently present branch.
+
+//----------------------------------------------------------------------------------------------
+
+Conflicting Merges and Resolution
+
+//----------------------------------------------------------------------------------------------
+
+Stashing
+
+git stash
+
+git stash temporarily shelves (or stashes) changes you've made to your working copy so you can work on
+something else, and then come back and re-apply them later on. Stashing is handy if you need to
+quickly switch context and work on something else, but you're mid-way through a code change and
+aren't quite ready to commit.
+
+//------------------------------------------
+
+By default, running git stash will stash:
+
+changes that have been added to your index (staged changes)
+changes made to files that are currently tracked by Git (unstaged changes)
+But it will not stash:
+
+new files in your working copy that have not yet been staged
+files that have been ignored
+So if we add a third file to our example above, but don't stage it (i.e. we don't run git add),
+git stash won't stash it.
+
+git stash -u 
+
+Adding the -u option (or --include-untracked) tells git stash to also stash your untracked files:
+
+Another way to look at it: git stash pop is git stash apply && git stash drop.
+Note: that the stash is local to your Git repository; stashes are not transferred to the server when you push.
+
+Managing multiple stashes
+
+git stash save "<msg>"
+
+to list out all the stashes
+git stash list
+
+to aply the stash use command
+git stash apply stash@{1}  ==> it will work for second last stashed
+
+git status clear => it will clear(empty) all the stash list
+
+//------------------------------------------
+
+Stashing into a Branch
+
+git stash branch <branchName>
+
+above command will create a new branch switched to new branch and make same changes in new branch which was
+there in previous branch and dropped the stash from the previous branch.
+
+//----------------------------------------------------------------------------------------------
+
+Rebasing
+
