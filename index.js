@@ -3226,12 +3226,8 @@
 
 let coverPoints = function (A, B) {
 
-    let sortedA = A.sort((a, b) => {
-        return a - b;
-    });
-    let sortedB = B.sort((a, b) => {
-        return a - b;
-    })
+    let sortedA = A.sort((a, b) => a - b);
+    let sortedB = B.sort((a, b) => a - b);
     let len = sortedA.length;
     let count = 0;
     for (let i = 0; i < len; i++) {

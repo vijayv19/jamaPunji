@@ -240,6 +240,15 @@
 
 // Promises
 
+// const a = Promise.resolve(1);
+// const b = Promise.reject(new Error(2));
+// const c = Promise.resolve(3);
+
+// Promise.all([a, b, c].map(p => p.catch(e => e)))
+//   .then(results => console.log(results)) // 1,Error: 2,3
+//   .catch(e => console.log(e));
+
+
 // Resolve
 
 // let promise = new Promise((resolve, reject) => {
@@ -313,7 +322,7 @@
 
 // let promise2 = new Promise((resolve, reject) => {
 //     setTimeout(() => {
-//         reject('Done2');
+//         reject(new Error('rejcted'));
 //     }, 0);
 // });
 
@@ -323,7 +332,25 @@
 //     }, 0);
 // });
 
-// Promise.all
+// Wait until all promises complete even if some rejected
+
+// Promise.all([promise1, promise2, promise3].map(p => p.catch(e => {
+//     console.log('error =>', e);
+//     return e;
+// })))
+//     .then(results => console.log('Then', results)) //
+//     .catch(e => console.log(e));
+
+// OR
+
+// Promise.all([promise1.catch(e => e), promise2.catch(e => e), promise3.catch(e => e)])
+//     .then(result => console.log('Then', result)) // Then ["Resolved!", "Rejected!"]
+//     .catch(err => console.log('Catch', err));
+
+
+// Promise.all([promise1, promise2, promise3].map(p => p.catch(e => e)))
+//     .then(results => console.log('results',results)) // 
+//     .catch(e => console.log('error',e));
 
 // Promise.all([promise1, promise2, promise3])
 //     .then((success) => {
@@ -370,14 +397,12 @@
 
 //-------------------------------------------------------------------------------------------
 
-// let array = [10,15, 12, 16];
+let array = [10, 15, 12, 16];
 
-// let newArray = Array.from(array, val => {
-//     return val * 3
-// });
+let newArray = Array.from(array, val => val * 3);
 
-// console.log(array);
-// console.log(newArray);
+console.log(array);
+console.log(newArray);
 
 // array.fill(100); // [ 100, 100, 100 ]
 // array.fill(100, 0, 2);  // [ 100, 100, 16 ]
