@@ -4,6 +4,15 @@ show dbs // gives all the databases available on this db server
 use <dbName> // it will create the database.
 db.collectioName.insertOne({})  // it will automatically create the collectioName implicitly.
 
+drop the database
+use <dbName>
+db.dropDatabse()
+
+how to drop collection
+
+db.<collectionName>.drop()
+
+
 //------------------------------------------------------------------------------------------------------
 Why mongodb stores data in BSON format?
 This conversion is happens by the mongodb driver which takes JSON and stores binary data.
@@ -29,6 +38,92 @@ if we are using updateOne() and updateMany() method and not using $set operator 
 
 Below query is not updating by $set hence it will replace the full docs with new one _id remains same.
 db.products.update({_id :ObjectId("4erfgy65esdr654esdxdse")},{email:"vijay.vaidya@accionlabs.com"})
+
+//------------------------------------------------------------------------------------------------------
+
+
+db.hobbies.insertMany([{_id:"yoga", name:""Yoga"},{_id:"cooking", name:"Cooking},{_id:"hiking",name:"Hikinh"}]
+, {ordered : false})
+
+By default, when using insertMany(), inserts are ordered - that means, that are inserting process stops
+if any error occurs.
+
+You can change this by switching to "unordered inserts" - your inserting process will then continue, even if 
+errors occured.
+
+In both the cases, no successful inserts (before the error) will be rolled back.
+
+by defauly insertMany works as a {ordered:true}, but if we want to execute in unorder way so that if query gets fails
+due to duplicate id still rest of the documents should get insert. 
+for which we can use { ordered: fasle}.
+
+
+//------------------------------------------------------------------------------------------------------
+
+Data Schemas and Data modeling
+
+Data Types - Text, Boolean, Number, ObjectId, ISODate,  Timestamp, Embedded document, Array
+
+//------------------------------------------------------------------------------------------------------
+
+loopUp()
+
+db.books.aggregate([{
+    $lookup:{
+        from : "authors",
+        localField : "authors",
+        foreignField: "_id",
+        as :"creators"
+    }
+}])
+
+
+
+//------------------------------------------------------------------------------------------------------
+
+Querying Embedded Fields and Arrays:
+
+db.movies.find({genres:"Drama"}).pretty() // output - {"_id:ytfdx,"name":"avi","genres" : ["Drama","Comedy",--]}  --it returns all docs at least contain Drama among all.
+
+db.movies.find({genres:["Drama"]}).pretty() // output - {"_id:fgfdsfdg,"name":"vijay","genres" : ["Drama"]}  --it returns only array contain Drama element.
+
+db.movies.find({runtime: {$in:[30, 42]}}).pretty() //  -- it returns docs which has a runtime either 30 or 42.
+
+db.movies.find({runtime: {$nin:[30, 42]}}).pretty() //  --except runtime 30 or 42, it returns all the docs.
+
+db.movies.find({$or:[{"rating.average":{$lt:4}},{"rating.average":{$gt:9}}]}).pretty() //  --it will check either Condition
+
+db.movies.find({$nor:[{"rating.average":{$lt:4}},{"rating.average":{$gt:9}}]}).pretty() //  --it is opposite to $or operator
+
+//------------------------------------------------------------------------------------------------------
+
+$and operator
+
+In JSON object you cannot have a same key more than once.
+
+db.movies.find({genres:"Drama",genres:"Horror"}).count() // 23 is equivalent to 
+
+db.movies.find({genres:"Horror"}).count() // 23 bcoz it override the same key with the last one due to same key in object
+hence we also have to use $and operator if we are querying on same key in find query as above example.
+
+db.movies.find({$and: [{genres: "Drama"}, {genres: "Horror"}]}).count() // 17 this is right one query
+
+
+---------------------------------------------------
+
+$not + $eq operator is equal to $ne operator , so it is always goot to use $ne instead of $not + $eq.
+
+$exists operator
+
+db.users.find({age: {$exists: true}}).pretty() // it will return all those docs which contain field "age".
+db.users.find({age: {$exists: true, $gt:30}}).pretty() // it will return all those docs which contain field "age" and age must be greater than 30.
+db.users.find({age: {$exists: true, $ne:null}}).pretty() // it will return all those docs which contain field "age" and age should not be null.
+
+
+$type operator
+
+db.users.find({phone: {$type:"number"}}).pretty() // it will return those docs having phone field as number.
+db.users.find({phone: {$type:["string,"number"}}).pretty()  --it will return those docs having phone field as number and string.
 
 
 //------------------------------------------------------------------------------------------------------
@@ -105,6 +200,7 @@ it works for find,update, delete not for insert.
 db.collectioName.explain("executionStats").find({dob.age:{$gt:60}})
 
 // output : 
+
 "executionStats" :{
     "executionSuccess" : true,
     "executionTimeMillis" : 5,           // time taken to execute query
