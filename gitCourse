@@ -203,7 +203,7 @@ git stash -u
 
 Adding the -u option (or --include-untracked) tells git stash to also stash your untracked files:
 
-Another way to look at it: git stash pop is git stash apply && git stash drop.
+Another way to look at it: git stash pop is  equal to git stash apply && git stash drop.
 Note: that the stash is local to your Git repository; stashes are not transferred to the server when you push.
 
 Managing multiple stashes
