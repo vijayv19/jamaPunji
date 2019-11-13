@@ -1,7 +1,7 @@
 
 show dbs // gives all the databases available on this db server
 
-use <dbName> // it will create the database.
+use <dbName> // it will create the database and start using that db and if db already created then it will only use that db.
 db.collectioName.insertOne({})  // it will automatically create the collectioName implicitly.
 
 drop the database
@@ -12,6 +12,7 @@ how to drop collection
 
 db.<collectionName>.drop()
 
+show collections // it display all the collections under the a db.
 
 //------------------------------------------------------------------------------------------------------
 Why mongodb stores data in BSON format?
@@ -29,6 +30,12 @@ U  - updateOne(), updateMany()
 D  - deleteOne(), deleteMany()
 
 //------------------------------------------------------------------------------------------------------
+
+db.users.deleteMany({}) // it will delete all the docs from user collection
+
+
+//------------------------------------------------------------------------------------------------------
+
 
 Diff between update() vs updateMany() ?
 
@@ -139,6 +146,239 @@ embeded doc query status.description must be in double quotes
 db.pessangers.find({"status.description":"on-time"})
 
 
+//------------------------------------------------------------------------------------------------------
+$size
+
+db.users.find({hobbies: {$size:3}})
+
+it will return the exact no. of elements in array.
+
+//------------------------------------------------------------------------------------------------------
+
+Aggregation Framework
+
+// $match + $group
+
+db.person.aggregate([
+    { $match : { gender :"female"}}, // simililar to find method
+    { $group : { _id: { state :"$location.state"}, totalPerson : { $sum :1}}} 
+])
+    // _id tells which field need to group location is object with state field
+    after that it will do summation total person for each states
+
+
+// $match + $group + $sort
+
+db.person.aggregate([
+    { $match : { gender :"female"}}, // simililar to find method
+    { $group : { _id: { state :"$location.state"}, totalPerson : { $sum :1}}},
+    { $sort : totalPerson:-1 } // it will sort the data in descending order
+])
+
+$project
+
+db.person.aggregate([
+    { $project : { _id:0, gender: 1, fullName: { $concat: ["$name.first"," ", "$name.last"]}}}, // simililar to find method
+])
+
+output : {"gender":"male", "fullname": "Vijay Vaidya}
+
+
+db.person.aggregate([
+    { $project : { _id:0, gender: 1, fullName: 
+    { $concat: [ 
+      { $toUpper : "$name.first"},
+        " ",
+      { $toUpper : "$name.last"}
+    ]
+   }
+  }
+ }
+])
+
+output : {"gender":"male", "fullname": "VIJAY VAIDYA}
+
+$unwind + $group + $push
+
+db.person.aggregate([
+    { $unwind : "$hobbies" },
+    { $group : { _id : {age : "$age"}, allHobbies: { $push : "$hobbies"}}}
+])
+
+
+output :
+
+{
+  "_id": {
+      "age": 30
+  },
+  "allHobbies": [
+        "Eating,
+        "Data Analytics"
+   ]
+}
+
+{
+  "_id": {
+      "age": 29
+  },
+  "allHobbies": [
+          "Sports,
+          "Cooking",
+          "Cooking",
+          "Skiing"
+    ]
+}
+
+//------------------------------------------------------------------------------------------------------
+
+Eliminating duplicate values
+
+// $addToset will helps to remove the duplicate element from the array
+
+$unwind + $group + $addToset
+
+db.person.aggregate([
+    { $unwind : "$hobbies" },
+    { $group : { _id : {age : "$age"}, allHobbies: { $addToset : "$hobbies"}}}
+])
+
+output :
+
+{
+  "_id": {
+      "age": 30
+  },
+  "allHobbies": [
+        "Eating,
+        "Data Analytics"
+   ]
+}
+
+{
+  "_id": {
+      "age": 29
+  },
+  "allHobbies": [
+          "Sports,
+          "Cooking",
+          "Skiing"
+    ]
+}
+
+
+//------------------------------------------------------------------------------------------------------
+
+$slice + $project
+
+db.friends.aggregate([
+   { $project : { _id :0, examScore : { $slice : [ "$examScore",1 ]}}} // $slice & 1 will give 1st element from array exam score.
+])
+
+
+//------------------------------------------------------------------------------------------------------
+
+$filter 
+
+docs are :
+
+"examScores" : [
+    {
+        "difficulty": 2,
+        "score" : 52.1
+    },{
+        ...
+    }
+]
+
+Query :
+
+db.friends.aggregate([
+    {
+        $project :{
+            _id:0,
+            scores : { $filter :{ input: '$examScores', as: 'sc', cond: { $gt: ["$$sc.score",50]}}}
+        }
+    }
+])
+
+// score which is greate than 50
+
+output :
+
+"scores" : [
+    {
+        "difficulty": 2,
+        "score" : 52.1
+    },{
+        "difficulty": 3,
+        "score" : 60.21 
+    }
+]
+
+
+$project + $unwind + $sort on examscores array with score field
+
+db.friends.aggregate([
+    { $unwind : "$examScores"},
+    { $project : { _id:0,name:1,age:1, score : "$examScore.score"}},
+    { $sort : {score : -1}}
+])
+
+Output : {"name":"Vijay", "age" : 20, "score" :41.1}
+
+
+db.friends.aggregate([
+    { $unwind : "$examScores"},
+    { $project : { _id:0,name:1,age:1, score : "$examScore.score"}},
+    { $sort : {score : -1}},
+    { $group :{_id : "$_id", maxScore : { $max : "$score"}}}
+])
+
+Output : {"_id": ObjectId("5b9ddfe7031cab21cryanc2f5"), "maxScore" :80 }
+         ...
+         ...
+
+
+db.friends.aggregate([
+    { $unwind : "$examScores"},
+    { $project : { _id: 0, name:1, age:1, score : "$examScore.score"}},
+    { $sort : {score : -1}},
+    { $group : { _id : "$_id", name: { $first: "$name"} maxScore : { $max : "$score"}}},
+    { $sort : { maxScore : -1 }}
+])
+
+//------------------------------------------------------------------------------------------------------
+
+$bucket
+
+$bucket will categories each boundries of the slab and provide the docs according to that.
+
+In below e.g we have to find out each persons having the age in between 0-18, 18-30, 30-50, 50-80, 80-120
+
+db.person.aggregate([
+    {
+       $bucket: {
+          groupBy : "$dob.age",
+          boundaries : [0,18,30,50,80,120],
+          output : {
+            numPersons : { $sum :1 },    // total no of persons for each slot of age
+            averageAge : { $avg : "$dob.age"} // average age of total persons
+          }
+        }
+    }
+])
+
+-- Sort the person based on birthdate in ascending order.
+
+db.person.aggregate([
+    { $project: { _id:0, name:1, birthdate : { $toDate: "$dob.date"}}},
+    { $sort : { birthdate :1 }}
+])
+
+$out -- it will make the new collection 
+
+//------------------------------------------------------------------------------------------------------
 
 Indexes ?
 ----------
@@ -414,22 +654,28 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 //     { $group: { _id: { age: "$age" }, allHobbies: { push: "$hobbies" } } } //push will push all the hobbies in allhobbies array.
 // ]).pretty();
 
+//-----------------------------------------------------------------------------------------------------
 
-// It will give the first element from array examScore.
-// db.persons.aggregate([
-//     { $project: { _id: 0, examScore: { $slice: ["$examSocre", 1] } } }
-// ]).pretty();
+$slice
 
-// It will give the  element from 2nd element and only one element form examScore.
-// db.persons.aggregate([
-//     { $project: { _id: 0, examScore: { $slice: ["$examSocre", 2, 1] } } }
-// ]).pretty();
+ It will give the first element from array examScore.
+
+ db.persons.aggregate([
+     { $project: { _id: 0, examScore: { $slice: ["$examSocre", 1] } } }
+ ]).pretty();
+
+ It will give the  element from 2nd element and only one element form examScore.
+ db.persons.aggregate([
+     { $project: { _id: 0, examScore: { $slice: ["$examSocre", 2, 1] } } }
+ ]).pretty();
 
 
-//It will give last 2 elements
-// db.persons.aggregate([
-//     { $project: { _id: 0, examScore: { $slice: ["$examSocre", -2] } } }
-// ]).pretty();
+ It will give last 2 elements
+
+ db.persons.aggregate([
+     { $project: { _id: 0, examScore: { $slice: ["$examSocre", -2] } } }
+ ]).pretty();
+
 
 //----------------------------------------------------------------------------------------------------
 
@@ -440,6 +686,7 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 // ]).pretty();    
 
 //-----------------------------------------------------------------------------------------------------
+
 // it will filter the array examScores and pass each element to "sc" variable and get access to score from 
 // sc object and put the condition score should be greater than 60.
 
@@ -460,6 +707,7 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 //------------------------------------------------------------------------------------------------------
 
 // It will group the states and give the count of each states belongs to female.
+
 // db.persons.aggregate([
 //     { $match: { gender: "female" } },
 //     {
@@ -482,15 +730,21 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 
 //------------------------------------------------------------------------------------------------------
 
+$rename
 // Unset operator used to remove the fields.
 // Rename operator is used to rename to fields.
 
 // db.users.updateMany({}, { $rename: { age: "totalAge" } })
 
-//elem match
+//------------------------------------------------------------------------------------------------------
+
+$elemMatch - it always returns exact serch from a document inside array.
+
 // here hobbies is array and title and frequncy are portprteis of the array.
 
 // db.users.find({ hobbies: { $elemMatch: { title: "Sports", frequency: { $gte: 4 } } } })
+
+//------------------------------------------------------------------------------------------------------
 
 // db.users.find({ name: "vijay" },
 //     { age: { $gt: 40 } },
@@ -501,6 +755,8 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 //     { age: { $lt: 20 } },
 //     { $set: { status: "rejected" } }
 // )
+
+//------------------------------------------------------------------------------------------------------
 
 // OR condition
 
@@ -517,6 +773,7 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 //     $or: [{ qty: { $lt: 30 } }, { item: { $regex: '^p' } }]
 // });
 
+//------------------------------------------------------------------------------------------------------
 
 // Specify AND Condition
 // The following query selects all documents where the nested field h is less than 15,
@@ -527,6 +784,10 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 //     'size.uom': 'in',
 //     status: 'D'
 // });
+
+//------------------------------------------------------------------------------------------------------
+
+$all
 
 // If, instead, you wish to find an array that contains both the elements "red" and "blank",
 //  without regard to order or other elements in the array, use the $all operator:
@@ -542,6 +803,15 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 //   tags: ['red', 'blank']
 // });
 
+//------------------------------------------------------------------------------------------------------
+
+Using Projection in Arrays
+
+db.movies.find({genres :"Drama"},{"genres.$":1}) where genres is array
+
+above query will return the first element from the array genres.
+
+//------------------------------------------------------------------------------------------------------
 
 // db.collectionName.find({
 //     age: { $gt: 10, $lt: 30 }
@@ -612,3 +882,11 @@ db.collectioName.createIndex({email:1},{unique :true})// it will create index on
 
 //---------------------------------------------------------------------------------------------------
 
+$regex
+
+db.movies.find({summary: {$regex: /musical/}}).pretty()
+
+
+
+
+//---------------------------------------------------------------------------------------------------
