@@ -8,16 +8,17 @@
 // console.log(age); // 30
 
 //---------------------------------------------------------------------------------------------------
-
 // const 
 
 // const age = 20;
 // const AGE = 30;
 // const Age = 40;
+// const AgE = 42;
 
-// console.log(age);
-// console.log(AGE);
-// console.log(Age);
+// console.log(age);   // 20
+// console.log(AGE);   // 30
+// console.log(Age);   // 40
+// console.log(AgE);   // 42
 
 
 // const obj = {
@@ -26,7 +27,7 @@
 
 // obj.age = 22;
 
-// console.log(obj); // { age: 22 } -- bcozof reference type
+// console.log(obj); // { age: 22 } -- bcoz of reference type
 
 //------------------------------------------------------------------------------------------------------
 
@@ -37,12 +38,15 @@
 // }
 // fn();
 
+
 // In arrow function passing single argument then we can eliminate parathensis in parameters.
 
 // let fn2 = a => a + 5;
 // console.log(fn2(4));
 
-// In browser it will give you window object but here it will be {} object.
+
+// 1. In browser it will give you window object but here it will be {} object.
+
 // In arrow function if there is one line of code then can write like this
 
 // let fn3 = () => console.log(this);
@@ -61,7 +65,6 @@
 //     console.log(this); // here still it will give you window object
 // }
 // button.addEventListner('click', fn2);
-
 
 //------------------------------------------------------------------------------------------------------
 
@@ -86,29 +89,26 @@
 // let obj = {
 //     name,
 //     age,
-//     "greet"() {
+//     greet() {
 //         console.log(this.name + ',' + this.age);
-
 //     }
 // };
 
 // obj["greet"](); // Vijay,25
+// obj.greet(); // Vijay,25
 
 // console.log(obj); // { name: 'Vijay', age: 25, greet: [Function: greet]}
-
 
 //------------------------------------------------------------------------------------------------------
 
 // Rest Operator - It converts list of numbers into array of numbers.
 
 // function sumUp(...toAdd) {
-//     console.log(toAdd);  // [ 100, 2, 30 ]
+//     console.log(toAdd); // [ 100, 2, 30 ]
 
-//     let result = 0;
-//     for (let i = 0; i < toAdd.length; i++) {
-//         result += toAdd[i]
-//     }
-//     return result;
+//     return toAdd.reduce((a, b) => {
+//         return a + b;
+//     })
 // }
 // console.log(sumUp(100, 2, 30)); // 132
 
@@ -119,9 +119,7 @@
 // Opposite of rest operator is spread operator but we have to use it in different location.
 
 // let numbers = [1, 2, 3, 4, 5];
-
 // console.log(...numbers);  // converts into list of numbers
-
 // console.log(Math.max(...numbers));
 
 
@@ -140,9 +138,8 @@
 
 // let name = 'Vijay';
 
-// let description = `
-// Hello, I'm ${name} !!!
-// `
+// let description = `Hello, I'm ${name} !!!`
+
 // console.log(description); // Hello, I'm Vijay !!!
 
 //-----------------------------------------------------------------------------------------------------
@@ -182,13 +179,13 @@
 
 //-----------------------------------------------------------------------------------------------------
 
-// Inheritance , Class , Prototypes
+// Inheritance,Class,Prototypes
 
 // class Person {
 //     constructor(name) {
 //         this.name = name;
 //     }
-//     greet() {
+//     greet1() {
 //         console.log('Hello, my name is ' + this.name + ' and I am ' + this.age);
 //     }
 // }
@@ -197,7 +194,7 @@
 
 // class Max extends Person {
 //     constructor(age) {
-//         super('Max');
+//         super('Maxx'); // it passes args to person class
 //         this.age = age;
 //     }
 
@@ -208,16 +205,19 @@
 //     greetTwice() {
 //         this.greet();
 //         this.greet();
-//         super.greet();
-//         super.greet();
+//         super.greet1();
+//         super.greet1();
 //     }
 // }
 
 // let max = new Max(25);  // Instantiated
-// let person = new Person(25); // Instantiated
+// let person = new Person(20); // Instantiated
 
 // max.greet();
 // max.greetTwice();
+
+// person.greet1();
+
 
 // console.log(max.__proto__ === Max.prototype); // true
 // console.log(person.__proto__ === Person.prototype); // true
@@ -242,11 +242,16 @@
 
 // const a = Promise.resolve(1);
 // const b = Promise.reject(new Error(2));
-// const c = Promise.resolve(3);
+// const c = Promise.reject(3);
 
 // Promise.all([a, b, c].map(p => p.catch(e => e)))
-//   .then(results => console.log(results)) // 1,Error: 2,3
-//   .catch(e => console.log(e));
+//     .then(result => console.log(result))
+//     .catch(e => console.log(e))
+
+
+// Promise.all([a, b, c].map(p => p.catch(e => e)))
+//     .then(results => console.log('Result',results)) // 1,Error: 2,3
+//     .catch(e => console.log('Error', e));
 
 
 // Resolve
@@ -268,6 +273,7 @@
 //         reject('Failed!');
 //     }, 1000);
 // });
+
 
 // promise.then((value) => {
 //     console.log(value);
@@ -304,7 +310,7 @@
 //     });
 // }
 
-// waitASec(2)
+// waitASec(1)
 //     .then(waitASec2)
 //     .then((seconds) => {
 //         console.log(seconds);
@@ -313,6 +319,8 @@
 //         console.log('inside catch', err);
 //     })
 
+
+//--------------------------------------------------------------------------------------------
 
 // let promise1 = new Promise((resolve, reject) => {
 //     setTimeout(() => {
@@ -334,12 +342,18 @@
 
 // Wait until all promises complete even if some rejected
 
+// Promise.all([promise1, promise2, promise3].map(p => p.catch(e => e)))
+//     .then(results => console.log('results', results)) // 
+//     .catch(e => console.log('error', e));
+
+// OR 
+
 // Promise.all([promise1, promise2, promise3].map(p => p.catch(e => {
 //     console.log('error =>', e);
 //     return e;
 // })))
 //     .then(results => console.log('Then', results)) //
-//     .catch(e => console.log(e));
+//     .catch(e => console.log('e',e));
 
 // OR
 
@@ -348,26 +362,25 @@
 //     .catch(err => console.log('Catch', err));
 
 
-// Promise.all([promise1, promise2, promise3].map(p => p.catch(e => e)))
-//     .then(results => console.log('results',results)) // 
-//     .catch(e => console.log('error',e));
+// ==------------------------------------------
 
 // Promise.all([promise1, promise2, promise3])
-//     .then((success) => {
+//     .then(success => {
 //         console.log('inside success', success); // inside success [ 'Done1', 'Done2' ]
 //     })
-//     .catch((err) => {
+//     .catch(err => {
 //         console.log('inside err', err);
 //     })
 
 
-// var p = Promise.all([]); // will be immediately resolved
-// var p2 = Promise.all([1337, "hi"]); // non-promise values will be ignored, but the evaluation will be done asynchronously
-// console.log(p);
-// console.log(p2)
+// let p = Promise.all([]); // will be immediately resolved
+// let p2 = Promise.all([1337, "hi"]); // non-promise values will be ignored, 
+                                       // but the evaluation will be done asynchronously
+// console.log('p', p);
+// console.log('p2', p2)
 // setTimeout(function () {
 //     console.log('the stack is now empty');
-//     console.log(p2);
+//     console.log('2nd p2', p2);
 // });
 
 // Promise.race
@@ -397,15 +410,16 @@
 
 //-------------------------------------------------------------------------------------------
 
-let array = [10, 15, 12, 16];
+// let array = [10, 15, 12, 16];
+// let newArray = Array.from(array, val => val * 3);
 
-let newArray = Array.from(array, val => val * 3);
+// console.log(array);   // [10, 15, 12, 16]
+// console.log(newArray);  // [ 30, 45, 36, 48 ]
 
-console.log(array);
-console.log(newArray);
+// array.fill(100); // [ 100,100, 100, 100 ]
+// console.log(array);
 
-// array.fill(100); // [ 100, 100, 100 ]
-// array.fill(100, 0, 2);  // [ 100, 100, 16 ]
+// array.fill(100, 0, 2);  // [ 100, 100,12, 16 ]
 // console.log(array);
 
 
@@ -442,9 +456,17 @@ console.log(newArray);
 // function abc(a, b) {
 //     if (b < 1)
 //         return 1;
-//     return a * (abc(a, b - 1))
+//     return a * abc(a, b - 1)  
 // }
 
-// console.log(abc(5, 2));
+// console.log(abc(5, 4));
 
 
+
+// Promise.all(promises.map(p => p.catch((err) => { return { err: err, status: "failed" } })))
+//     .then(results => {
+//         return resolve({ error: null, data: results });
+//     })
+//     .catch(error => {
+//         return reject(error);
+//     })

@@ -146,13 +146,3 @@
 // When to use which ?            If we already know that             If we already know that
 //                          target vertex burried very deep       vertex is closed to starting point
 // -----------------------------------------------------------------------------------------------------
-
-
-function acmIcpc(topic) {
-
-    console.log(topic);
-    
-}
-
-
-console.log(acmIcpc(10101, 11100, 11010, 00101));

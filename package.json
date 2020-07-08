@@ -1,0 +1,24 @@
+{
+  "name": "jamapunji",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vijayv19/jamaPunji.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vijayv19/jamaPunji/issues"
+  },
+  "homepage": "https://github.com/vijayv19/jamaPunji#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fibonacci": "^1.6.7",
+    "request": "^2.88.2"
+  }
+}

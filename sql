@@ -2,7 +2,8 @@
  Delete Duplicates From a Table in SQL Server
 
  
- Summary: in this tutorial, you will learn how to delete duplicate rows from a table in SQL Server.
+ Summary: in this tutorial, you will learn how to delete duplicate rows from a table in SQL 
+ Server.
 
  To delete the duplicate rows from the table in SQL Server, you follow these steps:
 
@@ -46,12 +47,16 @@
     email
  FROM 
     sales.contacts;
+
+    
  The following picture shows the output of the query:
 
  SQL Server Delete Duplicates
 
- There are many duplicate rows (3,4,5), (6,7), and (8,9) for the contacts that have the same first name, last name, and email.
+ There are many duplicate rows (3,4,5), (6,7), and (8,9) for the contacts that have the same 
+ first name, last name, and email.
 
+ 
  Delete duplicate rows from a table example
  The following statement uses a common table expression (CTE) to delete duplicate rows:
 

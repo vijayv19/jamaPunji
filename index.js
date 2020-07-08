@@ -1,4 +1,4 @@
-// var A = {
+// let A = {
 //     // Inside arrow function {this} keyword can't use since it always give empty output.
 //     x: () => {
 //         console.log('x');        
@@ -20,43 +20,44 @@
 
 // Recursion function with stack memory.
 
-// function foo(n) {
+// const foo = (n) => {
 //     if (n < 1) {
 //         return;
-//     }
-//     else {
-//         foo(n - 1)   // foo(3-1), foo(2-1), foo(1-1) - it will push in stack and pop when needed
+//     } else {
+//         foo(n - 1) // foo(3-1), foo(2-1), foo(1-1) - it will push in stack and pop when needed
 //         console.log('Hello', n);
 //     }
 // }
 
-// foo(3);   // Hello 1
+// foo(3); // Hello 1
 // Hello 2
 // Hello 3
 
 //----------------------------------------------------------------------------------------------------
 
 // console.log(Math.floor(1.9999999));  // 1
-// console.log(Math.trunc(-1.211));  // -1
+// console.log(Math.trunc(-1.111));  // -1
 // console.log(Math.ceil(-2.25));  // -2
 // console.log(Math.ceil(2.25));  // 3
 
-// //Always gives positive number
+
+// Always gives positive number
 // console.log(Math.abs(-2));  // 2
+// console.log(Math.abs(-102));  // 102
 
 // console.log(Math.sign(2));   //  1
 // console.log(Math.sign(-2));  // -1
 
 //------------------------------------------------------------------------------------------------
 
-// let arr = [5, 2, 8, 2, 6];
-// let len = Math.floor(arr.length / 2); // 2
-// let len1 = Math.ceil(arr.length / 2); // 3
+// let arr1 = [5, 2, 8, 2, 6];
+// let len1 = Math.floor(arr1.length / 2); // 2
+// let len2 = arr1.length - len1 // 3
 
-// let arr2 = arr.splice(2, 2);
+// let arr2 = arr1.splice(2, 2);
 
 // console.log(arr2);  // [ 8, 2 ]
-// console.log(arr);   // [5,2,6]
+// console.log(arr1);  // [5,2,6]
 
 //------------------------------------------------------------------------------------------------
 
@@ -84,7 +85,6 @@
 //     number++
 //     console.log('Inside function:', number); // Inside function: 11
 // }
-
 // incrment(number);
 // console.log(number); // 10
 
@@ -92,29 +92,27 @@
 
 // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-// let divBy3 = array.filter(v => {
+// let divBy3 = array.filter((v) => {
 //     return v % 3 == 0;
 // })
-// console.log(divBy3);   // [3, 6, 9, 12, 15]
+// console.log(divBy3);
 
 //---------------------------------------------------------------------------------------------------
 
 // NodeJS should NOT be used where computations are CPU intensive.
 
-//---------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
 
 // let fact = (n) => {
-//     if (n == 0) {
-//         return 1;           // 5 * 24,4 * 6, 3 * 2, 2 * 1,{ 1 {* 1 {= 120
-//     }
+//     if (n == 1)
+//         return 1;    // 5 * 24,4 * 6, 3 * 2, 2 * 1, 1 * 1 = 120
 //     return n * fact(n - 1) // (5 * ?), (4 * ?), (3 * ?), (2 * ?), (1* ?) => it will store in stack memory.
 // }
-// console.log(fact(5));  // 120
+// console.log(fact(5)); // 120
 
 // OR
 
 // function fact(n) {
-
 //     let totalFact = 1;
 //     for (let i = 0; i < n - 1; i++) {
 //         totalFact *= n - i;
@@ -130,23 +128,27 @@
 // let array = [1, 2, 3, 4, 5];
 // console.log(array.splice(2));
 
-// // This will return [3,4,5]. The original array is affected resulting in array being [1,2].
+// This will return [3,4,5]. 
+// The original array is affected resulting in array being [1,2].
 
 // let array = [1, 2, 3, 4, 5]
 // console.log(array.slice(2));
 
-// This will return [3,4,5]. The original array is NOT affected with resulting in array being [1,2,3,4,5].
+// This will return [3,4,5]. 
+// The original array is NOT affected with resulting in array being [1,2,3,4,5].
 
 //-------------------------------------------------------------------------------------
 // a = ['s', 'r', 't', 'y', 'i', 'v'];
 
-// console.log(a.slice(2, 3));   // ['t']
+// console.log(a.slice(2, 4));   // ['t','y']
 // console.log(a.slice(2));      // ['t','y','i','v']
 // console.log(a);               // ['s', 'r', 't', 'y', 'i', 'v']
 
 // console.log(a.splice(2, 3));  // ['t','y','i']
 // console.log(a.splice(2));     // [ 't', 'y', 'i', 'v' ]
 // console.log(a);               // [ 's', 'r' ]
+
+//---------------------------------------------------------------------------------------------
 
 // substring(start, end)
 // substr(start, length)
@@ -155,7 +157,7 @@
 // console.log(str.substring(7, 13)); // Banana
 // console.log(str.substring(8)); // anana, Kiwiii
 
-//it takes index, length
+// it takes index, length
 // console.log(str.substr(7, 13)); // Banana, Kiwii
 // console.log(str.substr(7));    // Banana, Kiwiii
 // console.log(str.substr(-4));     // wiii
@@ -168,10 +170,9 @@
 //     let index = null;
 //     for (let i = 0; i < len; i++) {
 //         if (a[i] === n) {
-//             index = i;
+//             return index;
 //         }
 //     }
-//     return index;
 // }
 // console.log(findIndex(56)); // 3
 
@@ -180,19 +181,18 @@
 // let insertValIn1D = (v, l) => {
 //     let arr = [10, 20, 30, 40];
 
-//     if (l > (arr.length - 1){) {
+//     if (l > (arr.length - 1)) {
 //         arr[l] = v;
-//     }
-//     else {
-//         // arr[l] = v;
+//     } else {
+//         arr[l] = v;
 //         return `location is occupied`;
 //     }
 //     return arr;
 // }
 // console.log(insertValIn1D(32, 7)); // [ 10, 20, 30, 40, <2 empty items>, 32 ]
 
-// Time complexity = O(1){
-// Space complexity = O(1){
+// Time complexity = O(1)
+// Space complexity = O(1)
 
 //-------------------------------------------------------------------------------------------------
 
@@ -200,7 +200,7 @@
 //     let bigNo = arr[0]; //............................ O(1){
 //     let smallNo = arr[0];
 //     let len = arr.length;
-//     for (let i = 1;{ i < len; i++) {    //.......O(n) }
+//     for (let i = 1; i < len; i++) {    //.......O(n) }
 //         if (arr[i] > bigNo) {          //....O(1){ }          }.....O(n)
 //             bigNo = arr[i];            //....O(1){ }----O(1){  }
 //         }
@@ -216,40 +216,38 @@
 
 // console.log(findBiggestSmallestNumber([5, 9, 13, 5]));  // { bigNo: 13, smallNo: 5 }
 
-// Time Comlexity = O(1){ + O(n) + O(1){ ==> O(n)
+// Time Comlexity = O(1) + O(n) + O(1) ==> O(n)
 
 //---------------------------------------------------------------------------------------------
 
 // Example of fibonacci is -- 0,1,1,2,3,5,8,13,21,34,55..
 
 // let fibo = (n) => {
-//     if (n < 1){ {
+//     if (n < 1) {
 //         return false
-//     }
-//     else if (n == 1 || n == 2) {
-//         return (n - 1)       // f(2) = 1, f(1) = 0
-//     }
-//     else {
+//     } else if (n == 1 || n == 2) {
+//         return (n - 1) // f(2) = 1, f(1) = 0
+//     } else {
 //         return fibo(n - 1) + fibo(n - 2) //f(6)=f(5)+f(4),f(5)=f(4)+f(3),f(4)= f(3)+f(2),f(3)= f(2)+f(1)
-//     }                                   //    5    3 + 2     3    2 + 1     2     1 + 1     1     1 + 0
+//     }                                   //   5    3 + 2     3    2 + 1    2     1 + 1      1     1 + 0
 // }
-// console.log(fibo(8));
+// console.log(fibo(6)); // 13
 
 // fibonacci_series with recursion
 
 // OR
+// Example of fibonacci is -- 0,1,1,2,3,5,8,13,21,34,55..
 
 // function fib(n) {
 //     const result = [0, 1];
-
-//     for (let i = 2; i <= n; i++) {
+//     for (let i = 2; i < n; i++) {
 //         const a = result[result.length - 1];
 //         const b = result[result.length - 2];
 //         result.push(a + b);
 //     }
-//     return result[n];
+//     return result[n-1];
 // }
-// console.log(fib(8));
+// console.log(fib(9));
 
 
 //--------------------------------------------------------------------------------------------------
@@ -259,14 +257,14 @@
 //     let dup = []
 //     let len = arrSort.length;
 
-//     for (let i = 0; i < len - 1;{ i++) {
+//     for (let i = 0; i < len - 1; i++) {
 //         if (arrSort[i + 1] === arrSort[i]) {
-//             dup.push(arrSort[i + 1]{)
+//             dup.push(arrSort[i])
 //         }
 //     }
 //     return dup;
 // }
-// console.log(dup([5, 7, 1, 4, 6, 7, 9]));   // [7]
+// console.log(dup([5, 7, 1, 4, 6, 7, 9])); // [7]
 
 //---------------------------------------------------------------------------------------------------
 
@@ -308,7 +306,7 @@
 //     if (n < 2 || !Number.isInteger(n) || !(n % 2)) {
 //         return false;
 //     }
-//     for (let i = 3; i < n; i++ , i++) {
+//     for (let i = 3; i < n; i++, i++) {
 //         if (n % i === 0) {
 //             return false;
 //         }
@@ -316,7 +314,7 @@
 //     return true;
 // }
 // console.log(isPrime(20)); // false
-// console.log(isPrime(7));  // true
+// console.log(isPrime(5)); // true
 
 //-------------------------------------------------------------------------------------------------
 
@@ -349,9 +347,9 @@
 
 //-----------------------------------------------------------------------------------------------
 
-// var trees = ["xyz","xxxx","test","ryan","apple"];
+// const trees = ["xyz","xxxx","test","ryan","apple"];
 // delete trees[3];
-// console.log(trees,trees.length);  // 5 => [ 'xyz', 'xxxx', 'test', <1 {empty item>, 'apple' ] 
+// console.log(trees,trees.length);  // 5 => [ 'xyz', 'xxxx', 'test', <1 empty item>, 'apple' ] 
 
 //-------------------------------------------------------------------------------------------------
 
@@ -365,10 +363,11 @@
 
 //-------------------------------------------------------------------------------------------------
 
-// The output would be 1.
 // The delete operator is used to delete properties from an object or to delete the element from array.
 // Here x is not an object but a local variable.
 // delete operators don't affect local variables.
+
+// The output would be 1.
 
 // let output = (function (x) {
 //     console.log('1st', x);
@@ -379,13 +378,13 @@
 
 //----------------------------------------------------------------------------------------------------
 
-// var trees = ["redwood", "bay", "cedar", "oak", "maple"];
+// let trees = ["redwood", "bay", "cedar", "oak", "maple"];
 // delete trees[3];
-// console.log(trees);  // [ 'redwood', 'bay', 'cedar', <1 {empty item>, 'maple' ]
+// console.log(trees);  // [ 'redwood', 'bay', 'cedar', <1 empty item>, 'maple' ]
 
 //---------------------------------------------------------------------------------------------------
 
-// var z = 1, y = z = typeof y;
+// let z = 1, y = z = typeof y;
 // console.log(y);   // undefined
 // console.log(z);   // undefined
 
@@ -394,21 +393,20 @@
 // Curry function
 
 // function mul(x) {
-//     console.log(x);
+//     console.log(x); // 2
 //     return function (y) { // anonymous function 
-//         console.log(y);
+//         console.log(y); // 3
 //         return function (z) { // anonymous function 
-//             console.log(z);
-//             return x * y * z;
+//             console.log(z); // 4
+//             return x * y * z; // 24
 //         };
 //     };
 // }
-// console.log(mul(2)(3)(4));
+// console.log(mul(2)(3)(4)); // 24
 
 //----------------------------------------------------------------------------------------------------
 
-// console.log(typeof (Number('12')));  // number
-
+// console.log(typeof(Number('12')));  // number
 
 // let n = 8;
 // hexString = n.toString(16);
@@ -438,7 +436,7 @@
 //     let sum = arr.reduce((a, e) => {
 //         return (a + e);
 //     })
-//     return sum
+//     return sum;
 // }
 // console.log(reduce1()); // 12
 
@@ -453,14 +451,12 @@
 // }
 // console.log(isPalindrom('level')); // true
 
-// ++++++++++++++++++++++++++++++++++=
+// ------------------------------------------------------------------------------------------
 
 // function palindrome(str) {
-//     console.log(str.split(''));
-
 //     return str.split('').every((char, i) => {
-//         return char === str[str.length - i - 1]{
-//     })
+//         return char === str[str.length - i - 1]
+//     });
 // }
 
 // console.log(palindrome('abcba'));
@@ -473,6 +469,8 @@
 // let a = 1, b = 3;
 
 // [a, b] = [b, a];
+
+// console.log(a, b); // 3 1
 
 // OR
 
@@ -496,18 +494,18 @@
 //     console.log(typeof (num));
 //     return num;
 // }
-// console.log(replaceWithZero(60000543234567));
+// console.log(replaceWithZero(60000543234567));  // 65555543234567
 
 //---------------------------------------------------------------------------------------
 
-// var colors = ['red', 'green', 'blue'];
-// colors.splice(1,{ 0, 'purple');
+// const colors = ['red', 'green', 'blue'];
+// colors.splice(1, 0, 'purple');
 // console.log(colors);   // ['red','purple', 'green', 'blue'];
 
 //------------------------------------------------------------------------------------------------
 
 // function findMinMax() {
-//     const array = [1,{ 2, 3, 4];
+//     const array = [1, 2, 3, 4];
 //     let minNumber = Math.min(...array);
 //     let maxNumber = Math.max(...array);
 //     let arraySum = array.reduce((a, b) => a + b)
@@ -521,16 +519,13 @@
 
 // let findMissNo = () => {
 //     let arr = [1, 2, 5, 4];
-//     let count = arr.length + 1;{
-//     let missNo = null
-//     for (let i = 1;{ i <= count; i++) {
-//         if (arr.indexOf(i) == -1){ {
-//             missNo = i;
-//         }
+//     let count = arr.length + 1;
+//     for (let i = 1; i <= count; i++) {
+//         if (arr.indexOf(i) == -1)
+//             return i;
 //     }
-//     return missNo;
 // }
-// console.log(findMissNo());
+// console.log(findMissNo()); // 3
 
 //-----------------------------------------------------------------------------------------------
 // ANAGRAMS
@@ -538,44 +533,41 @@
 // let isAnagram = (a, b) => {
 //     let x = a.replace(/[^\w]/g,'').tolowerCase().split('').sort().join('');
 //     let y = b.replace(/[^\w]/g,'').tolowerCase().split('').sort().join('');
-//     if (x == y) {
+//     if (x == y) 
 //         return true;
-//     }
 //     return false;
 // }
 // console.log(isAnagram('awq', 'waq')); // true
 
 
-//--------------------------------------
 
-// function anagrams(stringA,stringB) {
+//------------------------------------------------------------------------------------------
+
+// function anagrams(stringA, stringB) {
 //     const aCharMap = buildCharMap(stringA);
 //     const bCharMap = buildCharMap(stringB);
 
-//     if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+//     if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length)
 //         return false;
-//     }
+
 
 //     for (let char in aCharMap) {
-//         if (aCharMap[char] !== bCharMap[char]) {
+//         if (aCharMap[char] !== bCharMap[char])
 //             return false;
-//         }
 //     }
 //     return true;
 // }
 
+
 // let buildCharMap = (str) => {
 //     const charMap = {};
-
 //     for (let char of str.replace(/[^\w]/g, '').toLowerCase()) {
-//         charMap[char] = charMap[char] + 1 {|| 1;{
+//         charMap[char] = charMap[char] + 1 || 1;
 //     }
 //     return charMap;
 // }
-
 // console.log(anagrams('awq', 'waq')); // true
 
-//--------------------------------------
 
 //---------------------------------------------------------------------------------------------------
 
@@ -587,20 +579,21 @@
 // console.log(reverseInt(-218)); // -812
 
 //---------------------------------------------------------------------------------------------------
-// const string = "Hello There!"
+// const s = "Hello There!"
 
-// const arr = [4, 3, 7, 3, 1,{ 8, 3, 9, 7, 3]
-// const nums = {};
+// const s = [4, 3, 7, 3, 1, 8, 3, 9, 7, 3]
+// let nums = {};
 
-// for (let num of arr) {
+// for (let num of s) {
 //     if (nums[num]) {
-//         nums[num]++;
+//         nums[num]++
 //     } else {
-//         nums[num] = 1;{
+//         nums[num] = 1
 //     }
 // }
-
 // console.log(nums);
+
+//--------------------------------------------------------------------------------------------
 
 // let max = 0;
 // let numss;
@@ -629,18 +622,19 @@
 //     return chunked;
 // }
 
-// console.log(chunk([3, 6, 8, 1,{ 6, 2], 2));
+// console.log(chunk([3, 6, 8, 1, 6, 9, 22], 2));
 
 //---------------------------------------------------------------------------------------------------
 
 // Reverse string using recursion
 
-// let reverseString = (Str) => {
-//     return Str.split('').reverse().join('');
-//     if (Str === "") {
+// let reverseString = (str) => {
+//     if (str === "") {
 //         return "";
 //     }
-//     return reverseString(Str.substr(1){) + Str.charAt(0); // ? + h, ? + e, ? + l , ? + l , ? + o
+//     return str.split('').reverse().join('');
+
+//     return reverseString(str.substr(1)) + str.charAt(0); // ? + h, ? + e, ? + l , ? + l , ? + o
 // }
 // console.log(reverseString('Hello')); // olleH
 
@@ -649,13 +643,13 @@
 // function reverse(str) {
 //     let reversed = '';
 //     for (let char of str) {
-//         console.log('char :', char);
+//         console.log('char:', char);
 //         reversed = char + reversed;
-//         console.log('reversed', reversed);
+//         console.log(`reversed: ${reversed}`);
 //     }
 //     return reversed;
 // }
-// console.log(reverse('hEllo'));
+// console.log(reverse('hEllo')); // ollEh
 
 // ++++++++++++++++
 
@@ -668,18 +662,18 @@
 
 // let traverse2Darr = () => {
 //     var items = [
-//         [1,{ 2, 43],
+//         [1, 2, 43],
 //         [3, 4, 12],
 //         [5, 6, 9],
 //         [15, 16, 19]
-
 //     ];
+
 //     let rows = items.length;
 //     let cols = items[0].length;
-//     // console.log(rows, cols);
+//     console.log(rows, cols);
 
-//     for (i = 0; i < rows; i++) {
-//         for (j = 0; j < cols; j++) {
+//     for (let i = 0; i < rows; i++) {
+//         for (let j = 0; j < cols; j++) {
 //             console.log(items[i][j]);
 //         }
 //     }
@@ -691,13 +685,11 @@
 
 // function countVowel(str) {
 //     let count = 0;
-//     let len = str.length;
-//     let vowels = 'aeiou';
+//     const vowels = 'aeiou';
 
 //     for (let i of str) {
-//         if (vowels.indexOf(i) !== -1){ {     // or (vowels.includes(i))
+//         if (vowels.indexOf(i) !== -1) // or vowels.includes(i)
 //             count++;
-//         }
 //     }
 //     return count;
 // }
@@ -705,43 +697,45 @@
 
 //----------------------------------------------------------------------------------------------------
 
-//Removing duplicate using ES6 new feature called new Set
+// Removing duplicate using ES6 new feature called new Set
 
-// let a = [1,{ 2, 15, 2, 1,{ 8];
+// let a = [1, 2, 15, 2, 1, 8];
 // let b = [...new Set(a)];
-// console.log(b);  // [ 1,{ 2, 15, 8 ]
+// console.log(b); // [ 1, 2, 15, 8 ]
 
 // OR
 
-// let a = [1,{ 2, 18, 2, 1,{ 5];
+// let a = [1, 2, 18, 2, 1, 5];
 // let obj = {};
 
 // for (let i of a) {
 //     obj[i] = true;        // Key has to be unique. it won't repeat
 // }
 // let b = Object.keys(obj);
-// console.log(b);      // [ '1'{, '2', '5', '18' ]
+// console.log(b);      // [ '1', '2', '5', '18' ]
 
 //----------------------------------------------------------------------------------------------------
 
-// true = 1 {only for comparison operator 
+// true = 1 only for comparison operator 
 
-// let a = [1,{ 2, 15, 2, 1,{ 8];
+// let a = [1, 2, 15, 2, 1, 8];
 // let b = [...new Set(a)];
-// console.log(b); // [ 1,{ 2, 15, 8 ]
+// console.log(b); // [ 1, 2, 15, 8 ]
 
 
 // console.log(2 + '2');        // Concat   '22'
 // console.log(2 - '2');        // 0 => Convert String to number
 
-// console.log(5 < 6 < 7); // (5 < 6) => true, true always 1 {=> (1 {< 7)=> true
-// console.log(7 > 6 > 5); // (7 > 6) => true, true always 1 {=> (1 {> 5)=> false
+// console.log(5 < 6 < 7); // (5 < 6) => true, true always 1 => (1 < 7)=> true
+// console.log(7 > 6 > 5); // (7 > 6) => true, true always 1 => (1 > 5)=> false
+
+//--------------------------------------------------------------------------------------------
 
 // let profile = {
 //     name: 'vijay'
 // };
 
-// Object.freeze(profile);
+// Object.seal(profile);
 
 // delete profile.name;
 // console.log(profile);   // { name: 'vijay' }
@@ -759,9 +753,12 @@
 //--------------------------------------------------------------------------------------------
 
 // let foo;
+// console.log(foo);
+
 // const bar = null;
-// console.log(foo == bar);      // true
-// console.log(foo === bar);     // false
+
+// console.log(undefined == null); // true
+// console.log(foo === bar); // false
 
 //----------------------------------------------------------------------------------------------
 
@@ -769,17 +766,17 @@
 //     console.log(arguments); // { '0': [ 'hi' ] }
 //     return 'Hello';
 // }
-// let sentence = a`hi`      //`hi` is argument of funtion
+// let sentence = a`hi`      //`hi` is argument of function
 // console.log(sentence);    // Hello
 
 
 // const x = 'constructor';
-// console.log(x[x](01));   // 1 {
+// console.log(x[x](01));   // 1 
 
 //-------------------------------------------------------------------------------------------------
 
 // const obj = {
-//     a: 1,{
+//     a: 1,
 //     b: 2,
 //     getA() {
 //         console.log(this.a); // 1
@@ -797,6 +794,7 @@
 
 // Object.assign will not affect upto one level only hence below example works.
 
+
 // For deep cloning
 
 // const obj = {
@@ -813,15 +811,15 @@
 
 // clone.a.b.c = 2;
 // console.log(clone);  // { a: { b: { c: 2 } } }
-// console.log(obj);    // { a: { b: { c: 1 {} } }
+// console.log(obj);    // { a: { b: { c: 1 } } }
 
 //--------------------------------------------------------------------------------------------
 
 // const obj = {
-//     x: 1,{
+//     x: 1,
 //     getX() {
 //         // 2. const that = this;
-//         const inner = function () {   // 1.{create arrow function, const inner = ()=>{}
+//         const inner = function () {   // 1.create arrow function, const inner = ()=>{}
 //             // 2. console.log(that.x);
 //             console.log(this.x);
 //         }
@@ -832,7 +830,7 @@
 
 //-------------------------------------------------------------------------------------------------
 
-// To get the output '1'{ we can get it by above 3 points.
+// To get the output '1' we can get it by above 3 points.
 
 // let i = Number.MIN_VALUE;  
 // console.log(i);       // 5e-324
@@ -843,19 +841,18 @@
 
 //-------------------------------------------------------------------------------------------------
 
-// console.log([1,{ 2, 3] + [4, 5, 6]); // [1,{2,34,5,6]
+// console.log([1, 2, 3] + [4, 5, 6]); // [1,2,34,5,6]
 
-// console.log([...[1,{ 2, 3], ...[4, 5, 6]]);  // [1,{2,3,4,5,6]
+// console.log([...[1,2, 3], ...[4, 5, 6]]);  // [1,2,3,4,5,6]
 
 //-----------------------------------------------------------------------------------------------
 
 // Best way to find out missing no. with best time complexity
 
-// const arr = [12, 3, 4, 5, 14, 6, 7, 8, 1,{ 9, 10, 11, 2, 15, 16] // One no is missing
-// let n = arr.length + 1;{
-// let total = n * (n + 1){ / 2
+// const arr = [12, 3, 4, 5, 14, 6, 7, 8, 1, 9, 10, 11, 2, 15, 16] // One no is missing
+// let n = arr.length + 1;
+// let total = n * (n + 1) / 2
 // let arrTotal = arr.reduce((a, e) => a + e);
-
 // console.log(total - arrTotal);
 
 //-------------------------------------------------------------------------------------------------
@@ -887,7 +884,7 @@
 
 // const profile = {
 //     name: 'vijay',
-//     getName: () => { // to get the outpput 'vijay' => getName : function(){}
+//     getName: () => {    // to get the outpput 'vijay' => getName:function(){} OR getName(){}
 //         console.log(this);   // {}
 //         console.log(this.name);  // undefined
 //     }
@@ -906,11 +903,11 @@
 
 // }
 
-// functionName.call(obj,arg1,arg2,arg3); //call will pass each args
+// functionName.call(obj,arg1,arg2,arg3); // call will pass each args
 
-// functionName.apply(obj, [arg1, arg2, arg3]); //apply will pass args as array
+// functionName.apply(obj, [arg1, arg2, arg3]); // apply will pass args as array
 
-// let bound = functionName.bind(obj); //1st it will bind function with object
+// let bound = functionName.bind(obj); // 1st it will bind function with object
 
 // bound(arg1, arg2, arg3); // It will call by variable passing arguments
 
@@ -920,7 +917,7 @@
 // }
 // func();                 // "undefined"  0
 // func(7);                // "number"  1
-// func("1"{, "2", "3");   // "string"  3
+// func("1", "2", "3");   // "string"  3
 
 
 // setTimeout(function () {
@@ -929,12 +926,14 @@
 
 //----------------------------------------------------------------------------------------------------
 
-// const a = [1,{2,5,7,9]
-// const b = [2,5,7,12,100]
+// const a = [1, 2, 5, 7, 9]
+// const b = [2, 5, 7, 12, 100]
 
 // const c = a.concat(b)
+// OR 
+// const c = [...a, ...b]
 
-// console.log(c);  // [ 1, 2, 5, 7, 9, 2, 5, 7, 12, 100 ]
+// console.log(c); // [ 1, 2, 5, 7, 9, 2, 5, 7, 12, 100 ]
 
 //---------------------------------------------------------------------------------------------------
 
@@ -952,22 +951,33 @@
 
 // A local variable takes precedence over a global variable with the same name.
 
-// for (var i = 1;{ i <= 9; i++) {
-//     setTimeout(() => {
-//         console.log('2nd', i);
-//         // console.log(i);
-//     })
+// for (var i = 0; i < 10; i++) {
+//     console.log(i);
+//     setTimeout(function () {
+//         console.log('The number is ' + i);
+//     }, 1000);
 // }
 // Output :
-// 2nd 10
-// 2nd 10
-// 2nd 10
-// 2nd 10
-// 2nd 10
-// 2nd 10
-// 2nd 10
-// 2nd 10
-// 2nd 10
+// 0
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+// 8
+// 9
+// The number is 10
+// The number is 10
+// The number is 10
+// The number is 10
+// The number is 10
+// The number is 10
+// The number is 10
+// The number is 10
+// The number is 10
+// The number is 10
 //------------------------------------------------------------------------------------------------
 
 // Example of curry function
@@ -1007,20 +1017,20 @@
 // A function that is executed right after it is created
 
 // (function doubleNumber(num) {
-//     return num * 2;
-//   })(10);
+//         return num * 2;
+// })(10);
 
-//   (function() {
+// (function () {
 
-//     function getTotal(a, b) {
-//       return a + b;
-//     }
+//         function getTotal(a, b) {
+//                 return a + b;
+//         }
 
-//     var $ = 'currency';
+//         var $ = 'currency';
 
-//     if (true) console.log('hello world');
+//         if (true) console.log('hello world');
 
-//   })();
+// })();
 
 //-------------------------------------------------------------------------------------------------
 
@@ -1034,28 +1044,24 @@
 // 3. variable in the global scope
 
 // Closure has access to:
-// 1.its own parameter
+// 1.It's own parameter
 // 2.Parameter of outer function(s)
 
 // const globalVariable = 'global var';
 
 // function outterFunc(param1) {
-//   const variable1 = 'var one';
-
-//   function innerFunc(param2) {
-//     const variable2 = 'var two';
-
-//     console.log('globalVariable: ', globalVariable);
-//     console.log('variable1: ', variable1);
-//     console.log('variable2: ', variable2);
-//     console.log('param1: ', param1);
-//     console.log('param2: ', param2);
-//   }
-
-//   innerFunc('param one');
+//     const variable1 = 'var one';
+//     function innerFunc(param2) {
+//         const variable2 = 'var two';
+//         console.log('globalVariable:', globalVariable);
+//         console.log('variable1:', variable1);
+//         console.log('variable2:', variable2);
+//         console.log('param1:', param1);
+//         console.log('param2:', param2);
+//     }
+//     innerFunc('param two');
 // }
-
-// outterFunc('param two');
+// outterFunc('param one');
 
 //-------------------------------------------------------------------------------------------------------
 
@@ -1063,11 +1069,11 @@
 
 // In browser it works as global window object.
 
-// var house = {
+// let house = {
 //     price: 100000,
 //     squareFeet: 2000,
 //     owner: 'Taylor',
-//     getPricePerSquareFoot: function () {
+//     getPricePerSquareFoot() {
 //         console.log('this=>', this);
 //         return this.price / this.squareFeet;
 //     }
@@ -1077,19 +1083,20 @@
 // console.log(house.price);  // 100000
 // console.log(house.getPricePerSquareFoot());  // 50
 
+//------------------------------------------------------
+
 // If we use this keyword with arrow function
 
-// var house = {
+// let house = {
 //     price: 100000,
 //     squareFeet: 2000,
 //     owner: 'Taylor',
-//     getPricePerSquareFoot: () => { //if we use arrow function this won't work infact this would be {}(Empty Objet).
+//     getPricePerSquareFoot: () => { // if we use arrow function this keyword won't work infact this would be {}(Empty Objet).
 //         console.log('this=>', this);  // {}
 //         return this.price / this.squareFeet;
 //     }
 // };
-
-// console.log(house.price);                      //100000
+// console.log(house.price);                      // 100000
 // console.log(house.getPricePerSquareFoot());    // NaN
 
 //---------------------------------------------------------------------------------------------
@@ -1103,7 +1110,7 @@
 // So variable and function hoisting is basically the process in which JS interpreter looks ahead in the codes
 // to find all of the variable and function declarations and then hoist those declarations to the top of file.
 
-// tab 1
+// tab 1 is similar to tab 2 in case of hoisting
 
 // console.log(color); // undefined
 // var color = "blue";
@@ -1140,6 +1147,14 @@
 //   return num1 * num2;
 // }
 
+// var color;
+// console.log(color);
+// color = "blue";
+// console.log(color);
+// console.log(color);
+// color = "blue";
+// console.log(color);
+
 //tab 5
 
 // var globalVar = 'global';
@@ -1167,36 +1182,37 @@
 //     console.log(total);
 //     let total = 0;
 
-//     for(var i = 0; i < 10; i++) {
-//       let valueToAdd = i;
-//       var multiplier = 2;
-//       total += valueToAdd * multiplier;
+//     for (var i = 0; i < 10; i++) {
+//         let valueToAdd = i;
+//         var multiplier = 2;
+//         total += valueToAdd * multiplier;
 //     }
 //     return total;
-//   }
-//   getTotal();
+// }
+// getTotal();
 
 
 // tab 2
 
-//   function getTotal() {
+// function getTotal() {
 //     let total;
 //     var multiplier;
 
 //     total = 0;
 
-//     for(var i = 0; i < 10; i++) {
-//       let valueToAdd;
+//     for (var i = 0; i < 10; i++) {
+//         let valueToAdd;
 
-//       valueToAdd = i;
-//       multiplier = 2;
-//       total += valueToAdd * multiplier;
+//         valueToAdd = i;
+//         multiplier = 2;
+//         total += valueToAdd * multiplier;
 //     }
 
 //     return total;
-//   }
+// }
 
-//   getTotal();
+// console.log(getTotal());
+
 
 //-----------------------------------------------------------------------------------------------
 
@@ -1214,12 +1230,12 @@
 //     color: "Blue",
 //     logColor: function () {
 //         var self = this;
-//         console.log("In logColor - this.color: " + this.color);  // Blue
-//         console.log("In logColor - self.color: " + self.color);  // Blue
+//         console.log("In logColor - this.color: " + this.color); // Blue
+//         console.log("In logColor - self.color: " + self.color); // Blue
 //         (function () {
-//             console.log("In IIFE - this.color: " + this.color);  // undefined-> bcoz of function scope it won't work
-// // and here this keyword works as global object
-//             console.log("In IIFE - self.color: " + self.color);  //blue
+//             console.log("In IIFE - this.color: " + this.color); // undefined-> bcoz of function scope it won't work
+//             // and here this keyword works as global object
+//             console.log("In IIFE - self.color: " + self.color); //blue
 //         })();
 //     }
 // };
@@ -1232,11 +1248,11 @@
 // in  === & ==  
 // 1. comparing number and string then string is converted to number.
 // 2. comparing boolean and non boolean then non boolean is converted to boolean.
-// 3. comparing object to primitive data type then object is converted to primitive data type.
+// 3. comparing object and primitive data type then object is converted to primitive data type.
 
 //--------------------------------------------------------------------------------------------
 
-//Becuase of hoisting using var keyword
+// Becuase of hoisting using var keyword
 
 // var num = 50;
 // function logNumber() {
@@ -1283,7 +1299,7 @@
 //------------------------------------------------------------------------------------------------
 
 // (function () {
-//     var x = y = 200;        //here y will work as global variable beacuse it is without var keyword
+//     var x = y = 200;        // here y will work as global variable beacuse it is without var keyword
 // })();
 
 // console.log('y: ', y);   // 200
@@ -1303,6 +1319,14 @@
 
 //------------------------------------------------------------------------------------------------------
 
+// function logNumbers() {
+//     console.log(1);
+//     setTimeout(function () { console.log(2) }, 1000);
+//     setTimeout(function () { console.log(3) }, 0);
+//     console.log(4);
+// }
+// logNumbers(); // 1 4 3 2
+
 // if log 3 has 0 milisecond then why not looged 3 first before logged 4.
 // this is because of event loop. event loop is a queue in which all the events are taking place in
 // the browser are placed. 
@@ -1311,14 +1335,7 @@
 // that they were place in the queue
 // as logged 3 is in pushed into event queue bcoz it is inside callback function.
 
-// function logNumbers() {
-//     console.log(1){;
-//     setTimeout(function () { console.log(2) }, 1000);
-//     setTimeout(function () { console.log(3) }, 0);
-//     console.log(4);
-// }
 
-// logNumbers(); // 1 4 3 2
 
 //-------------------------------------------------------------------------------------------------
 
@@ -1411,7 +1428,7 @@
 // const roadTrip1 = {
 //     distance: 3000,
 //     getDistance: function (unit) {
-//         return this.distance + unit;
+//         return (this.distance + unit);
 //     }
 // };
 
@@ -1419,15 +1436,15 @@
 //     distance: 5000
 // };
 
-// console.log(roadTrip1.getDistance());  // NaN
+// console.log(roadTrip1.getDistance(20)); // 3020
 
 // const getTripDistance = roadTrip1.getDistance;
 // console.log(getTripDistance(200));     // 10200
 
-// const getTripDistance = roadTrip1.getDistance.bind(roadTrip1);
-// console.log(getTripDistance());     // 3000
-
 // const getTripDistance = roadTrip1.getDistance.bind(roadTrip2);
+// console.log(getTripDistance(1000));     // 6000
+
+// const getTripDistance = roadTrip1.getDistance.bind(roadTrip2,10);
 // console.log(getTripDistance()); // 5000
 
 // As per the below example the bind method is:
@@ -1500,24 +1517,22 @@
 // Singly or Doubly Invoked Function 
 
 // function getTotal() {
-//     var args = Array.prototype.slice.call(arguments); // arguments gives access whatever args pass to funtion
+//     let args = Array.prototype.slice.call(arguments); // arguments gives access whatever args pass to funtion
 //     // using arguments keyword don't need to define how may args or what args are passed into function.
 //     // console.log(args);
 
 //     if (args.length === 2) {
-//         return args[0] + args[1]{;
-//     }
-//     else if (args.length === 1){ {
-//         return function (num2) {
+//         return args[0] + args[1];
+//     } else if (args.length === 1) {
+//         return (num2) => {
 //             return args[0] + num2;
 //         };
 //     }
 // }
-
 // console.log(getTotal(10, 20)); // 30
-// console.log(getTotal(5, 40));  // 45
-// console.log(getTotal(3)(30));  // 33
-// console.log(getTotal(8)(12));  // 20
+// console.log(getTotal(5, 40)); // 45
+// console.log(getTotal(3)(30)); // 33
+// console.log(getTotal(8)(12)); // 20
 
 // getTotal(10, 20);  // Singly invoked function
 // getTotal(10)(20);  // Double invoked function
@@ -1556,7 +1571,7 @@
 
 // const data1 = 'Jordan Smith';
 
-// const data2 = [].filter.call(data1, function(elem, index) {
+// const data2 = [].filter.call(data1, function(elem, index) {    
 //   return index > 6;
 // });
 
@@ -1583,7 +1598,7 @@
 // const anotherArray = myArray;
 
 // console.log([10, 20, 30, 40, 50].indexOf(30));  // 2
-// console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' })); // -1 {=> Two obect are never be same - pass by reference
+// console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' })); // -1 => Two object are never be same - pass by reference
 // console.log('hello world'.indexOf('o'));  // 4
 // console.log([[1], [2], [3], [4]].indexOf([2])); // -1 ==> different array and pass by reference
 // console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); // 4 ==> both arrays are refering same address
@@ -1661,8 +1676,8 @@
 // const account1 = {
 //     name: 'Jen',
 //     totalAmount: 5000,
-//     deductAmount: function (amount) {   // 200 
-//         this.totalAmount -= amount;     // 7500 - 200 = 7300
+//     deductAmount(amount) { // 200 
+//         this.totalAmount -= amount; // 8000 - 500 = 7300
 //         return 'Amount in account: ' + this.totalAmount;
 //     },
 // };
@@ -1672,8 +1687,12 @@
 //     totalAmount: 8000,
 // };
 
+// console.log(account1.deductAmount(1000));  // 4000
+// console.log(account1.deductAmount.bind(account2,3000));  // 4000
+
+
 // const withdrawFromAccount = function (amount) {
-//     return account1.deductAmount.bind(account2, amount);
+// return account1.deductAmount.bind(account2, amount);
 // };
 
 // console.log(withdrawFromAccount(500)()); // Amount in account: 7500
@@ -1684,13 +1703,18 @@
 // const list1 = [1, 2, 3, 4, 5];
 
 // const list2 = list1.slice();
-// // OR
-// // const list2 = list1.concat([]);
+// OR
+// const list2 = [...list1]
+// OR
+// const list2 = list1.concat([]);
+
+// console.log('List 1: ', list1); // List 1:  [1, 2, 3, 4, 5]
+// console.log('List 2: ', list2); // List 2 : [1, 2, 3, 4, 5]
 
 // list1.push(6, 7, 8);
 
-// console.log('List 1: ', list1);  // List 1:  [ 1, 2, 3, 4, 5, 6, 7, 8 ]
-// console.log('List 2: ', list2);  // List 2:  [ 1, 2, 3, 4, 5 ]
+// console.log('List 1st: ', list1); // List 1:  [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+// console.log('List 2nd: ', list2); // List 2:  [ 1, 2, 3, 4, 5 ]
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1699,9 +1723,9 @@
 //     console.log("setInterval 1");
 //     Promise.resolve()
 //         .then(() => {
-//             console.log("promise 1"{);
+//             console.log("promise 1");
 //             setImmediate(() => {
-//                 console.log("setImmediate 1"{);
+//                 console.log("setImmediate 1");
 //                 Promise.resolve()
 //                     .then(() => {
 //                         console.log("promise 3");
@@ -1724,8 +1748,7 @@
 // Promise.resolve().then(() => {
 //     console.log('promise 3');
 // })
-// process.nextTick(() => console.log("processNextTick 1"{))  // micro task
-
+// process.nextTick(() => console.log("processNextTick 1"))  // micro task
 // console.log("end");
 
 // Process.nextTick ?
@@ -1758,21 +1781,18 @@
 //     let output = input.toUpperCase();
 //     return output;
 // }
-
 // console.log(f_pure('Some String'));
 
 //------------------------------------------------------------------------------------------------
 
 // Q. What is higher order function ?
 
-// May accept functions as parameters
-// Will return a function
+// Accept functions as parameters and return a function
 
 // let higher = (f) => {
 //     let output = f();
 //     return output;
 // }
-
 // let x = function () {
 //     console.log('x');
 //     return function () {
@@ -1784,21 +1804,32 @@
 //------------------------------------------------------------------------------------------------
 
 // What is a first order function?
-// First-order function is a function that doesn’t accept other function as an argument and doesn’t return a function as its return value.
+// First-order function is a function that doesn’t accept other function as an argument and 
+// doesn’t return a function as its return value.
 
-// const firstOrder = () => console.log ('Iam a first order functionn!');
+// const firstOrder = () => console.log(`I'm a first order functionn!`);
+// firstOrder()
 
 //------------------------------------------------------------------------------------------------
 
 // What is memoization?
-// Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results. Each time a memoized function is called, its parameters are used to index the cache. If the data is present, then it can be returned, without executing the entire function. Otherwise the function is executed and then the result is added to the cache. Let's take an example of adding function with memoization,
+
+// Memoization is a programming technique which attempts to increase a function’s performance 
+// by caching its previously computed results.
+
+// Each time a memoized function is called, its parameters are used to index the cache. 
+// If the data is present, then it can be returned, without executing the entire function. 
+// Otherwise the function is executed and then the result is added to the cache. 
+
+// Let's take an example of adding function with memoization,
 
 // const memoizAddition = () => {
 //   let cache = {};
 //  return (value) => {
 //   if (value in cache) {
 //    console.log('Fetching from cache');
-//    return cache[value]; // Here, cache.value cannot be used as property name starts with the number which is not valid JavaScript  identifier. Hence, can only be accessed using the square bracket notation.
+//    return cache[value]; // Here, cache.value cannot be used as property name starts with           
+//    the number which is not valid JavaScript  identifier. Hence, can only be accessed using the square bracket notation.
 //   }
 //   else {
 //    console.log('Calculating result');
@@ -1809,6 +1840,7 @@
 //  }
 // }
 // // returned function from memoizAddition
+
 // const addition = memoizAddition();
 // console.log(addition(20)); //output: 40 calculated
 // console.log(addition(20)); //output: 40 cached
@@ -1817,8 +1849,11 @@
 //---------------------------------------------------------------------------------------------------
 
 // What are classes in ES6?
-// In ES6, Javascript classes are primarily syntactical sugar over JavaScript’s existing prototype-based
-// inheritance. For example, the prototype based inheritance written in function expression as below,
+
+// In ES6, Javascript classes are primarily syntactical sugar over JavaScript’s existing 
+// prototype-based inheritance. 
+
+// For example, the prototype based inheritance written in function expression as below,
 
 // function Bike(model,color) {
 //     this.model = model;
@@ -1831,7 +1866,7 @@
 
 // Whereas ES6 classes can be defined as an alternative
 
-// class Bike{
+// class Bike {
 //   constructor(color, model) {
 //     this.color= color;
 //     this.model= model;
@@ -1842,12 +1877,15 @@
 
 // What is a Cookie?
 
-// A cookie is a piece of data that is stored on your computer to be accessed by your browser. Cookies are saved as key/value pairs. For example, you can create a cookie named username as below,
+// A cookie is a piece of data that is stored on your computer to be accessed by your browser.
+// Cookies are saved as key/value pairs. For example, you can create a cookie named username 
+// as below,
 
 // document.cookie = "username=John";
 
 // Why do you need a Cookie?
-// Cookies are used to remember information about the user profile(such as username). It basically involves two steps,
+// Cookies are used to remember information about the user profile(such as username). 
+// It basically involves two steps,
 
 // When a user visits a web page, user profile can be stored in a cookie.
 // Next time the user visits the page, the cookie remembers user profile.
@@ -1857,21 +1895,21 @@
 // What are the differences between cookie, local storage and session storage?
 // Below are some of the differences between cookie, local storage and session storage,
 
-//       Feature	                                 Cookie                       	Local storage	                                                        Session storage
-// Accessed on client or server side	 Both server-side & client-side             client-side only	client-side only
-// Lifetime	                             As configured using Expires option	        until deleted	until tab is closed
-// SSL support	                         Supported	                                Not supported	Not supported
-// Maximum data size	                 4KB	                                    5 MB	5MB
+//       Feature	                                 Cookie                       	Local storage	            Session storage
+// Accessed on client or server side	 Both server-side & client-side                 client-side only            client-side only
+// Lifetime	                         As configured using Expires option	        until deleted               until tab is closed
+// SSL support	                         Supported	                                Not supported	            Not supported
+// Maximum data size	                 4KB	                                        5 MB	                    5MB
 
-//---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------
 
 // What is the difference between Shallow and Deep copy?
 // There are two ways to copy an object,
 
 // Shallow Copy
 // Shallow copy is a bit-wise copy of an object. A new object is created that has an exact copy of the
-//  values in the original object. If any of the fields of the object are references to other objects,
-//  just the reference addresses are copied i.e., only the memory address is copied.
+// values in the original object. If any of the fields of the object are references to other 
+// objects,just the reference addresses are copied i.e., only the memory address is copied.
 
 //---------------------------------------------------------------------------------------------------
 // What paradigm is Javascript?
@@ -1880,53 +1918,69 @@
 //  Programming with prototypical inheritance.
 //---------------------------------------------------------------------------------------------------
 
-// What is a callback function?
-// A callback function is a function passed into another function as an argument. This function is invoked inside the outer function to complete an action. Let's take a simple example of how to use callback function
+// What is a callback function ?
+
+// A callback function is a function passed into another function as an argument.
+// This function is invoked inside the outer function to complete an action. 
+// Let's take a simple example of how to use callback function
+
 
 // function callbackFunction(name) {
 //   console.log('Hello ' + name);
 // }
-
 // function outerFunction(callback) {
-//   let name = prompt('Please enter your name.');
+//   let name = prompt('Please enter your name')
 //   callback(name);
 // }
-
 // outerFunction(callbackFunction);
 
-// The callbacks are needed because javascript is a event driven language. That means instead of waiting for a response javascript will keep executing while listening for other events. Let's take an example with first function invoking an API call(simulated by setTimeout) and next function which logs the message.
+
+// The callbacks are needed because javascript is a event driven language. 
+// That means instead of waiting for a response javascript will keep executing while listening for other events.
+// Let's take an example with first function invoking an API call(simulated by setTimeout) and next function which logs the message.
 
 // function firstFunction(){
 //   // Simulate a code delay
-//   setTimeout( function(){
+//   setTimeout(function(){
 //     console.log('First function called');
 //   }, 1000 );
 // }
 // function secondFunction(){
 //   console.log('Second function called');
 // }
+
 // firstFunction();
 // secondFunction();
 
 // Output :
 // Second function called
 // First function called
+
 //---------------------------------------------------------------------------------------------------
 
 // Difference between module and module.exports ?
 
 // Exports is a reference to modules.exports.
-// So, assing properties to the exports object is a neat shortcut if you want to export an object
+// So, assign properties to the exports object is a neat shortcut if you want to export an object
 // from your module:
 // You have no choice - exports is not a reference to modules.exports all the time!
 
-// If you assign anything to module.exports, exports is not no longer a reference to it,
+//-- If you assign anything to module.exports, exports is not no longer a reference to it,
 // and exports loses all its power.
 
-// module.exports = { a: 'A' };
+// module.exports = {
+//     a: 'A'
+// };
 
 // exports.b = 'B';
-// // module.exports = { c: 'C' };
+
+// console.log('module :',module);
+// console.log('exports :',exports);
+
+// module.exports = {
+//     c: 'C'
+// };
+// console.log('module',module);
 
 // console.log(exports === module.exports); // false
 
@@ -1938,73 +1992,59 @@
 //---------------------------------------------------------------------------------------------------
 
 // Libuv has thread pools and thread pools contains 4 threads.
-// Node js event loop is single threaded
+// Node.js event loop is single threaded
 
 // 1 core can contains 2 threads in CPU.
 
-// let x = [1, 2, 4, 9, 3]
 
+// let x = [1, 2, 4, 9, 3]
 // for (let i of x) {
 //     console.log(i);
 // }
 
 
-// let obj = {
-//     attendaces: [{
-//         in_time: 1,{
-//         out_time: 2
-//     }, {
-//         in_time: 3,
-//         out_time: 4
-//     }, {
-//         in_time: 5,
-//         out_time: 6
-//     }]
-// }
-
-// let intime = obj.attendaces.shift().in_time;
-// let outime = obj.attendaces.pop().out_time;
+// attendaces = [{
+//     in_time: 1,
+//     out_time: 2
+// }, {
+//     in_time: 3,
+//     out_time: 4
+// }, {
+//     in_time: 5,
+//     out_time: 6
+// }]
+// let intime = attendaces.shift().in_time;
+// let outime = attendaces.pop().out_time;
 
 // console.log(intime, 'Intime', outime, 'Outime');
 
+//---------------------------------------------------------------------------------------------
 
 
 // Convert Queue from Stack
 
-
 // function arrSum() {
 //     let arr = [1, 2, 3, 4, 10, 11];
-
-//     let sum = 0;
-//     for (let i of arr) {
-//         sum += i;
-//     }
-//     return sum;
+//     return arr.reduce((a, b) => a + b)
 // }
+// console.log(arrSum());
 
-// console.log(arrSum());  
+//-------------------------------------------------------------------------------------------
 
-
-
-// 'bootless'
-
-// 'bottles'
-
-
-// Repeat first non repeating element from a string in a single traversal.
+// First non repeating element from a string in a single traversal.
 
 // function firstNonRepeatedCharacter(string) {
 //     for (let i = 0; i < string.length; i++) {
-//         let c = string.charAt(i);
-//         if (string.indexOf(c) == i && string.indexOf(c, i + 1){ == -1){ {
-//             return c;
-//         }
+//         let char = string.charAt(i);
+//         // console.log(char);
+//         if (string.indexOf(char) == i && string.indexOf(char, i + 1) == -1)
+//             return char;
 //     }
 //     return null;
 // }
+// console.log(firstNonRepeatedCharacter('hello there')); // o
 
-// console.log(firstNonRepeatedCharacter('hello there'));
-
+//--------------------------------------------------------------------------------------------
 
 // Calculate the difference between 2 dates.
 
@@ -2014,7 +2054,7 @@
 //     console.log(date2);
 
 //     const diffTime = date2.getTime() - date1.getTime(); // it will give in miliseconds
-//     // 1 second equals to 1000 Miliseconds
+// //  1 second equals to 1000 Miliseconds
 //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 //     console.log(diffDays);
 // }
@@ -2024,10 +2064,10 @@
 //--------------------------------------------------------------------------------------------------
 
 // function timeConversion(time) {
-//     var hours = Number(time.match(/^(\d+)/)[1]{);
+//     var hours = Number(time.match(/^(\d+)/)[1]);
 //     console.log('hours', hours);
-//     var minutes = Number(time.match(/:(\d+)/)[1]{);
-//     var seconds = Number(time.match(/:(\d+)/)[1]{);
+//     var minutes = Number(time.match(/:(\d+)/)[1]);
+//     var seconds = Number(time.match(/:(\d+)/)[1]);
 
 //     console.log('minutes', seconds);
 //     var AMPM = time.match(/\s(.*)$/)[1]{;
@@ -2046,10 +2086,10 @@
 
 // Performance of Google chrome vs nodejs (v8)?
 
-// Reasons : In a web browser(Chrome), declaring the variable i outside of any function scope makes
-// it global and therefore binds to window object. As a result, running this code in a web browser
-// requires repeatedly resolving the property within the heavily populated window namespace in each
-// iteration of the for loop.
+// Reasons : In a web browser(Chrome), declaring the variable i outside of any function scope
+// makes it global and therefore binds to window object. As a result, running this code in a
+// web browser requires repeatedly resolving the property within the heavily populated window
+// namespace in each iteration of the for loop.
 
 // In Node.js however, declaring any variable outside of any function’s scope binds it only to the
 // module scope (not the window object) which therefore makes it much easier and faster to resolve.
@@ -2073,10 +2113,10 @@
 // function powerOfNum(a, b) {
 //     console.log(b);
 
-//     if (b < 1){ {
-//         return 1;{
+//     if (b < 1) {
+//         return 1;
 //     }
-//     return a * powerOfNum(a, (b - 1){); // 3 * (3, ?) * 3 * (3,?)
+//     return a * powerOfNum(a, (b - 1)); // 3 * (3, ?) * 3 * (3,?)
 // }
 
 // console.log(powerOfNum(3, 4));
@@ -2114,7 +2154,7 @@
 // function convertNumberToWords(amount) {
 //     var words = [];
 //     words[0] = '';
-//     words[1]{ = 'One';
+//     words[1] = 'One';
 //     words[2] = 'Two';
 //     words[3] = 'Three';
 //     words[4] = 'Four';
@@ -2141,21 +2181,22 @@
 //     words[70] = 'Seventy';
 //     words[80] = 'Eighty';
 //     words[90] = 'Ninety';
+
 //     amount = amount.toString();
-//     var atemp = amount.split(".");
-//     var number = atemp[0].split(",").join("");
-//     var n_length = number.length;
-//     var words_string = "";
+//     let atemp = amount.split(".");
+//     let number = atemp[0].split(",").join("");
+//     let n_length = number.length;
+//     let words_string = "";
 //     if (n_length <= 9) {
-//         var n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-//         var received_n_array = new Array();
-//         for (var i = 0; i < n_length; i++) {
+//         let n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+//         let received_n_array = new Array();
+//         for (let i = 0; i < n_length; i++) {
 //             received_n_array[i] = number.substr(i, 1){;
 //         }
-//         for (var i = 9 - n_length, j = 0; i < 9; i++ , j++) {
+//         for (let i = 9 - n_length, j = 0; i < 9; i++ , j++) {
 //             n_array[i] = received_n_array[j];
 //         }
-//         for (var i = 0, j = 1;{ i < 9; i++ , j++) {
+//         for (let i = 0, j = 1;{ i < 9; i++ , j++) {
 //             if (i == 0 || i == 2 || i == 4 || i == 7) {
 //                 if (n_array[i] == 1){ {
 //                     n_array[j] = 10 + parseInt(n_array[j]);
@@ -2164,7 +2205,7 @@
 //             }
 //         }
 //         value = "";
-//         for (var i = 0; i < 9; i++) {
+//         for (let i = 0; i < 9; i++) {
 //             if (i == 0 || i == 2 || i == 4 || i == 7) {
 //                 value = n_array[i] * 10;
 //             } else {
@@ -2192,16 +2233,13 @@
 //     }
 //     if (Number(amount) % 1 {!= 0) {
 //         n = (amount + "").split(".");
-
-//         let decimalNum = Number(n[1]{);
-
+//         let decimalNum = Number(n[1]);
 //         let decimal_string = convertNumberToWords(decimalNum)
 //         console.log('decimal_string', decimal_string);
 //         words_string += decimal_string + "Paisa"
 //     }
 //     return words_string;
 // }
-
 // console.log(convertNumberToWords(7842156))
 
 
@@ -2210,28 +2248,22 @@
 //     console.log(sortedArr);
 
 //     let mySuperK = [];
-
 //     let myArr = [];
 
 //     let len = sortedArr.length;
-
-//     for (let i = 0; i < len - 1;{ i++) {
+//     for (let i = 0; i < len - 1; i++) {
 //         myArr.push({
-//             diff: sortedArr[i + 1]{ - sortedArr[i],
-//             num: [sortedArr[i], sortedArr[i + 1]{]
+//             diff: sortedArr[i + 1] - sortedArr[i],
+//             num: [sortedArr[i], sortedArr[i + 1]]
 //         })
 //     }
 //     console.log('myArr:', myArr);
-
-
 //     let subArr = sortedArr.slice(0, k);
 //     console.log(subArr);
-
 //     return Math.max(...subArr) - Math.min(...subArr);
 // }
 
 // console.log(maxMin(3, [10, 97, 92, 100, 102]));
-
 
 // console.log(maxMin(8, [6327, 571, 6599, 479, 7897, 9322, 4518, 571, 6677, 7432, 815, 6920, 4329, 4104, 7775, 5708, 7991, 5802, 8619, 6053, 7539,
 //     7454, 9000, 3267, 6343, 7165, 4095, 439, 5621, 4095, 153, 1948, 1018, 6752, 8779, 5267, 2426, 9649, 2190, 9103,
@@ -2240,15 +2272,11 @@
 // console.log(maxMin(5, [4504, 1520, 5857, 4094, 4157, 3902, 822, 6643, 2422, 7288, 8245, 9948, 2822, 1784,
 //     7802, 3142, 9739, 5629, 5413, 7232]));
 
-
-
-
 // console.log(maxMin(3, [97, 100, 102]));
 
 //--------------------------------------------------------------------------------------------------
 
-
-// Here we will search the dupicate number with O(logn)
+// Here we will search the dupicate number with order O(logn)
 
 // function findDup() {
 //     let arr = [1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -2259,90 +2287,71 @@
 //     let rightSubArr = arr.slice(len, arr.length)
 //     console.log('rightSubArr', rightSubArr);
 
-//     if (leftSubArr[leftSubArr.length - 1] !== len) {
+//     if (leftSubArr.length !== leftSubArr[leftSubArr.length - 1]) {
 //         for (let i = 0; i < leftSubArr.length; i++) {
-//             if (leftSubArr[i] === leftSubArr[i + 1]{) {
+//             if (leftSubArr[i] === leftSubArr[i + 1]) {
 //                 return leftSubArr[i]
 //             }
 //         }
-//     }
-//     else {
+//     } else {
 //         for (let i = 0; i < rightSubArr.length; i++) {
-//             if (rightSubArr[i] === rightSubArr[i + 1]{) {
+//             if (rightSubArr[i] === rightSubArr[i + 1]) {
 //                 return rightSubArr[i]
 //             }
 //         }
 //     }
+//     return null;
 // }
 
 // console.log(findDup());
 
 
-// console.log('fist');
-
-// Promise.resolve(() => {
-//     console.log('done');
-// })
+// console.log('fist');   // 1st
 // setTimeout(() => {
-//     console.log('second');
+//     console.log('second'); // 5th
 // }, 0)
 
 // process.nextTick(() => {
-//     console.log('fourth');
+//     console.log('fourth'); // 4th
 // })
 
-
-// // fn();
-
 // function fn() {
-//     console.log('third');
+//     console.log('third'); // 2nd
 // }
+// fn();
+// Promise.resolve(console.log('done'));  // 3rd
 
+//-----------------------------------------------------------------------------------------------
+
+//- It will sort the array in ascending order without using inbuild javascript sort method.
 
 // function sort(array) {
 //     let len = array.length;
-//     let zeroArr = [];
 //     let swapped = false;
 //     for (let i = 0; i < len; i++) {
-//         if (array[i] === 0) {
-//             (array.splice(i, 1));
-//             zeroArr.push(array[i])
+//         if (array[i] > array[i+1]) {
+//             array[i + 1] = [array[i], array[i] = array[i + 1]][0];
+//             swapped = true;
 //         }
-//         else {
-//             if (array[i] > array[i + 1]) {
-//                 array[i + 1] = [array[i], array[i] = array[i + 1]][0]
-//                 swapped = true;
-//             }
-//         }
-
 //     }
 //     if (swapped == true) {
 //         return sort(array)
-//     } else {
-//         return [...array, ...zeroArr];
 //     }
+//     return array;
 // }
 // console.log(sort([3, 1, 6, 0, 8, 0, 1, 0, 0, 7]));
 
-
-
+//--------------------------------------------------------------------------------------------
 
 // function getSecondLargest(nums) {
-//     // Complete the function
-
-//     let sortedArr = nums.sort((a, b) => {
-//         return a - b;
-//     });
-//     let distinctArr = [...new Set(sortedArr)];
+//     nums.sort((a, b) => a - b);
+//     let distinctArr = [...new Set(nums)];
 //     console.log('distinctArr', distinctArr);
-
 //     return distinctArr[distinctArr.length - 2]
-
 // }
-
-
 // console.log(getSecondLargest([2, 3, 6, 6, 5]));
 
+//----------------------------------------------------------------------------------------------
 
 // function vowelsAndConsonants(s) {
 //     let vowels = 'aeiou';
@@ -2350,25 +2359,22 @@
 //     let len = s.length;
 //     let consStr = '';
 //     for (let i = 0; i < len; i++) {
-//         if (vowels.indexOf(s[i]) !== -1){ {
+//         if (vowels.includes(s[i])) {
 //             vowStr += s[i];
 //         } else {
 //             consStr += s[i];
 //         }
 //     }
-
 //     let finalStr = vowStr + consStr;
 //     for (let i of finalStr) {
 //         console.log(i);
-
 //     }
 // }
-
 // vowelsAndConsonants('javascriptloops');
 
 
 // let a = [{
-//     x: 1,{
+//     x: 1,
 //     y: 1
 // }, {
 //     x: 2,
@@ -2383,6 +2389,7 @@
 //     x: 4,
 //     y: 5
 // }]
+
 
 // function getCount() {
 //     let count = 0
@@ -2403,13 +2410,12 @@
 //             newArr.push(i * 2)
 //         } else {
 //             newArr.push(i * 3)
-
 //         }
 //     }
 //     return newArr;
 // }            
-
 // console.log(modifyArray([1, 2, 3, 4, 5]));
+
 
 // function reverseString(s) {
 //     try {
@@ -2420,22 +2426,18 @@
 //         console.log(s);
 //     }
 // }
-
 // reverseString(Number(1234));
+
 
 // function isPositive(a) {
 //     if (a > 0) {
 //         return 'YES';
-//     }
-//     else if (a == 0) {
+//     } else if (a == 0) {
 //         return "Zero Error";
 //     }
-//     else if (a < 0) {
-//         return "Negative Error";
-//     }
+//     return "Negative Error";
 // }
-
-// console.log(isPositive(0));
+// console.log(isPositive(2));
 
 
 
@@ -2444,7 +2446,6 @@
 //       throw "Parameter is not a number!";
 //     }
 //   }
-
 //   try {
 //     getRectArea(3, 'A');
 //   }
@@ -2456,7 +2457,6 @@
 
 // function getLetter(s) {
 //     // Write your code here
-
 //     if (s[0] == 'a') {
 //         return 'A'
 //     }
@@ -2470,8 +2470,8 @@
 //         return 'D'
 //     }
 // }
+// console.log(getLetter('b'));
 
-// console.log(getLetter(112));
 
 // class Polygon {
 //     constructor(arr) {
@@ -2498,53 +2498,46 @@
 
 
 // function getDayOfWeek(date) {
-//     var dayOfWeek = new Date(date).getDay();
+//     let dayOfWeek = new Date(date).getDay();
 //     console.log('dayOfWeek', dayOfWeek);
-
 //     return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
 // }
-
 // console.log(getDayOfWeek("2013-07-31")); // Wednesday
-
 // console.log(getDayOfWeek("10/11/2009")); // Sunday
+
 
 
 // let no = 0;
 // function getMaxLessThanK() {
-//     let s = [1,{ 2, 3, 4, 5];
+//     let s = [1, 2, 3, 4, 5];
 //     let len = s.length;
 //     len--;
-//     let min = s[no]
-//     for (let i = min; i < len - 1;{ i++) {
-//         console.log(s[i], s[i + 1]{);
+//     let min = s[no];
+//     for (let i = min; i < len - 1; i++) {
+//         console.log(s[i], s[i + 1]);
 //     }
 //     no++;
 //     return getMaxLessThanK()
 // }
-
 // getMaxLessThanK();
-
 
 
 // let no1 = (2).toString(2);
 // let no2 = (3).toString(2);
 
 // let base10 = parseInt(no1 & no2, 2);
-
 // console.log('base10', base10);
 
 
-// var foo = {
+// const foo = {
 //     name: "vijay",
 //     age: 26,
 //     gender: "male",
 //     address: "mumbai"
 // }
-
 // for (let i in foo) {
-//     console.log(i);
+//     console.log(foo[i]);
 // }
-
 
 
 // function kangaroo(x1, v1, x2, v2) {
@@ -2560,25 +2553,17 @@
 //     if (x1 + v1 > x2 + v2) {
 //         return 'NO'
 //     }
-
 //     while (x1 + v1 !== x2 + v2) {
 //         x1 += v1, x2 += v2;
 //         return kangaroo(x1, v1, x2, v2)
 //     }
-
 // }
+
 // console.log(kangaroo(21, 6, 47, 3));
-
 // console.log(kangaroo(43, 2, 70, 2));
-
-
 // console.log(kangaroo(0, 3, 4, 2));
 // console.log(kangaroo(0, 2, 5, 3));
-
 // console.log(kangaroo(55, 8223, 5803, 6509));
-
-
-
 
 // function compareTriplets(a, b) {
 //     let x = [0, 0]
@@ -2588,38 +2573,31 @@
 //             x[0]++
 //         }
 //         if (a[i] < b[i]) {
-//             x[1]{++
+//             x[1]++
 //         }
 //     } return x
-
 // }
-
 // console.log(compareTriplets([17, 28, 30], [99, 16, 8]));
-
 // console.log(compareTriplets([5, 6, 7], [3, 6, 10]));
 
 
 // function getTotalX(a, b) {
 //     let multiples = [];
-//     let lastNum = a[a.length - 1]{;
+//     let lastNum = a[a.length - 1];
 //     while (lastNum <= b[0]) {
 //         multiples.push(lastNum);
-//         lastNum += a[a.length - 1]{;
+//         lastNum += a[a.length - 1];
 //     }
 //     let multiples1 = [];
-
 //     for (let i of multiples) {
 //         let fail = false;
 //         for (let j of a) {
 //             if (i % j != 0)
 //                 fail = true;
-
 //         }
 //         if (fail == false)
 //             multiples1.push(i)
-
 //     }
-
 //     let finalMultiple = [];
 
 //     for (let i of multiples1) {
@@ -2627,11 +2605,10 @@
 //         for (let j of b) {
 //             if (j % i != 0)
 //                 fail = true;
-
 //         }
+
 //         if (fail == false)
 //             finalMultiple.push(i)
-
 //     }
 //     return finalMultiple.length;
 // }
@@ -2644,47 +2621,21 @@
 
 // let i = 0;
 
-// function staircase(n) {
-
-//     if (n < 1){ {
-//         return;
-
-//     }
-
-//     console.log('#');
-
-//     staircase(n - 1){;
-// }
-
-// staircase(4);
-
-
-// var i, j;
-// for (i = 1;{ i <= 5; i++) {
-//     for (j = 1;{ j <= i; j++) {
-
-//         console.log('*');
-//     }
-// }
 
 // function repeatstr(space, n) {
 //     let result = "";
-
 //     while (n > 0) {
 //         n--;
 //         result += space;
-
 //     }
-
-//     // console.log(result + '1'{);
-
+//     // console.log(result + '1');
 //     return result;
 // }
 
 // function generatePyramid(n) {
 //     let output = "";
-//     for (let i = 1;{ i <= n; i++) {
-//         for (let j = 1;{ j <= i; j++) {
+//     for (let i = 1; i <= n; i++) {
+//         for (let j = 1; j <= i; j++) {
 //             output += '#';
 //         }
 //         let op1 = repeatstr(" ", n - i) + output
@@ -2692,7 +2643,6 @@
 //         output = "";
 //     }
 // }
-
 // generatePyramid(4);
 
 //Output:
@@ -2701,31 +2651,26 @@
 //  ###
 // ####
 
-
-
-// console.log(allPossibleCases([1,{ 2, 3]));
+// console.log(allPossibleCases([1, 2, 3]));
 
 
 // function birthday(s, d, m) {
 //     let count = 0;
 //     for (let i = 0; i < s.length; i++) {
-//         if (m == 1 {&& s[i] == d) {
-//             return 1;{
+//         if (m == 1 && s[i] == d) {
+//             return 1;
 //         }
-
 //     }
 //     return count;
 // }
 
-// console.log(birthday([1,{ 2, 1,{ 3, 2], 3, 2));
-
-// console.log(birthday([1,{ 1,{ 1,{ 1,{ 1,{1]{, 3, 2));
-
+// console.log(birthday([1, 2, 1, 3, 2], 3, 2));
+// console.log(birthday([1, 1, 1, 1, 1,1], 3, 2));
 
 
 // function getCombinations(chars) {
-//     var result = [];
-//     var f = function (prefix, chars) {
+//     let result = [];
+//     let f = function (prefix, chars) {
 //         for (let i = 0; i < chars.length; i++) {
 //             result.push(prefix + chars[i]);
 //             f(prefix + chars[i], chars.slice(i + 1){);
@@ -2740,34 +2685,25 @@
 //             arr.push(parseInt(i));
 //             for (let j of arr)
 //                 console.log(j);
-
 //         }
 //     }
-
 // }
-// console.log(getCombinations([2, 1,{ 4, 2]));
+// console.log(getCombinations([2, 1, 4, 2]));
 
 // function bonAppetit(bill, k, b) {
-
-//     bill.splice(k, 1){;
-
+//     bill.splice(k, 1);
 //     let totalCost = 0;
-
 //     for (let i of bill) {
 //         totalCost += i;
 //     }
-
 //     let actual = parseInt(totalCost / 2);
-
 //     if (b === actual) {
 //         console.log('Bon Appetit');
 //     } else {
 //         console.log(b - actual);
-
 //     }
-
 // }
-// bonAppetit([3, 10, 2, 9], 1,{ 12);
+// bonAppetit([3, 10, 2, 9], 1, 12);
 
 
 // function catAndMouse(x, y, z) {
@@ -2781,32 +2717,24 @@
 //         return "Cat A"
 //     }
 // }
-
-
-// console.log(catAndMouse(1,{ 3, 2));
-
-// console.log(catAndMouse(1,{ 2, 3));
-
-
+// console.log(catAndMouse(1, 3, 2));
+// console.log(catAndMouse(1, 2, 3));
 
 // function hurdleRace(k, height) {
-
 //     let maxHurdle = Math.max(...height)
 //     if (k >= maxHurdle) {
 //         console.log(0);
 //     }
 //     else {
 //         console.log(maxHurdle - k);
-
 //     }
 // }
 
-// hurdleRace(4, [1,{ 6, 3, 5, 2]);
+// hurdleRace(4, [1, 6, 3, 5, 2]);
 // hurdleRace(7, [2, 5, 4, 5, 2]);
 
 
 // function getMoneySpent(keyboards, drives, b) {
-
 //     let sumCost = [];
 //     let flag = false;
 //     for (let i of keyboards) {
@@ -2817,56 +2745,41 @@
 //                 sumCost.push(i + j);
 //                 flag = true;
 //             }
-
-
 //         }
 //     }
 //     if (flag == false) {
-//         return -1;{
+//         return -1;
 //     }
 //     return Math.max(...sumCost);
-
 // }
 
-// // console.log(getMoneySpent([3, 1]{, [5, 2, 8], 10));
-
-// console.log(getMoneySpent([3, 6, 4], [5, 1,{ 9], 5));
+// console.log(getMoneySpent([3, 1], [5, 2, 8], 10));
+// console.log(getMoneySpent([3, 6, 4], [5, 1, 9], 5));
 
 
 // function permutationEquation(p) {
-
 //     for (let i of p) {
-
 //         console.log(i);
 //     }
-
-
 // }
-
-
-// console.log(permutationEquation([2, 3, 1]{));
+// console.log(permutationEquation([2, 3, 1]));
 
 
 // function beautifulDays(i, j, k) {
-
 //     let beautifulDays = 0;
 //     while (i <= j) {
 //         let revNo = parseInt(String(i).split('').reverse().join(''));
 //         if (Number.isInteger(Math.abs(i - revNo) / k))
 //             beautifulDays++
-
 //         i++;
 //     } return beautifulDays;
-
 // }
-
 // console.log(beautifulDays(20, 23, 6));
 
 
 // function utopianTree(n) {
-
-//         let height = 1;{
-//         for (let i = 1;{ i <= n; i++) {
+//         let height = 1;
+//         for (let i = 1; i <= n; i++) {
 //             if (i % 2 === 0) {
 //                 height++;
 //             } else {
@@ -2875,21 +2788,18 @@
 //         }
 //         return height;
 // }
-
 // console.log(utopianTree(5));
 
 
 // function migratoryBirds(arr) {
-
 //     let obj = {};;
 //     for (let i of arr) {
 //         if (obj[i]) {
 //             obj[i]++
 //         } else {
-//             obj[i] = 1;{
+//             obj[i] = 1;
 //         }
 //     }
-
 //     let maxKey = [];
 //     let values = Object.values(obj);
 //     let maxCount = Math.max(...values);
@@ -2900,18 +2810,13 @@
 //         }
 //     }
 //     return maxKey[0];
-
-
 // }
-// console.log(migratoryBirds([1,{ 2, 3, 4, 5, 4, 3, 2, 1,{ 3, 4]));
 
-
-// console.log(migratoryBirds([1,{ 1,{ 4, 4, 5, 3]));
-
-// console.log(migratoryBirds([1,{ 4, 4, 4, 5, 3]));
+// console.log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4]));
+// console.log(migratoryBirds([1, 1, 4, 4, 5, 3]));
+// console.log(migratoryBirds([1, 4, 4, 4, 5, 3]));
 
 // function angryProfessor(k, a) {
-
 //     let availStudnt = 0;
 //     for (let i of k) {
 //         if (i <= 0) {
@@ -2922,44 +2827,35 @@
 //         return "NO"
 //     }
 //     return "YES"
-
 // }
 
-// console.log(angryProfessor([-1,{ - 3, 4, 2], 3));
-// console.log(angryProfessor([0, -1,{ 2, 1]{, 2));
-
+// console.log(angryProfessor([-1, -3, 4, 2], 3));
+// console.log(angryProfessor([0, -1, 2, 1], 2));
 
 // Complete the viralAdvertising function below.
+
 // function viralAdvertising(n) {
-
 //     let totalShared = 5, totalLiked = 0;
-
-//     for (let i = 1;{ i <= n; i++) {
+//     for (let i = 1; i <= n; i++) {
 //         totalLiked += Math.floor(totalShared / 2);
 //         totalShared = Math.floor(totalShared / 2) * 3;
-
 //     }
 //     return totalLiked;
 // }
-
 // console.log(viralAdvertising(5));
 
 
 // function pageCount(n, p) {
-
 //     let fwdturnPage = 0;
 //     let bwdturnPage = 0;
-
 //     if (p == 1){ {
 //         return 0;
 //     }
 //     for (let i = 2; i <= n; i++) {
 //         fwdturnPage++;
-
 //         if (i == p || i + 1 {== p)
 //             break;
 //         i++;
-
 //     }
 
 
@@ -2989,17 +2885,11 @@
 //     }
 //     return fwdturnPage;
 // }
-
-
 // console.log(pageCount(5, 4));
 // console.log(pageCount(37455, 29835));
 // console.log(pageCount(6, 2));
-
 // console.log(pageCount(7, 3));
-
-
 // console.log(pageCount(6, 5));
-
 
 
 // let sticksCut = [];
@@ -3023,30 +2913,22 @@
 //         return sticksCut;
 //     }
 // }
-
 // console.log(cutTheSticks([5, 4, 4, 2, 2, 8]));
 
 
 // function saveThePrisoner(n, m, s) {
-
-//     let lasePrisoner = (s + m) - 1;{
+//     let lasePrisoner = (s + m) - 1;
 //     while (lasePrisoner > n) {
 //         lasePrisoner -= n;
 //     } return lasePrisoner;
-
-
 // }
+
 // console.log(saveThePrisoner(7, 19, 2));
 // console.log(saveThePrisoner(3, 7, 3));
-
-// console.log(saveThePrisoner(5, 2, 1){);
-
+// console.log(saveThePrisoner(5, 2, 1));
 // console.log(saveThePrisoner(5, 2, 2));
 
-
-
 // function pickingNumbers(a) {
-
 //     let pair = [];
 //     for (let i = 0; i < a.length - 1; i++) {
 //         // This is where you'll capture that last value
@@ -3057,32 +2939,28 @@
 //         }
 //     }
 //     return pair;
-
 // }
-
 // console.log(pickingNumbers([4, 6, 5, 3, 3, 1]));
 
+
 // let array = [1, 3, 3, 4, 5, 6];
+//  let array = ["apple", "banana", "lemon", "mango"];
+//  let results = [];
 
+//  Since you only want pairs, there's no reason
+//  to iterate over the last element directly
 
-// // let array = ["apple", "banana", "lemon", "mango"];
-// let results = [];
-
-// // Since you only want pairs, there's no reason
-// // to iterate over the last element directly
 // for (let i = 0; i < array.length - 1; i++) {
 //     // This is where you'll capture that last value
 //     for (let j = i + 1; j < array.length; j++) {
 //         console.log(array[i], array[j]);
 //     }
 // }
-
 // console.log(results);
 
 
 
 // function acmIcpc(topic) {
-
 //     let noOfAttendees = topic.length;
 //     let pairCount = [];
 //     let maxCount = 0;
@@ -3114,18 +2992,8 @@
 //         }
 //     }
 //     return [maxCount, totalPair];
-
 // }
 // console.log(acmIcpc(['10101', '11100', '11010', '00101']));
-
-
-
-
-
-
-
-
-
 
 
 // function findDigits(n) {
@@ -3137,12 +3005,10 @@
 //         }
 //     } return count;
 // }
-
 // console.log(findDigits(1012));
 
 
 // function jumpingOnClouds(c, k) {
-
 // let energy = 100;
 // for (let i = 0; i < c.length; i++) {
 //     if (i + k < c.length) {
@@ -3172,20 +3038,16 @@
 
 
 // function circularArrayRotation(a, k, queries) {
-
 //     let output = [];
-
 //     for (let i = 1; i <= k; i++) {
 //         let ele = a.pop();
 //         a.unshift(ele)
 //     }
-
 //     for (let i of queries) {
 //         output.push(a[i]);
 //     }
 //     return output;
 // }
-
 
 
 // console.log(circularArrayRotation([1, 2, 3], 2, [1, 2, 3]));
@@ -3194,16 +3056,12 @@
 
 // function beautifulTriplets(d, arr) {
 
-
-
 // }
-
 
 // console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]));
 
 
 // function minimumDistances(a) {
-
 //     let len = a.length;
 //     let finalArr = [];
 //     let dist = [];
@@ -3215,25 +3073,73 @@
 //                 pair: [j, i]
 //             })
 //         }
-
-
 //     } return finalArr
-
 // }
-
 // console.log(minimumDistances([7, 1, 3, 4, 1, 7]));
 
 
-let coverPoints = function (A, B) {
+// let coverPoints = function (A, B) {
 
-    let sortedA = A.sort((a, b) => a - b);
-    let sortedB = B.sort((a, b) => a - b);
-    let len = sortedA.length;
-    let count = 0;
-    for (let i = 0; i < len; i++) {
-        sortedA[i]
-        count++
-    }
-}
+//     let sortedA = A.sort((a, b) => a - b);
+//     let sortedB = B.sort((a, b) => a - b);
+//     let len = sortedA.length;
+//     let count = 0;
+//     for (let i = 0; i < len; i++) {
+//         sortedA[i]
+//         count++
+//     }
+// }
 
-console.log(coverPoints([2, 1, 4, 1], [5, 1, 8, 4]));
+// console.log(coverPoints([2, 1, 4, 1], [5, 1, 8, 4]));
+
+
+
+// function minimumSwaps(arr) {
+//     let arrLength = arr.length;
+
+//     // create two new Arrays 
+//     // one record value and key separately
+//     // second to keep visited node count (default set false to all)
+
+//     let newArr = [];
+//     let newArrVisited = [];
+//     for (let i = 0; i < arrLength; i++) {
+//         newArr[i] = [];
+//         newArr[i].value = arr[i];
+//         newArr[i].key = i;
+//         newArrVisited[i] = false;
+//     }
+
+//     // sort new array by value
+
+//     newArr.sort(function (a, b) {
+//         return a.value - b.value;
+//     })
+
+//     let swp = 0;
+//     for (let i = 0; i < arrLength; i++) {
+
+//         // check if already visited or swapped
+//         if (newArr[i].key == i || newArrVisited[i]) {
+//             continue;
+//         }
+
+//         let cycle = 0;
+//         let j = i;
+//         while (!newArrVisited[j]) {
+
+//             // mark as visited
+//             newArrVisited[j] = true;
+//             j = newArr[j].key; //assign next key
+//             cycle++;
+//         }
+//         if (cycle > 0) {
+//             swp += (cycle > 1) ? cycle - 1 : cycle;
+//         }
+
+//     }
+//     return swp;
+// }
+
+
+// console.log(minimumSwaps([3, 1, 3, 2]));

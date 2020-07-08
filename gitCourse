@@ -46,12 +46,11 @@ Above command will the file from local Repository to Remote Repository.
 
 Basic git workflow life cycle
 
-
 -------------------------------------------------------------------------------------------------------
                   Local                               |      Remote
 ----------------------------------------------------------------------------------------------------                              
 Working    |       Staging   |       Repository       |        
-directory  |        Area     |       (.git folder)    |  
+Directory  |        Area     |       (.git folder)    |  
 -------------------------------------------------------
            |                 |                        |
            |                 |                        |  
@@ -82,22 +81,21 @@ Do add and commit in single command
 Command to see all tracked files is 
  - git ls-files
 
+once a new files comes into the Staging area it becomes a new file from untacked files and we 
+can see that file in git ls-files command
 
-once a new files comes into the Staging area it becomes a new file from untacked files and we can see that
-file in git ls-files command
-
-
-If the file is in staging area and we don’t want a coming and revert back to working directory then use a command
+If the file is in staging area and we don’t want a coming and revert back to working directory
+then use a command
 
 git reset HEAD <fileName>
 
-//--------------------------
+//----------------------------------------------------------------------------------------------
 
 To discard the changes in working directory
 git  checkout -- <fileName>
 
 
-It will rename the file name and move the file from working directory to stating area.
+It will rename the file name and move the file from working directory to staging area.
 
 Git mv fileName newFileName
 
@@ -120,14 +118,15 @@ git pull --rebase origin master
 
 //-------------------------------------------------
 
- Comparing between the Staging Area and the Git Repository (Last Commit)
- git diff --staged HEAD
+1.Comparing Working Directory and the Staging Area
+command => git diff
 
- Comparing Working Directory and the Staging Area
-  git diff
+2.Comparing between the Staging Area and the Git Repository (Last Commit)
+command => git diff --staged HEAD
 
-Comparing Working Directory and Git Repository (Last Commit)
- git diff HEAD
+3.Comparing Working Directory and Git Repository (Last Commit)
+command => git diff HEAD
+
 
 Limiting Comparsons to one File
  git diff -- <fileName>
@@ -162,8 +161,6 @@ git checkout <branchName> => it will switched to a other branch
 
 git branch -m <branchName> <newbranchName> => it will rename the branch
 
-git branch -m <branchName> <newbranchName> => it will rename the branch
-
 git branch -d <branchName> => it will delete the branch
 
 git checkout -b <branchName> => it will create a new branch and swithced to that branch
@@ -181,12 +178,12 @@ Stashing
 
 git stash
 
-git stash temporarily shelves (or stashes) changes you've made to your working copy so you can work on
-something else, and then come back and re-apply them later on. Stashing is handy if you need to
-quickly switch context and work on something else, but you're mid-way through a code change and
-aren't quite ready to commit.
+git stash temporarily shelves (or stashes) changes you've made to your working copy so you 
+can work on something else, and then come back and re-apply them later on. Stashing is handy 
+if you need to quickly switch context and work on something else, but you're mid-way through 
+a code change and aren't quite ready to commit.
 
-//------------------------------------------
+//----------------------------------------------------------------------------------------------
 
 By default, running git stash will stash:
 
@@ -194,8 +191,7 @@ changes that have been added to your index (staged changes)
 changes made to files that are currently tracked by Git (unstaged changes)
 But it will not stash:
 
-new files in your working copy that have not yet been staged
-files that have been ignored
+new files in your working copy that have not yet been staged files that have been ignored
 So if we add a third file to our example above, but don't stage it (i.e. we don't run git add),
 git stash won't stash it.
 

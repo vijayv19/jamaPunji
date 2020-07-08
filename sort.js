@@ -1,7 +1,7 @@
 
 // What is Sorting ?
 
-// Arrange the data in a particular format either ascending or descending
+// Arrange the data in a particular format either ascending or descending order.
 
 // In place and out space sorting:
 
@@ -14,8 +14,8 @@
 // - eg : Merge Sort
 
 // Stable Sort:
-// - If a sorting algorithm after sorting the contents does not change the sequence of similar content in which 
-//   They appear, is called Stable Sorting.
+// - If a sorting algorithm after sorting the contents does not change the sequence of similar
+// content in which they appear, is called Stable Sorting.
 // - eg : Insertion Sort
 
 // [30, 10, 40, 50(1), 70, 50(2), 20, 80]
@@ -33,9 +33,9 @@
 // Why Stable Sort is important ?
 
 // Scenarios where the sort key is not entire identity of the item.
-// Consider a person object with a name and a Age. Let's say we sorted based on their name. if we were
-// to then sort by age in a stable way, we'd quarantee that our original ordering would be preserved for
-// people with same age.
+// Consider a person object with a name and a Age. Let's say we sorted based on their name. 
+// if we were to then sort by age in a stable way, we'd quarantee that our original ordering 
+// would be preserved for people with same age.
 
 //-------------------------------------------------------------------------------------------------
 //    UnsortedData        SortbyName       SortedByAge(Stable)     SortedByAge(UnStable)    
@@ -65,8 +65,9 @@
 
 // Why should we read so many Sorting techiniques ?
 
-// Every sorting techiniques comes with its set of Pros and Cons. So we need to use specific sorting
-// technique as per the situation.
+// Every sorting techiniques comes with its set of Pros and Cons. So we need to use specific 
+// sorting technique as per the situation.
+
 
 // Do we have a special requirement of Stability ?
 // Is Space priority to use ?
@@ -108,6 +109,7 @@
 //     return sortedArr;
 // };
 
+
 // function mergesort(arr) {
 //     if (arr.length < 2) {
 //         return arr;
@@ -129,26 +131,26 @@
 
 // Time complexity: O(n^2), Space complexity: O(1).
 
-// let bubbleSort = (arr) => {
-//     let swapped = false;
+function bubbleSort(arr) {
+    let swapped = false;
 
-//     let len = arr.length;
-//     for (let i = 0; i < len; i++) {
-//         if (arr[i] > arr[i + 1]) {
-//             arr[i + 1] = [arr[i], arr[i] = arr[i + 1]][0];
-//             swapped = true;
-//         }
-//     }
-//     console.log(arr);
+    let len = arr.length;
+    for (let i = 0; i < len; i++) {
+        if (arr[i] > arr[i + 1]) {
+            arr[i + 1] = [arr[i], arr[i] = arr[i + 1]][0];
+            swapped = true;
+        }
+    }
+    console.log(arr);
 
-//     if (swapped === true) {
-//         return bubbleSort(arr)
-//     }
-//     else {
-//         return arr;
-//     }
+    if (swapped === true) {
+        return bubbleSort(arr)
+    }
+    else {
+        return arr;
+    }
 
-// }
+}
 
 // console.log(bubbleSort([3, 0, -2, 5, -1, 4, 1])); // [ -2, -1, 0, 1, 3, 4, 5 ]
 

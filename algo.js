@@ -90,6 +90,4 @@
 //     let sub3 = waysToGetN(n - 4);
 //     return sub1 + sub2 + sub3;
 // }
-
 // console.log(waysToGetN(6));
-

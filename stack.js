@@ -73,9 +73,7 @@
 
 //     pop() {
 //         let head = this.stack
-
 //         if (!head) return 'Stack is empty!'
-
 //         this.stack = head.next
 //         return head.value
 //     }
