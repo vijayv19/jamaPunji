@@ -124,7 +124,7 @@ db.movies.find({$and: [{genres: "Drama"}, {genres: "Horror"}]}).count() // 17 th
 
 ---------------------------------------------------
 
-$not + $eq operator is equal to $ne operator , so it is always goot to use $ne instead of $not + $eq.
+$not + $eq operator is equal to $ne operator , so it is always good to use $ne instead of $not + $eq.
 
 $exists operator
 
@@ -419,8 +419,8 @@ it knows that the values are sorted by key.
 __________
 |         | 
 |Prodcuts | 
-|Seller   | 
-|Indexe   |
+| Seller  | 
+| Index   |
 |_________|
 |         | 
 |"Anna"   |
@@ -553,7 +553,8 @@ db.collectioName.explain().find({dob.age:35,gender:"male"})
 db.collectioName.createIndex({email:1},{unique :true})// it will create index on email 
 ascending with unique value of email
 
-// Whilst we can't really see the index, you can think of the index as a simple list of values + pointers to the original document.
+// Whilst we can't really see the index, you can think of the index as a simple list of values
+// + pointers to the original document.
 
 // Something like this (for the "age" field):
 
@@ -563,13 +564,19 @@ ascending with unique value of email
 
 // (33, "address in memory/ collection a3")
 
-// The documents in the collection would be at the "addresses" a1, a2 and a3. The order does not have to match the order in the index (and most likely, it indeed won't).
+// The documents in the collection would be at the "addresses" a1, a2 and a3. 
+// The order does not have to match the order in the index (and most likely, it indeed won't).
 
-// The important thing is that the index items are ordered (ascending or descending - depending on how you created the index). createIndex({age: 1}) creates an index with ascending sorting, createIndex({age: -1}) creates one with descending sorting.
+// The important thing is that the index items are ordered (ascending or descending - 
+// depending on how you created the index). createIndex({age: 1}) creates an index with ascending 
+// sorting, createIndex({age: -1}) creates one with descending sorting.
 
-// MongoDB is now able to quickly find a fitting document when you filter for its age as it has a sorted list. Sorted lists are way quicker to search because you can skip entire ranges (and don't have to look at every single document).
+// MongoDB is now able to quickly find a fitting document when you filter for its age as it has a 
+// sorted list. Sorted lists are way quicker to search because you can skip entire ranges 
+// (and don't have to look at every single document).
 
-// Additionally, sorting (via sort(...)) will also be sped up because you already have a sorted list. Of course this is only true when sorting for the age.
+// Additionally, sorting (via sort(...)) will also be speed up because you already have a sorted list. 
+// Of course this is only true when sorting for the age.
 
 //----------------------------------------------------------------------------------------------------
 
@@ -582,7 +589,7 @@ ascending with unique value of email
 // database as a single logical unit of work. The effects of all the SQL statements in a transaction
 // can be either all committed (applied to the database) or all rolled back (undone from the database).
 // A database transaction must be atomic, consistent, isolated and durable. Later we have discussed 
-//these four points.
+// these four points.
 
 // To understand the concept of a transaction, consider a banking database. Suppose a bank customer 
 // transfers money from his savings account (SB a/c) to his overdraft account (OD a/c), the statement
@@ -960,14 +967,14 @@ Actions - insert(), find()
 //---------------------------------------------------------------------------------------------------
 
 SELECT
-      id,
-      Name,
-      Salary,
-      CASE WHEN Salary > 10000 THEN (Salary * 10 / 100)
-	       WHEN Salary >= 5000 AND  Salary<=10000  THEN  (Salary * 20 / 100)
-           WHEN Salary < 5000 THEN  (Salary * 30 / 100)
- END AS 'Bonus'
-    FROM EMP
+    id,
+    Name,
+    Salary,
+    CASE WHEN Salary > 10000 THEN (Salary * 10 / 100)
+	    WHEN Salary >= 5000 AND  Salary<=10000  THEN  (Salary * 20 / 100)
+        WHEN Salary < 5000 THEN  (Salary * 30 / 100)
+    END AS 'Bonus'
+FROM EMP
 
 
 What is Sharding & Replication in MongoDB ?

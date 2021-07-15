@@ -1,7 +1,7 @@
 // What is Hashing ?
 
-// Hashing is a method of sorting and indexing data. The idea behind hashing is to allow large amounts
-// of data to be indexed using keys commonly created by formula.
+// Hashing is a method of sorting and indexing data. The idea behind hashing is to allow large
+// amounts of data to be indexed using keys commonly created by formula.
 
 // Why we need hashing ?
 
@@ -37,7 +37,7 @@
 //  1 - Direct Chaining - Implements the buckets as linked lists, Colliding elements are stored in these lists.
 //  2 - Open Addressing - Colliding elements are stored in other vacant buckets. During storage and
 //                        lookup, these are found through so-called probing.
-//  |_
+//  
 //    a.Liner Probing - It is a strategy for resolving collision, by placing the new key into the closest
 //                      following empty cell.
 //    b.Quadratic Probing
@@ -73,16 +73,16 @@
 
 // Pros & Cons of Hashing
 
-// Pros:On a average insertion/deletion/serach operation takes O(1) time.
+// Pros: On a average insertion/deletion/serach operation takes O(1) time.
 // Cons : In the worst case insertion / deletion search might take O(n) (time when hash function is not good enough)
 
-//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 // Particulars                Array       Linked List    Tree                 Hashing
-//------------------------------- ------------------------------- ------------------------------------------
+//------------------------------- ------------------------------- --------------------------------
 // Insertion                  O(n)          O(n)         O(Log n)           avg: O(1) worst: O(n)
-//--------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 // Deletion                   O(n)          O(n)         O(Log n)           avg: O(1) worst: O(n)
-//--------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 // Searching                  O(n)          O(n)         O(Log n)           avg: O(1) worst: O(n)
-//-------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 

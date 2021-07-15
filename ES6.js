@@ -1,6 +1,7 @@
 // let 
 
 // let age = 30;
+
 // if (true) {
 //     let age = 27
 //     console.log(age); // 27
@@ -8,7 +9,17 @@
 // console.log(age); // 30
 
 //---------------------------------------------------------------------------------------------------
-// const 
+
+// CONST Keyword
+
+// The keyword const is a little misleading. It does NOT define a constant value. 
+// It defines a constant reference to a value. Because of this, we cannot change constant 
+// primitive values,but we can change the properties of constant objects.
+
+// In the case of complex data-types (Array,Function and Object ), they are passed by reference.
+// When we change or modify their properties/elements,
+// we are not changing their binding, hence const doesn't throw any error.
+
 
 // const age = 20;
 // const AGE = 30;
@@ -26,12 +37,11 @@
 // }
 
 // obj.age = 22;
-
 // console.log(obj); // { age: 22 } -- bcoz of reference type
 
 //------------------------------------------------------------------------------------------------------
 
-// FAT arrow function and 'this' keyword.
+// FAT arrow function and regular function with 'this' keyword.
 
 // function fn() {
 //     console.log(this);
@@ -45,24 +55,23 @@
 // console.log(fn2(4));
 
 
-// 1. In browser it will give you window object but here it will be {} object.
-
+// 1.In browser it will give you window object but here it will be {} object.
 // In arrow function if there is one line of code then can write like this
 
 // let fn3 = () => console.log(this);
 // fn3();
 
 
-// Main difference between regular and arrow function when we running it on browser.
+// ** Main difference between regular and arrow function when we running it on browser.
 
 // function fn() {
-//     console.log(this);  // it will give you HTML Button Element object  
+//     console.log(this);  // It will give you HTML Button Element object  
 // }
 
 // button.addEventListner('click', fn);
 
 // let fn2 = () => {
-//     console.log(this); // here still it will give you window object
+//     console.log(this); // Here still it will give you window object
 // }
 // button.addEventListner('click', fn2);
 
@@ -70,7 +79,7 @@
 
 // Functions and Default Parameters
 
-// assign value to parameter
+// Assign value to parameter
 
 // function isEqual(number = 10, compare = number) {
 //     console.log(number); // 10
@@ -102,14 +111,13 @@
 //------------------------------------------------------------------------------------------------------
 
 // Rest Operator - It converts list of numbers into array of numbers.
+// Mainly it's used to pass arguments in function.
 
 // function sumUp(...toAdd) {
 //     console.log(toAdd); // [ 100, 2, 30 ]
-
-//     return toAdd.reduce((a, b) => {
-//         return a + b;
-//     })
+//     return toAdd.reduce((a, b) => a + b);
 // }
+
 // console.log(sumUp(100, 2, 30)); // 132
 
 //-----------------------------------------------------------------------------------------------------
@@ -119,9 +127,23 @@
 // Opposite of rest operator is spread operator but we have to use it in different location.
 
 // let numbers = [1, 2, 3, 4, 5];
-// console.log(...numbers);  // converts into list of numbers
+// console.log(...numbers);  // converts array into list of numbers
 // console.log(Math.max(...numbers));
 
+// *make a copy of person object
+
+// const person = {
+//     name: "Vijay",
+//     age: 26,
+//     greet() {
+//         console.log('Hi, I am ' + this.name);
+//     }
+// };
+
+// const copiedPerson = {...person};
+// person.name = "ABC";
+// console.log('copiedPerson', copiedPerson);
+// console.log('person', person);
 
 //------------------------------------------------------------------------------------------------
 
@@ -134,6 +156,7 @@
 // }
 
 //----------------------------------------------------------------------------------------------------
+
 // Template Literals
 
 // let name = 'Vijay';
@@ -155,7 +178,18 @@
 // console.log(a, b); // 1 3
 
 
-// let a = 10, b = 20;
+// const person = {
+//     name: "Vijay",
+//     age: 26,
+//     greet() {
+//         console.log(`Hi,I am ${this.name}`);
+//     }
+// };
+// person.greet();
+
+
+// let a = 10,
+//     b = 20;
 // [b, a] = [a, b];
 // console.log(a, b); // 20 10
 
@@ -210,11 +244,11 @@
 //     }
 // }
 
-// let max = new Max(25);  // Instantiated
+// let max = new Max(25); // Instantiated
 // let person = new Person(20); // Instantiated
 
-// max.greet();
-// max.greetTwice();
+// max.greet(); // Hello
+// max.greetTwice(); 
 
 // person.greet1();
 
@@ -234,7 +268,7 @@
 //     }
 // }
 
-// Helper.logTwice('logged')  // no need to instatiate object
+// Helper.logTwice('logged') // no need to instatiate object
 
 //--------------------------------------------------------------------------------------------------------
 
@@ -244,13 +278,16 @@
 // const b = Promise.reject(new Error(2));
 // const c = Promise.reject(3);
 
-// Promise.all([a, b, c].map(p => p.catch(e => e)))
+
+// Promise.all([a, b, c])
 //     .then(result => console.log(result))
-//     .catch(e => console.log(e))
+//     .catch(e => console.log(e));
 
+
+// Reason of using map method after promise.all is that it will execute all the promises regardless error.
 
 // Promise.all([a, b, c].map(p => p.catch(e => e)))
-//     .then(results => console.log('Result',results)) // 1,Error: 2,3
+//     .then(results => console.log('Result', results)) // 1,Error: 2,3
 //     .catch(e => console.log('Error', e));
 
 
@@ -273,7 +310,6 @@
 //         reject('Failed!');
 //     }, 1000);
 // });
-
 
 // promise.then((value) => {
 //     console.log(value);
@@ -343,7 +379,7 @@
 // Wait until all promises complete even if some rejected
 
 // Promise.all([promise1, promise2, promise3].map(p => p.catch(e => e)))
-//     .then(results => console.log('results', results)) // 
+//     .then(results => console.log('results', results)) 
 //     .catch(e => console.log('error', e));
 
 // OR 
@@ -375,7 +411,7 @@
 
 // let p = Promise.all([]); // will be immediately resolved
 // let p2 = Promise.all([1337, "hi"]); // non-promise values will be ignored, 
-                                       // but the evaluation will be done asynchronously
+// but the evaluation will be done asynchronously
 // console.log('p', p);
 // console.log('p2', p2)
 // setTimeout(function () {
@@ -383,7 +419,23 @@
 //     console.log('2nd p2', p2);
 // });
 
+
 // Promise.race
+
+// let promise2 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         // reject(new Error('rejcted'));
+//         resolve('Done2');
+//     }, 2000);
+// });
+
+
+// let promise1 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('Done1');
+//     }, 2000);
+// });
+
 
 // Promise.race([promise1, promise2])
 //     .then((success) => {
@@ -391,11 +443,11 @@
 //     })
 //     .catch((err) => {
 //         console.log('inside err', err);
-//     })
+//     });
 
 //-------------------------------------------------------------------------------------------
 
-// startsWith  and includes method with case sensitive
+// startsWith and includes method with case sensitive
 
 // let name = 'Vijay';
 
@@ -410,11 +462,11 @@
 
 //-------------------------------------------------------------------------------------------
 
-// let array = [10, 15, 12, 16];
-// let newArray = Array.from(array, val => val * 3);
+// const array = [10, 15, 12, 16];
+// const newArray = Array.from(array, val => val * 3);
 
-// console.log(array);   // [10, 15, 12, 16]
-// console.log(newArray);  // [ 30, 45, 36, 48 ]
+// console.log(array); // [10, 15, 12, 16]
+// console.log(newArray); // [30, 45, 36, 48]
 
 // array.fill(100); // [ 100,100, 100, 100 ]
 // console.log(array);
@@ -422,9 +474,7 @@
 // array.fill(100, 0, 2);  // [ 100, 100,12, 16 ]
 // console.log(array);
 
-
-// console.log(array.find(val => val >= 12));  // it will check and return the very first occurence
-
+// console.log(array.find(val => val >= 12)); // it will check and return the very first occurence
 
 // let it = array.entries();
 // for (e of it) {
@@ -456,17 +506,7 @@
 // function abc(a, b) {
 //     if (b < 1)
 //         return 1;
-//     return a * abc(a, b - 1)  
+//     return a * abc(a, b - 1)
 // }
 
 // console.log(abc(5, 4));
-
-
-
-// Promise.all(promises.map(p => p.catch((err) => { return { err: err, status: "failed" } })))
-//     .then(results => {
-//         return resolve({ error: null, data: results });
-//     })
-//     .catch(error => {
-//         return reject(error);
-//     })

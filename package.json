@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "fibonacci": "^1.6.7",
+    "pm2": "^4.4.1",
     "request": "^2.88.2"
   }
 }

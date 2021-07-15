@@ -145,6 +145,7 @@
 
 // ASYNC WATERFALL
 // var async = require('async');
+
 // async.waterfall([
 //     function(callback) {
 //         //doSomething
@@ -289,6 +290,7 @@
 // Q. What tools can be used to assure consistent style?
 // ESLint
 // Standard
+// jshintrc
 
 //============================================================================================
 
@@ -337,7 +339,7 @@
 // In an event-driven application, there is generally a main loop that listens for events, and 
 // then triggers a callback function when one of those events is detected.
 
-// Although events look quite similar to callbacks, the difference lies in the fact that callback 
+// Although events loop quite similar to callbacks, the difference lies in the fact that callback 
 // functions are called when an asynchronous function returns its result, whereas event 
 // handling works on the observer pattern. The functions that listen to events act as 
 // Observers. Whenever an event gets fired, its listener function starts executing. 
@@ -771,7 +773,9 @@
 // Synchronous, Blocking functions
 
 // Blocking functions - In a blocking operation, all other code is blocked from executing 
-// until an I/O event that is being waited on occurs. Blocking functions execute synchronously. For example:
+// until an I/O event that is being waited on occurs. Blocking functions execute synchronously. 
+
+// For example:
 
 // const fs = require('fs');
 // const data = fs.readFileSync('/file.md'); // blocks here until file is read
@@ -792,14 +796,16 @@
 // });
 // // moreWork(); will run before console.log
 
-// Since fs.readFile() is non-blocking, moreWork() does not have to wait for the file read to complete before being called. This allows for higher throughput.
+// Since fs.readFile() is non-blocking, moreWork() does not have to wait for the file read to complete before being called. 
+// This allows for higher throughput.
 
 //==============================================================================================
 
 // How does Node.js handle child threads?
 
 // Node.js is a single threaded language which in background uses multiple threads to execute 
-// asynchronous code. Node.js is non-blocking which means that all functions ( callbacks ) are
+// asynchronous code. 
+// Node.js is non-blocking which means that all functions ( callbacks ) are
 // delegated to the event loop and they are ( or can be ) executed by different threads. 
 // That is handled by Node.js run-time.
 
@@ -859,7 +865,9 @@
 //==============================================================================================
 
 // How Node.js read the content of a file?
-// The "normal" way in Node.js is probably to read in the content of a file in a non-blocking, asynchronous way. That is, to tell Node to read in the file, and then to get a callback when the file-reading has been finished. That would allow us to hand several requests in parallel.
+// The "normal" way in Node.js is probably to read in the content of a file in a non-blocking, 
+// asynchronous way. That is, to tell Node to read in the file, and then to get a callback when the
+//  file-reading has been finished. That would allow us to hand several requests in parallel.
 
 
 // Common use for the File System module:
@@ -971,6 +979,7 @@
 // Worker 4520 started
 // Worker 6056 started
 // Worker 5644 started
+
 // The worker processes are spawned using the child_process.fork() method, so that they can 
 // communicate with the parent via IPC and pass server handles back and forth.
 
@@ -1074,7 +1083,8 @@
 // provides service to much larger numbers of such requests.
 // Node.js library uses JavaScript – This is another important aspect of Node.js from the 
 
-// developer’s point of view. The majority of developers are already well-versed in JavaScript. Hence, development in Node.js becomes easier for a developer who knows JavaScript.
+// developer’s point of view. The majority of developers are already well-versed in JavaScript. 
+// Hence, development in Node.js becomes easier for a developer who knows JavaScript.
 // There is an Active and vibrant community for the Node.js framework – The active community 
 // always keeps the framework updated with the latest trends in the web development.
 
@@ -1084,7 +1094,8 @@
 //===================================================================================================
 
 // What are globals in Node.js?
-// There are three keywords in Node.js which constitute as Globals. These are Global, Process, and Buffer.
+// There are three keywords in Node.js which constitute as Globals. These are Global, Process, and 
+// Buffer.
 
 // Global
 // The Global keyword represents the global namespace object. It acts as a container for all 
@@ -1109,10 +1120,13 @@
 // Some of the other useful Process methods are as follows.
 
 // <process.memoryUsage> – To know the memory used by Node application.
-// <process.NextTick> – To attach a callback function that will get called during the next loop. It can cause a delay in executing a function.
+// <process.NextTick> – To attach a callback function that will get called during the next loop. 
+// It can cause a delay in executing a function.
 // Buffer
-// The Buffer is a class in Node.js to handle binary data. It is similar to a list of integers but stores as a raw memory outside the V8 heap.
-// We can convert JavaScript string objects into Buffers. But it requires mentioning the encoding type explicitly.
+// The Buffer is a class in Node.js to handle binary data. It is similar to a list of integers but 
+// stores as a raw memory outside the V8 heap.
+// We can convert JavaScript string objects into Buffers. But it requires mentioning the encoding 
+// type explicitly.
 
 // <ascii> – Specifies 7-bit ASCII data.
 // <utf8> – Represents multibyte encoded Unicode char set.
@@ -1173,7 +1187,8 @@
 // that require less CPU usage such as :
 
 // * Chat applications.
-// * Game servers -- Node.js is good for fast and high-performance servers, that face the need to handle thousands of user requests simultaneously.
+// * Game servers -- Node.js is good for fast and high-performance servers, 
+// that face the need to handle thousands of user requests simultaneously.
 
 // Good For A Collaborative Environment -- It is suitable for environments where multiple 
 // people work together. For example, they post their documents, modify them by doing 
@@ -1417,7 +1432,6 @@
 // ES 2017 introduced Asynchronous functions. 
 // Async functions are essentially a cleaner way to work with asynchronous code in JavaScript.
 
-
 // Async/Await
 
 // The newest way to write asynchronous code in JavaScript.
@@ -1630,8 +1644,8 @@
 // We define the routes by using the methods of this “app” object. This app object specifies 
 // a callback function, which is called when a request is received.
 
-// var express = require('express')
-// var app = express()
+// const express = require('express')
+// const app = express()
 
 // For GET request use app.get() method:
 // app.get('/', function(req, res) {
@@ -1656,7 +1670,7 @@
 
 // await is always for a single Promise . Promise creation starts the execution of 
 // asynchronous functionality. await only blocks the code execution within the async function.
-//  It only makes sure that the next line is executed when the promise resolves.
+// It only makes sure that the next line is executed when the promise resolves.
 
 //=============================================================================================
 
@@ -1734,6 +1748,7 @@
 
 // console.log(tasks.getTaskToDo());
 
+//=========================================================================================
 
 // Create a simple server in node.js
 
@@ -1741,7 +1756,7 @@
 
 // create a server object
 
-// http.createServer((req,res)=> {
+// http.createServer((req,res) => {
 //     res.write('Hello World!');   // write a response to the client
 //     res.end() // end the response
 // }).listen(2001) //the server object listens on port 8080
@@ -1829,3 +1844,90 @@
 // The outer scope of fun in both cases is the caller plus the caller of the caller and so on.
 
 // Just to mention that the C language does not allow nested functions nor dynamic scoping.
+
+
+
+
+
+// Call by value
+// When a variable is passed as a parameter to a function, if any changes are made to the parameter, the original variable will remain unaffected. This is known as call by value and this is true for all values having a primitive data type.
+// Let’s look at an example:
+
+// let original = 10;
+// function updateOriginal(originalVal) {
+//     originalVal += 10;
+//     console.log('originalVal', originalVal);
+// }
+// updateOriginal(original)
+// console.log('original', original);
+
+
+// The output for the above example is 20,10. So, why didn’t the value for original update at line 3?
+// It’s actually easy, think of it as when we pass original to the updateOriginal function, 
+// we pass the value directly and not the reference to the value(memory address allocated). 
+// Any changes made to the value does not update the actual reference of the original value.
+
+
+// Call by reference
+// When a variable’s reference(address) and not its value is passed to a function’s parameter, 
+// any changes made to the parameter will update the original variable reference. 
+// This is known as call by reference and this is true for all values having a non-primitive datatype.
+
+// Let’s look at an example:
+
+
+
+// let myObj = {
+//     value: 10
+// }
+
+// function updateValue(objRef) {
+//     objRef.value = 20
+// }
+// updateValue(myObj)
+// console.log(myObj.value);
+
+// The output for the above example is 20. So, why did the value in myObj update in line 3?
+// Think about an object pointing to a memory address for e.g. 1000 and each property of that object
+// pointing to a value.
+
+// myObj -->1000 (memory address location)
+// So now when we pass this object as a parameter to a function(updateValue), the parameter points 
+// to the same reference.
+
+// objRef -->1000
+// When the values of the properties are updated, they are reflected throughout the object’s scope,
+// as objects are references. So how can we access the properties and operate on them without 
+// updating the object itself?
+// The solution is easier than you think, create a copy of the object and operate on it. 
+// This is one of the basics of immutable style of programming.
+
+
+
+// Event loop Phase
+// ----------------
+
+// 1. Timers - Execute setTimeout, setInterval Callbacks.
+// 2. Pending Callbacks - Exeuted I/O related callbacks that were deferred.
+// 3. Poll - Retrieve new I/O events,execute their callbacks.
+// 4. Check - Execute SetImmediate() callbacks 
+// 5. Close Callbacks - Execute all 'close' event callbacks.
+
+
+
+// Types of Erros 
+
+// 1. Syntax errors
+// 2. Runtime errors
+// 3. Logical errors
+
+
+// const names = ['Jason', 'Jedi', 'Tommy', 'Ryan'];
+
+// function jNames(arr) {
+//     return arr.filter(name => name.split('')[0] === "J");
+// }
+// console.log(jNames(names));
+
+// const camelToSnakeCase = str => str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+// console.log(camelToSnakeCase('eeGrr'));

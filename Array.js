@@ -1,11 +1,9 @@
-
-
 // function zigZag(arr, n) {
 //     // Flag true indicates relation "<" is expected, 
 //     // else ">" is expected.  The first expected relation 
 //     // is "<" 
-//     let flag = true;
 
+//     let flag = true;
 //     for (let i = 0; i <= n - 2; i++) {
 //         if (flag)  /* "<" relation expected */ {
 //             /* If we have a situation like A > B > C, 
@@ -32,7 +30,6 @@
 //         cout << arr[i] << "  ";
 //     return 0;
 // }
-
 // console.log(main());
 
 
@@ -40,8 +37,8 @@
 //     let prim_diag = 0;
 //     let sec_diag = 0;
 //     for (let i = 0; i < arr.length; i++) {
-//         prim_diag = prim_diag + arr[i][i];
-//         sec_diag = sec_diag + arr[i][arr.length -1--];
+//         prim_diag = prim_diag + arr[i][i]; // 00 11 22
+//         sec_diag = sec_diag + arr[i][arr.length -1--]; // 02 11 20
 //     }
 //     return Math.abs(prim_diag - sec_diag)
 // }
@@ -70,7 +67,7 @@
 // }
 
 
-// console.log(plusMinus([-4, 3, - 9, 0, 4, 1]));
+// console.log(plusMinus([-4, 3, -9, 0, 4, 1]));
 
 
 // function gradingStudents(grades) {
@@ -95,7 +92,6 @@
 //                     finalArr.push(i)
 //                 }
 //             }
-
 //         }
 //     }
 //     return finalArr;
@@ -104,8 +100,12 @@
 
 
 // function breakingRecords(arr) {
-//     let len = arr.length;
-//     let lowCount = 0, highCount = 0, lowestScore = highestScore = arr[0];
+//     let len = arr.length,
+//         lowCount = 0,
+//         highCount = 0,
+//         lowestScore = arr[0],
+//         highestScore = arr[0];
+
 //     for (let i = 1; i < len; i++) {
 //         if (arr[i] < lowestScore) {
 //             console.log(lowCount++, ++lowCount);
@@ -117,6 +117,4 @@
 //     }
 //     return [highCount, lowCount];
 // }
-
 // console.log(breakingRecords([10, 5, 20, 20, 4, 5, 2, 25, 1]));
-

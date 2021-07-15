@@ -11,33 +11,30 @@
 //     for (let i = 0; i < str.length; i++) {
 //         if (str[i] == 'A' && str[i + 1] == 'A') {
 //             count++;
-//         };
-//         if (str[i] == 'B' && str[i + 1] == 'B') {
+//         } else if (str[i] == 'B' && str[i + 1] == 'B') {
 //             count++;
-//         };
+//         }
 //     }
 //     return count;
 // }
 // console.log(alternatingCharacters('AABAAB'));
 
 
-
 // function maximumToys(prices, k) {
-//     let sortedArr = prices.sort((a, b) => {
-//         return a - b
-//     });
-//     let totalSpend = 0, count = 0;
+//     let sortedArr = prices.sort((a, b) => a - b);
+//     let totalSpend = 0,
+//         count = 0;
+
 //     for (let i of sortedArr) {
 //         totalSpend += i;
-//         if (k > totalSpend) {
-//             count++;
+//         if (totalSpend > k) {
+//             return count
 //         } else {
-//             return count;
+//             count++;
 //         }
 //     }
 // }
-
-// console.log(maximumToys([1, 12, 5, 111, 200, 1000, 10], 50));
+// console.log(maximumToys([1, 12, 5, 111, 200, 1000, 10], 212));
 
 
 // https://www.hackerrank.com/challenges/library-fine/problem
@@ -64,34 +61,79 @@
 //         return Number(10000);
 //     }
 // }
+
 // console.log(libraryFine(28, 2, 2015, 15, 4, 2015));
-
 // console.log(libraryFine(9, 6, 2015, 6, 6, 2015));
-
 // console.log(libraryFine(2, 7, 1014, 1, 1, 1015));
 
 
 // const request = require("request"),
 //     fibonacci = require("fibonacci"),
 //     fs = require("fs");
-    
+
 // process.nextTick(() => {
 //     process.stdout.write("NT #1\n");
 // });
+
 // fs.readFile("./index.js", (err, data) => {
 //     process.stdout.write("1: I/O Polling...\n");
 // });
+
 // request.get("http://google.com", (err, res, body) => {
 //     process.stdout.write("2: System polling...\n")
 // })
+
 // setImmediate(() => {
 //     process.stdout.write("3: Set Immediate phase...\n");
 // });
+
 // setTimeout(() => {
 //     process.stdout.write("4: Timers...\n");
 // }, 0);
+
 // process.stdout.write("5: Fibonacci(20): " + fibonacci.iterate(20).number + " - Callback\n");
+
 // process.nextTick(() => {
 //     process.stdout.write("NT #2\n");
 // })
 
+// var a = {
+//     name: 'nitin',
+//     age: 25,
+//     friends: [{
+//             name1: 'prajakta'
+//         },
+//         {
+//             name2: 'Abhijit'
+//         }
+//     ],
+//     interset: {
+//         games: 'pubg',
+//         books: 'ABCS',
+//     },
+//     DOB: new Date(),
+//     active: true
+// };
+
+
+// function findVal(object, key) {
+//     let value;
+//     Object.keys(object).find(function (k) {
+//         if (k === key) {
+//             value = object[k];
+//             return true;
+//         }
+//         if (object[k] && typeof object[k] === 'object') {
+//             value = findVal(object[k], key);
+//             if (value)
+//                 return true;
+//         }
+//     });
+//     return value;
+// }
+// console.log(findVal(a, 'name2'));
+
+
+let a = [4, 7, 9, 1, 4];
+
+console.log(a.reverse()); // [ 4, 1, 9, 7, 4 ]
