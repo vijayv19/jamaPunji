@@ -1,7 +1,7 @@
 // let A = {
 //     // Inside arrow function {this} keyword can't use since it always give empty output.
 //     x: () => {
-//         console.log('x');        
+//         console.log('x');
 //         return A;
 //     },
 //     y: () => {
@@ -13,8 +13,11 @@
 //         return A;
 //     }
 // }
-
 // A.x().y().z();
+
+//---------------------------------------------------------------------------------------------------
+
+// How to create your own protoype methods ?
 
 //---------------------------------------------------------------------------------------------------
 
@@ -22,26 +25,30 @@
 
 // const foo = (n) => {
 //     if (n < 1) {
-//         return;
+//         return 1;
 //     } else {
-//         foo(n - 1) // foo(3-1), foo(2-1), foo(1-1) - it will push in stack and pop when needed
+//         foo(n - 1) // foo(3-1), foo(2-1), foo(1-1) - it will push in stack and pop when needed.
 //         console.log('Hello', n);
 //     }
 // }
 
-// foo(3); // Hello 1
+// foo(3); 
+
+// Output:
+// Hello 1
 // Hello 2
 // Hello 3
 
 //----------------------------------------------------------------------------------------------------
 
 // console.log(Math.floor(1.9999999));  // 1
-// console.log(Math.trunc(-1.111));  // -1
+// console.log(Math.trunc(-1.111)); // -1
 // console.log(Math.ceil(-2.25));  // -2
 // console.log(Math.ceil(2.25));  // 3
 
 
 // Always gives positive number
+
 // console.log(Math.abs(-2));  // 2
 // console.log(Math.abs(-102));  // 102
 
@@ -73,29 +80,27 @@
 // Internally sort method use compare function in JS.
 
 // const arr = [1, 2, 15, 22, 2, 30, 5, 45, 7];
-// console.log(arr.sort((a, b) => {
-//     return a - b;  // [1, 2, 2, 5, 7, 15, 22, 30, 45]   -- acending
-//     return b - a;  // [45, 30, 22, 15, 7, 5, 2, 2, 1]   -- descending
-// }));
+// console.log(arr.sort((a, b) => a - b // [1, 2, 2, 5, 7, 15, 22, 30, 45]   -- ascending
+// b - a; // [45, 30, 22, 15, 7, 5, 2, 2, 1]   -- descending
+// ));
 
 //-------------------------------------------------------------------------------------------------
 
-// let number = 10;
-// function incrment(number) {
-//     number++
-//     console.log('Inside function:', number); // Inside function: 11
+// let n = 10;
+// function incrment(n) {
+//     n++
+//     console.log('Inside function:', n); // Inside function: 11
 // }
-// incrment(number);
-// console.log(number); // 10
+// incrment(n);
+
+// console.log(n); // 10
 
 //--------------------------------------------------------------------------------------------------
 
 // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-// let divBy3 = array.filter((v) => {
-//     return v % 3 == 0;
-// })
-// console.log(divBy3);
+// const divideBy3 = array.filter(v => v % 3 === 0)
+// console.log(divideBy3);
 
 //---------------------------------------------------------------------------------------------------
 
@@ -114,21 +119,21 @@
 
 // function fact(n) {
 //     let totalFact = 1;
-//     for (let i = 0; i < n - 1; i++) {
+//     for (let i = 0; i < n; i++) {
 //         totalFact *= n - i;
 //     }
 //     return totalFact;
 // }
-// console.log(fact(5));  // 120
+// console.log(fact(5)); // 120
 
 //-------------------------------------------------------------------------------------------------------
 
 // Splice changes the original array whereas Slice doesn't but both of them returns array object.
 
 // let array = [1, 2, 3, 4, 5];
-// console.log(array.splice(2));
+// console.log(array.splice(2)); // This will return [3,4,5]. 
+// console.log(array); // [1,2]
 
-// This will return [3,4,5]. 
 // The original array is affected resulting in array being [1,2].
 
 // let array = [1, 2, 3, 4, 5]
@@ -138,6 +143,7 @@
 // The original array is NOT affected with resulting in array being [1,2,3,4,5].
 
 //-------------------------------------------------------------------------------------
+
 // a = ['s', 'r', 't', 'y', 'i', 'v'];
 
 // console.log(a.slice(2, 4));   // ['t','y']
@@ -167,12 +173,12 @@
 // let findIndex = (n) => {
 //     let a = [5, 9, 2, 56, 9];
 //     let len = a.length;
-//     let index = null;
 //     for (let i = 0; i < len; i++) {
 //         if (a[i] === n) {
-//             return index;
+//             return i;
 //         }
 //     }
+//     return null
 // }
 // console.log(findIndex(56)); // 3
 
@@ -183,13 +189,11 @@
 
 //     if (l > (arr.length - 1)) {
 //         arr[l] = v;
-//     } else {
-//         arr[l] = v;
-//         return `location is occupied`;
+//         return arr;
 //     }
-//     return arr;
+//     return `location is occupied`;
 // }
-// console.log(insertValIn1D(32, 7)); // [ 10, 20, 30, 40, <2 empty items>, 32 ]
+// console.log(insertValIn1D(32, 4)); // [ 10, 20, 30, 40, <2 empty items>, 32 ]
 
 // Time complexity = O(1)
 // Space complexity = O(1)
@@ -197,24 +201,22 @@
 //-------------------------------------------------------------------------------------------------
 
 // let findBiggestSmallestNumber = (arr) => {
-//     let bigNo = arr[0]; //............................ O(1){
-//     let smallNo = arr[0];
+//     let bigNo = arr[0],
+//         smallNo; //............................ O(1){
 //     let len = arr.length;
-//     for (let i = 1; i < len; i++) {    //.......O(n) }
-//         if (arr[i] > bigNo) {          //....O(1){ }          }.....O(n)
-//             bigNo = arr[i];            //....O(1){ }----O(1){  }
-//         }
-//         if (arr[i] < smallNo) {        //...O(1){ }           }.....O(n)
-//             smallNo = arr[i];          //....O(1){ }----O(1){  }
-//         }
+//     for (let i = 1; i < len; i++) { //.......O(n) }
+//         if (arr[i] > bigNo) { //....O(1) }          }.....O(n)
+//             bigNo = arr[i]; //....O(1) }----O(1){  }
+//         } else {
+//             smallNo = arr[i]; //....O(1) }----O(1)   }
+//         } //...O(1)  }           }.....O(n)
 //     }
 //     return {
-//         bigNo: bigNo,
-//         smallNo: smallNo
+//         bigNo,
+//         smallNo
 //     } //.................................. O(1){
 // }
-
-// console.log(findBiggestSmallestNumber([5, 9, 13, 5]));  // { bigNo: 13, smallNo: 5 }
+// console.log(findBiggestSmallestNumber([5, 9, 13, 5])); // { bigNo: 13, smallNo: 5 }
 
 // Time Comlexity = O(1) + O(n) + O(1) ==> O(n)
 
@@ -222,49 +224,67 @@
 
 // Example of fibonacci is -- 0,1,1,2,3,5,8,13,21,34,55..
 
+// const fibonacci_series = function (n) {
+//     if (n === 1) {
+//         return [0, 1];
+//     } else {
+//         let s = fibonacci_series(n - 1);
+//         s.push(s[s.length - 1] + s[s.length - 2]);
+//         return s;
+//     }
+// };
+// console.log(fibonacci_series(8));
+
+//----------------------------------------------------------------------------------------------
+// Example of fibonacci is -- 0,1,1,2,3,5,8,13,21,34,55..
+
 // let fibo = (n) => {
 //     if (n < 1) {
 //         return false
-//     } else if (n == 1 || n == 2) {
-//         return (n - 1) // f(2) = 1, f(1) = 0
+//     } else if (n == 1) {
+//         return 1 // f(1) = 1
 //     } else {
-//         return fibo(n - 1) + fibo(n - 2) //f(6)=f(5)+f(4),f(5)=f(4)+f(3),f(4)= f(3)+f(2),f(3)= f(2)+f(1)
-//     }                                   //   5    3 + 2     3    2 + 1    2     1 + 1      1     1 + 0
+//         return fibo(n - 1) + fibo(n - 2) //f(6) = f(5)+f(4),f(5) = f(4)+f(3),f(4) = f(3)+f(2),f(3)= f(2)+f(1)
+//     } //                                                       5    3 + 2     3    2 + 1    2     1 + 1      1     1 + 0
 // }
-// console.log(fibo(6)); // 13
+// console.log(fibo(7)); // 13
 
 // fibonacci_series with recursion
 
 // OR
+
 // Example of fibonacci is -- 0,1,1,2,3,5,8,13,21,34,55..
+
+//---------------------------------------------------------------------
 
 // function fib(n) {
 //     const result = [0, 1];
-//     for (let i = 2; i < n; i++) {
+//     for (let i = 2; i < n + 1; i++) {
 //         const a = result[result.length - 1];
 //         const b = result[result.length - 2];
 //         result.push(a + b);
 //     }
-//     return result[n-1];
+//     return result[n];
 // }
-// console.log(fib(9));
+// console.log(fib(8));
 
 
 //--------------------------------------------------------------------------------------------------
 
 // let dup = (arr) => {
 //     let arrSort = arr.sort();
-//     let dup = []
+//     let dup = [];
 //     let len = arrSort.length;
 
 //     for (let i = 0; i < len - 1; i++) {
 //         if (arrSort[i + 1] === arrSort[i]) {
-//             dup.push(arrSort[i])
+//             dup.push(arrSort[i]);
 //         }
 //     }
 //     return dup;
-// }
+// };
 // console.log(dup([5, 7, 1, 4, 6, 7, 9])); // [7]
+
 
 //---------------------------------------------------------------------------------------------------
 
@@ -276,7 +296,17 @@
 
 // let count = (param, string) => {    
 //     let len = string.length;
-//     let count = 0
+//     let count = function fib(n) {
+//     const result = [0, 1];
+//     for (let i = 2; i < n + 1; i++) {
+//         const a = result[result.length - 1];
+//         const b = result[result.length - 2];
+//         result.push(a + b);
+//     }
+//     return result[n];
+// }
+// console.log(fib(8));
+
 //     for (let i = 0; i < len; i++) {
 //         if (param === string[i])
 //             count++;
@@ -306,8 +336,8 @@
 //     if (n < 2 || !Number.isInteger(n) || !(n % 2)) {
 //         return false;
 //     }
-//     for (let i = 3; i < n; i++, i++) {
-//         if (n % i === 0) {
+//     for (let i = 3; i < n; i++, i++) { // Usign of 2 times i++ is it will always check for odd numbers
+//         if (i % n === 0) {
 //             return false;
 //         }
 //     }
@@ -343,7 +373,8 @@
 // }
 
 // console.log(Array.isArray(arrayList)); // true
-// console.log(typeof(arrayList));        // object
+// console.log(Array.isArray(obj)); // false
+// console.log(typeof (arrayList)); // object
 
 //-----------------------------------------------------------------------------------------------
 
@@ -360,12 +391,12 @@
 // });
 // console.log("finished");
 
-
 //-------------------------------------------------------------------------------------------------
 
 // The delete operator is used to delete properties from an object or to delete the element from array.
 // Here x is not an object but a local variable.
-// delete operators don't affect local variables.
+// Delete operators don't affect local variables.
+
 
 // The output would be 1.
 
@@ -384,9 +415,11 @@
 
 //---------------------------------------------------------------------------------------------------
 
-// let z = 1, y = z = typeof y;
-// console.log(y);   // undefined
-// console.log(z);   // undefined
+// let z = 1,
+//     y = z = typeof y;
+
+// console.log(z); // undefined
+// console.log(y); // undefined
 
 //--------------------------------------------------------------------------------------------------
 
@@ -416,37 +449,31 @@
 
 // function countMaxNo() {
 //     let x = [1, 4, 1, 2, 2, 4, 2, 4];
-//     let num = Math.max(...x);
+//     let max = Math.max(...x);
 //     let c = 0;
-//     let len = x.length;
-//     for (let i = 0; i < len; i++) {
-//         if (x[i] == num) {
+//     for (let i of x) {
+//         if (i == max)
 //             c++;
-//         }
 //     }
 //     return c;
 // }
-// console.log(countMaxNo());  // 3
+// console.log(countMaxNo()); // 3
 
 //--------------------------------------------------------------------------------------------------
 
 // function reduce1() {
-//     let arr = [1, 0, 8, -4, 7];
-
-//     let sum = arr.reduce((a, e) => {
-//         return (a + e);
-//     })
-//     return sum;
+//   let arr = [1, 0, 8, -4, 7];
+//   return arr.reduce((a, e) => (a + e));
 // }
+
 // console.log(reduce1()); // 12
 
 //----------------------------------------------------------------------------------------------------
 
-// let isPalindrom = (a) => {
-//     let b = a.split('').reverse().join('');
-//     if (a == b) {
+// const isPalindrom = (a) => {
+//     const b = a.split('').reverse().join('');
+//     if (a === b)
 //         return true;
-//     }
 //     return false;
 // }
 // console.log(isPalindrom('level')); // true
@@ -458,23 +485,22 @@
 //         return char === str[str.length - i - 1]
 //     });
 // }
-
 // console.log(palindrome('abcba'));
-
 
 //---------------------------------------------------------------------------------------------------
 
 // Swap 2 variables
 
-// let a = 1, b = 3;
+// let a = 1,
+//     b = 3;
 
 // [a, b] = [b, a];
 
-// console.log(a, b); // 3 1
+// console.log(a, b); // 3, 1
 
 // OR
 
-// let b = [a, a = b][0];
+//  b = [a, a = b][0];
 
 // console.log(a, b); // 3 1
 
@@ -486,21 +512,39 @@
 //     let len = arr.length;
 
 //     for (let i = 0; i < len; i++) {
-//         if (arr[i] == 0) 
+//         if (arr[i] == 0)
 //             arr[i] = 5;
 //     }
-
-//     let num = parseInt(arr.join(''));
-//     console.log(typeof (num));
-//     return num;
+//     return parseInt(arr.join(''));
 // }
-// console.log(replaceWithZero(60000543234567));  // 65555543234567
+// console.log(replaceWithZero(60000543234567)); // 65555543234567
 
 //---------------------------------------------------------------------------------------
 
+// const charCount = (str) => {
+//     let obj = {};
+//     for (let s of str) {
+//         if (/[a-z0-9]/.test(s))
+//             obj[s] = ++obj[s] || 1
+//     }
+//     return obj
+// }
+// console.log(charCount("helHlo!911"));
+
+// Adding element in array at ith index position
+
 // const colors = ['red', 'green', 'blue'];
+
 // colors.splice(1, 0, 'purple');
 // console.log(colors);   // ['red','purple', 'green', 'blue'];
+
+// colors.splice(3, 0, 'yellow');
+// console.log(colors); // ['red','green','blue',yellow'];
+
+
+// Replace the element
+// colors.splice(2, 1, 'yellow');
+// console.log(colors); // ['red','purple','yellow'];
 
 //------------------------------------------------------------------------------------------------
 
@@ -509,11 +553,14 @@
 //     let minNumber = Math.min(...array);
 //     let maxNumber = Math.max(...array);
 //     let arraySum = array.reduce((a, b) => a + b)
-//     let minSum = arraySum - minNumber
-//     let maxSum = arraySum - maxNumber
-//     return JSON.stringify({ minSum: minSum, maxSum: maxSum });
+//     let minSum = arraySum - maxNumber
+//     let maxSum = arraySum - minNumber
+//     return {
+//         minSum,
+//         maxSum
+//     };
 // }
-// console.log(findMinMax()); // {"minSum":9,"maxSum":6}
+// console.log(findMinMax()); // {minSum:6,maxSum:9}
 
 //-----------------------------------------------------------------------------------------------
 
@@ -527,19 +574,28 @@
 // }
 // console.log(findMissNo()); // 3
 
+// OR 
+
+// const findMissNo = () => {
+//     const arr = [1, 2, 5, 4];
+//     const totalArr = arr.reduce((a, b) => a + b);
+//     const n = arr.length + 1;
+//     const total = n * (n + 1) / 2;
+//     return total - totalArr;
+// };
+// console.log(findMissNo()); // 3
+
 //-----------------------------------------------------------------------------------------------
 // ANAGRAMS
 
 // let isAnagram = (a, b) => {
-//     let x = a.replace(/[^\w]/g,'').tolowerCase().split('').sort().join('');
-//     let y = b.replace(/[^\w]/g,'').tolowerCase().split('').sort().join('');
-//     if (x == y) 
+//     a = a.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
+//     b = b.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
+//     if (a == b)
 //         return true;
 //     return false;
 // }
 // console.log(isAnagram('awq', 'waq')); // true
-
-
 
 //------------------------------------------------------------------------------------------
 
@@ -574,23 +630,22 @@
 // Reverse number 
 
 // function reverseInt(n) {
-//     return parseInt(String(n).split('').reverse().join('')) * Math.sign(n);
+//   return parseInt(n.toString().split('').reverse().join('')) * Math.sign(n);
 // }
 // console.log(reverseInt(-218)); // -812
 
 //---------------------------------------------------------------------------------------------------
+
 // const s = "Hello There!"
 
-// const s = [4, 3, 7, 3, 1, 8, 3, 9, 7, 3]
+// const s = [4, 3, 7, 3, 1, 8, 3, 9, 7, 3];
+
 // let nums = {};
 
-// for (let num of s) {
-//     if (nums[num]) {
-//         nums[num]++
-//     } else {
-//         nums[num] = 1
-//     }
+// for (let n of s) {
+//     nums[n] = ++nums[n] || 1
 // }
+
 // console.log(nums);
 
 //--------------------------------------------------------------------------------------------
@@ -601,11 +656,11 @@
 // for (let num in nums) {
 //     if (nums[num] > max) {
 //         console.log('num',num);
-
 //         max = nums[num];
 //         numss = num;
 //     }
 // }
+
 // console.log({ 'max': max, 'num': numss });
 // return ({ 'max': max, 'num': numss });
 
@@ -616,8 +671,8 @@
 //     let index = 0;
 
 //     while (index < arr.length) {
-//         chunked.push(arr.slice(index, index + size));
-//         index += size;
+//         chunked.push(arr.slice(index, index + size))
+//         index += size
 //     }
 //     return chunked;
 // }
@@ -633,12 +688,11 @@
 //         return "";
 //     }
 //     return str.split('').reverse().join('');
-
 //     return reverseString(str.substr(1)) + str.charAt(0); // ? + h, ? + e, ? + l , ? + l , ? + o
 // }
 // console.log(reverseString('Hello')); // olleH
 
-//+++++++++++++++
+//==============================================================================================
 
 // function reverse(str) {
 //     let reversed = '';
@@ -651,7 +705,7 @@
 // }
 // console.log(reverse('hEllo')); // ollEh
 
-// ++++++++++++++++
+//==============================================================================================
 
 // function reverse() {
 //     return str.split('').reduce((rev, char) => char + rev, '');
@@ -682,18 +736,17 @@
 
 //------------------------------------------------------------------------------------------------
 
-
 // function countVowel(str) {
+//     let vowels = 'aeiou';
 //     let count = 0;
-//     const vowels = 'aeiou';
 
-//     for (let i of str) {
-//         if (vowels.indexOf(i) !== -1) // or vowels.includes(i)
+//     for (let char of str) {
+//         if (vowels.includes(char))
 //             count++;
 //     }
 //     return count;
 // }
-// console.log(countVowel('Helilou')); // 4
+// console.log(countVowel('Hellfhfhrysfo')); // 2
 
 //----------------------------------------------------------------------------------------------------
 
@@ -726,8 +779,8 @@
 // console.log(2 + '2');        // Concat   '22'
 // console.log(2 - '2');        // 0 => Convert String to number
 
-// console.log(5 < 6 < 7); // (5 < 6) => true, true always 1 => (1 < 7)=> true
-// console.log(7 > 6 > 5); // (7 > 6) => true, true always 1 => (1 > 5)=> false
+// console.log(5 < 6 < 7); // (5 < 6) => true, true always 1 => (1 < 7) => true
+// console.log(7 > 6 > 5); // (7 > 6) => true, true always 1 => (1 > 5) => false
 
 //--------------------------------------------------------------------------------------------
 
@@ -744,11 +797,19 @@
 // console.log(profile);   // { name: 'vijay' }
 
 
-// Object.freeze doesn't allow to add, remove or rename properties from JS.
-// Object.seal can't add/remove property it can rename existing property.
+// **Object.freeze doesn't allow to add,remove or rename properties from JS.
 
-// console.log(Math.max());       // -Infinity
-// console.log(typeof(null));    // object
+// **Object.seal can't add/remove property it can rename existing property.
+
+// console.log(Math.max());    // -Infinity
+// console.log(typeof(null));  // object
+
+//--------------------------------------------------------------------------------------------
+
+// Null and Undefined are both data types in JavaScript. Undefined is a variable that has been 
+// declared but not assigned a value. Null as an assignment value. ... 
+// However, when you assign null to a variable,you're declaring that this value is explicitly empty.
+
 
 //--------------------------------------------------------------------------------------------
 
@@ -757,8 +818,11 @@
 
 // const bar = null;
 
-// console.log(undefined == null); // true
+// console.log(foo == bar); // true
 // console.log(foo === bar); // false
+// console.log(undefined == null); // true
+// console.log(undefined === null); // true
+
 
 //----------------------------------------------------------------------------------------------
 
@@ -766,12 +830,12 @@
 //     console.log(arguments); // { '0': [ 'hi' ] }
 //     return 'Hello';
 // }
-// let sentence = a`hi`      //`hi` is argument of function
-// console.log(sentence);    // Hello
+// let sentence = a `hi` //`hi` is argument of function
+// console.log(sentence); // Hello
 
 
 // const x = 'constructor';
-// console.log(x[x](01));   // 1 
+// console.log(x[x](01)); // 1 
 
 //-------------------------------------------------------------------------------------------------
 
@@ -845,6 +909,8 @@
 
 // console.log([...[1,2, 3], ...[4, 5, 6]]);  // [1,2,3,4,5,6]
 
+// console.log([1,2, 3].concat([4, 5, 6]));  // [1,2,3,4,5,6]
+
 //-----------------------------------------------------------------------------------------------
 
 // Best way to find out missing no. with best time complexity
@@ -865,31 +931,28 @@
 
 // let findMinMaxSum = () => {
 //     let arr = [1, 2, 3, 4];
-
 //     let maxNumber = Math.max(...arr);
 //     let minNumber = Math.min(...arr);
-
 //     let sumArray = arr.reduce((t, i) => t + i);
 //     let minSum = sumArray - maxNumber;
 //     let maxSum = sumArray - minNumber;
-
 //     return {
-//         minSum: minSum,
-//         maxSum: maxSum
+//         minSum,
+//         maxSum
 //     }
 // }
-// console.log(findMinMaxSum());  // { minSum: 9, maxSum: 6 }
+// console.log(findMinMaxSum()); // { minSum: 6, maxSum: 9 }
 
 //--------------------------------------------------------------------------------------------------
 
 // const profile = {
 //     name: 'vijay',
-//     getName: () => {    // to get the outpput 'vijay' => getName:function(){} OR getName(){}
-//         console.log(this);   // {}
-//         console.log(this.name);  // undefined
+//     getName: () => { // to get the outpput 'vijay' => getName:function(){} OR getName(){}
+//         console.log(this); // {}
+//         console.log(this.name); // undefined  bcoz this keyword inside arrow function refer to global scope not to profile object.
 //     }
 // }
-// profile.getName()   
+// profile.getName()
 
 //------------------------------------------------------------------------------------------------------
 
@@ -900,10 +963,10 @@
 // }
 
 // let functionName = function (a1, a2, a3) {
-
+//     console.log(obj, a1, a2, a3);
 // }
 
-// functionName.call(obj,arg1,arg2,arg3); // call will pass each args
+// functionName.call(obj, arg1, arg2, arg3); // call will pass each args
 
 // functionName.apply(obj, [arg1, arg2, arg3]); // apply will pass args as array
 
@@ -949,6 +1012,44 @@
 
 //----------------------------------------------------------------------------------------------------
 
+// In the case of complex data-types ( Array, Function and Object ), they are passed by reference.
+// When we change or modify their properties/elements, we not changing their binding, hence const
+// doesn't throw any error.
+
+// const a = {
+//   "name": "vijay"
+// };
+// a.name = "Kiran";
+// console.log(a);
+
+
+// const arr = [1, 3, 5, 7];
+// arr.push(3);
+// console.log(arr); //  [ 1, 3, 5, 7, 3 ]
+
+//----------------------------------------------------------------------------------------------------
+
+
+// Wrap it in a self-executing closure:
+
+// for (var i = 0; i < 5; i++)(function (i) {
+//     setTimeout(function () {
+//         console.log(`2nd ${i}`);
+//     }, 1000);
+// })(i);
+
+// const arr = [10, 12, 15, 21, 34];
+// for (var i = 0; i < arr.length; i++) {
+//   setTimeout(function () {
+//     console.log('The index of this number is: ' + i);
+//   }, 1000);
+
+
+// Note: The argument to the function-expression to setTimeout is not being used, 
+// so I took that out. Also, it's not good to use global variables. 
+// Create variables using the var keyword.
+
+// You also don't need this.i; simply use i.
 // A local variable takes precedence over a global variable with the same name.
 
 // for (var i = 0; i < 10; i++) {
@@ -957,6 +1058,7 @@
 //         console.log('The number is ' + i);
 //     }, 1000);
 // }
+
 // Output :
 // 0
 // 1
@@ -978,12 +1080,14 @@
 // The number is 10
 // The number is 10
 // The number is 10
+
 //------------------------------------------------------------------------------------------------
 
 // Example of curry function
-// it is a technique to translating one function that takes multiple arguments into a sequence function
-// that each take a single argument which is exactly what our triple add function is a sequence of functions 
-// that each take in a single argument.
+
+// It is a technique to translating one function that takes multiple arguments into a sequence function
+// that each take a single argument which is exactly what our triple add function is a sequence of 
+// functions that each take in a single argument.
 
 // let tripleAdd = (x) => {
 //     return function (y) {
@@ -995,6 +1099,33 @@
 
 // console.log(tripleAdd(10)(20)(30)); // 60
 
+//------------------------------------------------------------------------------------------------
+
+// We can create own method using prototype by passing array like this.
+
+// const arr = [1, 4, 8, 2, 5];
+
+// Array.prototype.odd = function () {
+//     return this.filter(v => v % 2 !== 0)
+// }
+// Array.prototype.even = function () {
+//     return this.filter(v => v % 2 == 0)
+// }
+
+// console.log(arr.odd());
+// console.log(arr.even());
+
+//------------------------------------------------------------------------------------------------
+
+// function foo() {
+//     let a = b = 10
+// }
+// foo()
+// console.log(b); // 10
+// console.log(a); // a is not defined
+
+
+// console.log(typeof ('33'));
 
 // function quadrupleAdd(num1) {
 //     return function (num2) {
@@ -1020,16 +1151,13 @@
 //         return num * 2;
 // })(10);
 
+
 // (function () {
-
-//         function getTotal(a, b) {
-//                 return a + b;
-//         }
-
-//         var $ = 'currency';
-
-//         if (true) console.log('hello world');
-
+//   function getTotal(a, b) {
+//     return a + b;
+//   }
+//   var $ = 'currency';
+//   if (true) console.log('hello world');
 // })();
 
 //-------------------------------------------------------------------------------------------------
@@ -1051,6 +1179,7 @@
 
 // function outterFunc(param1) {
 //     const variable1 = 'var one';
+
 //     function innerFunc(param2) {
 //         const variable2 = 'var two';
 //         console.log('globalVariable:', globalVariable);
@@ -1144,7 +1273,7 @@
 // console.log(getProduct(2, 3));
 
 // function getProduct(num1, num2) {
-//   return num1 * num2;
+//     return num1 * num2;
 // }
 
 // var color;
@@ -1162,7 +1291,6 @@
 //     var name = 'Jen';
 //     console.log(name);
 //     console.log(globalVar);
-
 //     var getAge = function () {
 //         console.log('inside getAge');
 //         return '30';
@@ -1241,8 +1369,6 @@
 // };
 
 // myCar.logColor();
-
-
 //--------------------------------------------------------------------------
 
 // in  === & ==  
@@ -1299,20 +1425,21 @@
 //------------------------------------------------------------------------------------------------
 
 // (function () {
-//     var x = y = 200;        // here y will work as global variable beacuse it is without var keyword
+//     var x = y = 200;   // here y will work as global variable beacuse it is without var keyword
 // })();
 
 // console.log('y: ', y);   // 200
 // console.log('x: ', x);   // x is not defined
 
 // (function () {
-//     'use strict'
+//     'use strict';
 //     var x = y = 200;
 // })();
 // console.log('y: ', y);   //  y is not defined  -- beacuse of use strict
 // console.log('x: ', x);
 
 //-------------------------------------------------------------------------------------------------
+
 //  Event Loop Pahses :
 
 // https://dzone.com/articles/a-word-about-nodejs-event-loop
@@ -1394,11 +1521,11 @@
 // console.log(typeof []); // object
 // console.log(Array.isArray([]));  // true
 // console.log([1,2] instanceof Array);  // true
+// console.log({name:'vijay'} instanceof Object);  // true
 
 //-----------------------------------------------------------------------------------------------------
 
-// Use Strict in JS
-// Enforcing stricter parsing and error handling in your code.
+// Use Strict in JS enforcing stricter parsing and error handling in your code.
 
 // example 1
 // Prevents use of global variable.
@@ -1451,7 +1578,7 @@
 // Bind method allows to bind a method to certain this(roadTrip2) in context
 // and it also allows to define parameters that you want a hold constant as well.
 
-// const getTripDistance = roadTrip1.getDistance.bind(roadTrip2, 'km');  //passing km arguments to unit parameter
+// const getTripDistance = roadTrip1.getDistance.bind(roadTrip2, 'km'); // passing km arguments to unit parameter
 // console.log(getTripDistance());  // 5000km
 
 //----------------------------------------------------------------------------------------------------
@@ -1475,8 +1602,7 @@
 // console.log(user1 == user2); //  false
 // console.log(user1 === user2); // false
 
-// console.log(JSON.stringify(user1) === JSON.stringify(user2)) // true => JSON.stringify simply turns an objct into a JSON object
-// and turns a JSON object into a string 
+// console.log(JSON.stringify(user1) === JSON.stringify(user2)) // true => JSON.stringify simply turns an objct into a JSON object and turns a JSON object into a string 
 // console.log(user1 === user1); // true
 
 // console.log([] === []); // false bcoz of call by referece
@@ -1557,7 +1683,9 @@
 // const b = { name: 'b' };
 // const c = { name: 'c' };
 
-// // In JS key or properties of object can only be string it cannot by any other datatype.hence it cannot be object
+// In JS key or properties of object can only be string it cannot by any other datatype.
+// hence it cannot be object.
+
 // a[b] = 200; // Placing object as property to a object 
 // // a['[object Object]'] = 200   // b object as property converting to '[object Object]' is a string property.
 
@@ -1589,8 +1717,8 @@
 // console.log(300.3 * 3);  // 900.9000000000001 // In JS all numbers are IEE 754 floating point numbers
 // // because of the way they are binary encoded some decimal numbers cannot be expressed perfectly accuratly
 // // console.log(2/3)  // 0.6666666666666666
-// console.log(Number((300.3 * 3).toFixed(2))); // 900.9
-// console.log(Number((300.3 * 3).toPrecision(12))); // 900.9
+// console.log(Number((300.3123 * 3).toFixed(2))); // 900.94
+// console.log(Number((300.34222222222223 * 3).toPrecision(12))); // 901.026666667
 // console.log(((300.3 * 10) * 3) / 10); // 900.9
 
 // Array.indexOf
@@ -1601,24 +1729,24 @@
 // console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' })); // -1 => Two object are never be same - pass by reference
 // console.log('hello world'.indexOf('o'));  // 4
 // console.log([[1], [2], [3], [4]].indexOf([2])); // -1 ==> different array and pass by reference
-// console.log([[1], [2], [3], [4], myArray].indexOf(anotherArray)); // 4 ==> both arrays are refering same address
+// console.log([[1],[2],[3], myArray, [4]].indexOf(anotherArray)); // 3 ==> both arrays are refering same address
 
 //-----------------------------------------------------------------------------------------------------
 
 // Curry Function
+
 // tab 1
 
 // function getProduct(num1, num2) {
-//   return num1 * num2;
+//     return num1 * num2;
 // }
 
 // function getProduct(num1) {
-//   return function(num2) {
-//     return num1 * num2;
-//   };
+//     return function (num2) {
+//         return num1 * num2;
+//     };
 // }
-
-// getProduct(10)(20);
+// console.log(getProduct(10)(20));
 
 // tab 2
 
@@ -1641,7 +1769,6 @@
 // Array Constructor
 
 // var arr1 = [];
-// var arr2 = new Array(50);
 // var arr3 = new Array(1, 2, "three", 4, "five");
 // var arr4 = new Array([1, 2, 3, 4, 5]);
 
@@ -1658,7 +1785,6 @@
 
 // console.log(string2); // 'Tampa'
 
-// ////////////////////////////////
 
 // var person1 = {
 //     name: 'Alex',
@@ -1677,6 +1803,7 @@
 //     name: 'Jen',
 //     totalAmount: 5000,
 //     deductAmount(amount) { // 200 
+//         console.log(amount, this.totalAmount);
 //         this.totalAmount -= amount; // 8000 - 500 = 7300
 //         return 'Amount in account: ' + this.totalAmount;
 //     },
@@ -1687,12 +1814,13 @@
 //     totalAmount: 8000,
 // };
 
-// console.log(account1.deductAmount(1000));  // 4000
-// console.log(account1.deductAmount.bind(account2,3000));  // 4000
+// console.log(account1.deductAmount(1000)); // 4000
 
+// const bindVar = account1.deductAmount.bind(account2);
+// console.log(bindVar(3000)); // 5000
 
 // const withdrawFromAccount = function (amount) {
-// return account1.deductAmount.bind(account2, amount);
+//     return account1.deductAmount.bind(account2, amount);
 // };
 
 // console.log(withdrawFromAccount(500)()); // Amount in account: 7500
@@ -1748,7 +1876,7 @@
 // Promise.resolve().then(() => {
 //     console.log('promise 3');
 // })
-// process.nextTick(() => console.log("processNextTick 1"))  // micro task
+// process.nextTick(() => console.log("processNextTick 1")) // micro task
 // console.log("end");
 
 // Process.nextTick ?
@@ -1762,7 +1890,6 @@
 // setImmediate queues its callbacks on the event loop while process.nextTick doesn't.
 // Since process.nextTick callbacks execute before going back to the event loop,
 // they run before setImmediate callbacks.
-
 
 // function cbFunc() {
 //     console.log('inside cbFunc()', message);
@@ -1789,8 +1916,8 @@
 
 // Accept functions as parameters and return a function
 
-// let higher = (f) => {
-//     let output = f();
+// let higher = (x) => {
+//     let output = x();
 //     return output;
 // }
 // let x = function () {
@@ -1825,7 +1952,7 @@
 
 // const memoizAddition = () => {
 //   let cache = {};
-//  return (value) => {
+//   return (value) => {
 //   if (value in cache) {
 //    console.log('Fetching from cache');
 //    return cache[value]; // Here, cache.value cannot be used as property name starts with           
@@ -1866,10 +1993,10 @@
 
 // Whereas ES6 classes can be defined as an alternative
 
-// class Bike {
+// class bike {
 //   constructor(color, model) {
-//     this.color= color;
-//     this.model= model;
+//     this.color = color;
+//     this.model = model;
 //   }
 // }
 
@@ -1895,11 +2022,11 @@
 // What are the differences between cookie, local storage and session storage?
 // Below are some of the differences between cookie, local storage and session storage,
 
-//       Feature	                                 Cookie                       	Local storage	            Session storage
-// Accessed on client or server side	 Both server-side & client-side                 client-side only            client-side only
-// Lifetime	                         As configured using Expires option	        until deleted               until tab is closed
-// SSL support	                         Supported	                                Not supported	            Not supported
-// Maximum data size	                 4KB	                                        5 MB	                    5MB
+//       Feature	                                 Cookie                       	Local storage	           Session storage
+// Accessed on client or server side	   Both server-side & client-side           client-side only           client-side only
+// Lifetime	                               As configured using Expires option	    until deleted              until tab is closed
+// SSL support	                           Supported	                            Not supported	           Not supported
+// Maximum data size	                   4KB	                                    5 MB	                   5MB
 
 //---------------------------------------------------------------------------------------------------------------------------------
 
@@ -1909,13 +2036,13 @@
 // Shallow Copy
 // Shallow copy is a bit-wise copy of an object. A new object is created that has an exact copy of the
 // values in the original object. If any of the fields of the object are references to other 
-// objects,just the reference addresses are copied i.e., only the memory address is copied.
+// objects,just the reference addresses are copied i.e only the memory address is copied.
 
 //---------------------------------------------------------------------------------------------------
 // What paradigm is Javascript?
-// JavaScript is a multi-paradigm language, supporting imperative/procedural programming
-// , Object-Oriented Programming and functional programming. JavaScript supports Object-Oriented
-//  Programming with prototypical inheritance.
+// JavaScript is a multi-paradigm language, supporting imperative/procedural programming,
+// Object-Oriented Programming and functional programming. JavaScript supports Object-Oriented
+// Programming with prototypical inheritance.
 //---------------------------------------------------------------------------------------------------
 
 // What is a callback function ?
@@ -1928,7 +2055,7 @@
 // function callbackFunction(name) {
 //   console.log('Hello ' + name);
 // }
-// function outerFunction(callback) {
+// function outerFunction(callbackFunction) {
 //   let name = prompt('Please enter your name')
 //   callback(name);
 // }
@@ -1936,17 +2063,21 @@
 
 
 // The callbacks are needed because javascript is a event driven language. 
-// That means instead of waiting for a response javascript will keep executing while listening for other events.
-// Let's take an example with first function invoking an API call(simulated by setTimeout) and next function which logs the message.
+// That means instead of waiting for a response javascript will keep executing while listening
+// for other events. 
+// Let's take an example with first function invoking an API call(simulated
+// by setTimeout) and next function which logs the message.
 
-// function firstFunction(){
-//   // Simulate a code delay
-//   setTimeout(function(){
-//     console.log('First function called');
-//   }, 1000 );
+
+// function firstFunction() {
+//     // Simulate a code delay
+//     setTimeout(function () {
+//         console.log('First function called');
+//     }, 1000);
 // }
-// function secondFunction(){
-//   console.log('Second function called');
+
+// function secondFunction() {
+//     console.log('Second function called');
 // }
 
 // firstFunction();
@@ -1994,14 +2125,13 @@
 // Libuv has thread pools and thread pools contains 4 threads.
 // Node.js event loop is single threaded
 
-// 1 core can contains 2 threads in CPU.
+// 1 CPU core can contains 2 threads in CPU.
 
 
 // let x = [1, 2, 4, 9, 3]
 // for (let i of x) {
 //     console.log(i);
 // }
-
 
 // attendaces = [{
 //     in_time: 1,
@@ -2016,10 +2146,9 @@
 // let intime = attendaces.shift().in_time;
 // let outime = attendaces.pop().out_time;
 
-// console.log(intime, 'Intime', outime, 'Outime');
+// console.log(intime, 'Intime', outime, 'Outime'); // 1 Intime 6 Outime
 
 //---------------------------------------------------------------------------------------------
-
 
 // Convert Queue from Stack
 
@@ -2035,10 +2164,8 @@
 
 // function firstNonRepeatedCharacter(string) {
 //     for (let i = 0; i < string.length; i++) {
-//         let char = string.charAt(i);
-//         // console.log(char);
-//         if (string.indexOf(char) == i && string.indexOf(char, i + 1) == -1)
-//             return char;
+//         if (string.indexOf(string[i]) == i && string.indexOf(string[i], i + 1) == -1)
+//             return string[i];
 //     }
 //     return null;
 // }
@@ -2049,17 +2176,17 @@
 // Calculate the difference between 2 dates.
 
 // function diffDateDays() {
-//     const date1 = new Date('6/13/2010');
-//     const date2 = new Date('6/30/2010');
-//     console.log(date2);
 
-//     const diffTime = date2.getTime() - date1.getTime(); // it will give in miliseconds
-// //  1 second equals to 1000 Miliseconds
-//     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-//     console.log(diffDays);
+//     const date1 = new Date("07/24/2021");
+//     const date2 = new Date("07/30/2021");
+
+//     const diffDays = date2.getTime() - date1.getTime();
+
+//     const res = Math.ceil(diffDays / (1000 * 60 * 60 * 24));
+//     console.log(res);
 // }
-// diffDateDays();
 
+// diffDateDays();
 
 //--------------------------------------------------------------------------------------------------
 
@@ -2086,7 +2213,7 @@
 
 // Performance of Google chrome vs nodejs (v8)?
 
-// Reasons : In a web browser(Chrome), declaring the variable i outside of any function scope
+// Reasons : In a web browser(Chrome), declaring any variable outside of any function scope
 // makes it global and therefore binds to window object. As a result, running this code in a
 // web browser requires repeatedly resolving the property within the heavily populated window
 // namespace in each iteration of the for loop.
@@ -2109,16 +2236,23 @@
 
 //-------------------------------------------------------------------------------------------------
 
+// function powerOfNum(a, b) {
+//     let result = 1;
+//     for (let i = 0; i < b; i++) {
+//         result *= a;
+//     }
+//     return result;
+// }
+// console.log(powerOfNum(3, 4));
+
 
 // function powerOfNum(a, b) {
 //     console.log(b);
-
 //     if (b < 1) {
 //         return 1;
 //     }
 //     return a * powerOfNum(a, (b - 1)); // 3 * (3, ?) * 3 * (3,?)
 // }
-
 // console.log(powerOfNum(3, 4));
 
 //-----------------------------------------------------------------------------------------------------
@@ -2257,7 +2391,7 @@
 //             num: [sortedArr[i], sortedArr[i + 1]]
 //         })
 //     }
-//     console.log('myArr:', myArr);
+//     console.log('myArr:', myArr);	                    
 //     let subArr = sortedArr.slice(0, k);
 //     console.log(subArr);
 //     return Math.max(...subArr) - Math.min(...subArr);
@@ -2276,7 +2410,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-// Here we will search the dupicate number with order O(logn)
+// Here we will search the duplicate number with order O(logn)
 
 // function findDup() {
 //     let arr = [1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -2287,17 +2421,10 @@
 //     let rightSubArr = arr.slice(len, arr.length)
 //     console.log('rightSubArr', rightSubArr);
 
-//     if (leftSubArr.length !== leftSubArr[leftSubArr.length - 1]) {
-//         for (let i = 0; i < leftSubArr.length; i++) {
-//             if (leftSubArr[i] === leftSubArr[i + 1]) {
-//                 return leftSubArr[i]
-//             }
-//         }
-//     } else {
-//         for (let i = 0; i < rightSubArr.length; i++) {
-//             if (rightSubArr[i] === rightSubArr[i + 1]) {
-//                 return rightSubArr[i]
-//             }
+//     leftSubArr.length !== leftSubArr[leftSubArr.length - 1] ? dupArr = [...leftSubArr] : dupArr = [...rightSubArr];
+//     for (let i = 0; i < dupArr.length; i++) {
+//         if (dupArr[i] === dupArr[i + 1]) {
+//             return dupArr[i]
 //         }
 //     }
 //     return null;
@@ -2321,33 +2448,41 @@
 // fn();
 // Promise.resolve(console.log('done'));  // 3rd
 
+
+//     console.log('myArr:', myArr);	                    
+//     let subArr = sortedArr.slice(0, k);
+//     console.log('myArr:', myArr);	                    
+//     let subArr = sortedArr.slice(0, k);
+//     console.log(subArr);
+//     console.log(subArr);
+
 //-----------------------------------------------------------------------------------------------
 
 //- It will sort the array in ascending order without using inbuild javascript sort method.
 
-// function sort(array) {
-//     let len = array.length;
+
+// function sort(arr) {
 //     let swapped = false;
+//     let len = arr.length;
 //     for (let i = 0; i < len; i++) {
-//         if (array[i] > array[i+1]) {
-//             array[i + 1] = [array[i], array[i] = array[i + 1]][0];
+//         if (arr[i] > arr[i + 1]) {
+//             [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
 //             swapped = true;
 //         }
 //     }
 //     if (swapped == true) {
-//         return sort(array)
+//         return sort(arr)
 //     }
-//     return array;
+//     return arr;
 // }
-// console.log(sort([3, 1, 6, 0, 8, 0, 1, 0, 0, 7]));
+// console.log(sort([3, 1, 6, 23, 8, 1, 10, 0, 7]));
 
 //--------------------------------------------------------------------------------------------
 
 // function getSecondLargest(nums) {
-//     nums.sort((a, b) => a - b);
-//     let distinctArr = [...new Set(nums)];
-//     console.log('distinctArr', distinctArr);
-//     return distinctArr[distinctArr.length - 2]
+//     nums.sort((a, b) => b - a);
+//     console.log(nums);
+//     return [...new Set(nums)][1];
 // }
 // console.log(getSecondLargest([2, 3, 6, 6, 5]));
 
@@ -2369,6 +2504,23 @@
 //     for (let i of finalStr) {
 //         console.log(i);
 //     }
+
+
+// function sort(array) {
+//     let len = array.length;
+//     let swapped = false;
+//     for (let i = 0; i < len; i++) {
+//         if (array[i] > array[i+1]) {
+//             array[i + 1] = [array[i], array[i] = array[i + 1]][0];
+//             swapped = true;
+//         }
+//     }
+//     if (swapped == true) {
+//         return sort(array);
+//     }
+//     return array;
+// }
+// console.log(sort([3, 1, 6, 0, 8, 0, 1, 0, 0, 7]));
 // }
 // vowelsAndConsonants('javascriptloops');
 
@@ -2417,11 +2569,11 @@
 // console.log(modifyArray([1, 2, 3, 4, 5]));
 
 
+
 // function reverseString(s) {
 //     try {
 //         console.log(s.split('').reverse().join(''));
-//     }
-//     catch (error) {
+//     } catch (error) {
 //         console.log(error.message);
 //         console.log(s);
 //     }
@@ -2443,16 +2595,16 @@
 
 // function getRectArea(width, height) {
 //     if (isNaN(width) || isNaN(height)) {
-//       throw "Parameter is not a number!";
+//         throw "Parameter is not a number!";
 //     }
-//   }
-//   try {
+// }
+
+// try {
 //     getRectArea(3, 'A');
-//   }
-//   catch(e) {
+// } catch (e) {
 //     console.error(e);
 //     // expected output: "Parameter is not a number!"
-//   }
+// }
 
 
 // function getLetter(s) {
@@ -2485,17 +2637,14 @@
 //         return total;
 //     }
 // }
-
 // const rectangle = new Polygon([10, 20, 10, 20]);
 // const square = new Polygon([10, 10, 10, 10]);
 // const pentagon = new Polygon([10, 20, 30, 40, 43]);
 
+
 // console.log(rectangle.perimeter());
 // console.log(square.perimeter());
 // console.log(pentagon.perimeter());
-
-
-
 
 // function getDayOfWeek(date) {
 //     let dayOfWeek = new Date(date).getDay();
@@ -2505,6 +2654,12 @@
 // console.log(getDayOfWeek("2013-07-31")); // Wednesday
 // console.log(getDayOfWeek("10/11/2009")); // Sunday
 
+
+// const dayOfWeek = (y, m, d) => {
+//     let dayOfWeek = new Date(`${y}-${m}-${d}`).getDay();
+//     return isNaN(dayOfWeek) ? null : ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][dayOfWeek]
+// }
+// console.log(dayOfWeek(2020, 10, 19));
 
 
 // let no = 0;
@@ -2539,6 +2694,34 @@
 //     console.log(foo[i]);
 // }
 
+//-------------------------------------------------------------------------------------------------
+
+// let instructor = {
+//     firstName: "Vijay",
+//     isInstructor: true,
+//     favortieNumbers: [1, 2, 3, 4, 5]
+// }
+
+// console.log(instructor.hasOwnProperty("firstName")); // true
+// console.log(instructor.hasOwnProperty("lastName")); // false
+
+// console.log(Object.entries(instructor));
+
+
+// Output 
+
+// [
+//     [ 'firstName', 'Vijay' ],
+//     [ 'isInstructor', true ],
+//     [ 'favortieNumbers', [ 1, 2, 3, 4, 5 ] ]
+// ]
+
+// Push and Pop always faster than Shift and Unshift because it always add and remove the element from
+// end and we don't require re-indexing and shift and unshift make the changes at starting of array 
+// beacuse of that it requires re-indexing which is not efficient.
+
+//-------------------------------------------------------------------------------------------------
+
 
 // function kangaroo(x1, v1, x2, v2) {
 //     if (v2 > v1) {
@@ -2564,6 +2747,7 @@
 // console.log(kangaroo(0, 3, 4, 2));
 // console.log(kangaroo(0, 2, 5, 3));
 // console.log(kangaroo(55, 8223, 5803, 6509));
+
 
 // function compareTriplets(a, b) {
 //     let x = [0, 0]
@@ -2655,17 +2839,16 @@
 
 
 // function birthday(s, d, m) {
-//     let count = 0;
 //     for (let i = 0; i < s.length; i++) {
 //         if (m == 1 && s[i] == d) {
 //             return 1;
 //         }
 //     }
-//     return count;
+//     return 0;
 // }
 
 // console.log(birthday([1, 2, 1, 3, 2], 3, 2));
-// console.log(birthday([1, 1, 1, 1, 1,1], 3, 2));
+// console.log(birthday([1, 1, 1, 1, 1, 1], 3, 2));
 
 
 // function getCombinations(chars) {
@@ -2819,13 +3002,11 @@
 // function angryProfessor(k, a) {
 //     let availStudnt = 0;
 //     for (let i of k) {
-//         if (i <= 0) {
+//         if (i <= 0) 
 //             availStudnt++;
-//         }
 //     }
-//     if (availStudnt >= a) {
+//     if (availStudnt >= a) 
 //         return "NO"
-//     }
 //     return "YES"
 // }
 
@@ -2848,16 +3029,16 @@
 // function pageCount(n, p) {
 //     let fwdturnPage = 0;
 //     let bwdturnPage = 0;
+
 //     if (p == 1){ {
 //         return 0;
 //     }
 //     for (let i = 2; i <= n; i++) {
 //         fwdturnPage++;
-//         if (i == p || i + 1 {== p)
+//         if (i == p || i + 1 == p)
 //             break;
 //         i++;
 //     }
-
 
 //     for (let i = 0; i <= n; i++) {
 //         if (n == p) {
@@ -2872,14 +3053,12 @@
 //                 return 1;{
 //             }
 //         }
-
 //         if (n - i == p || n - i - 1 {== p) {
 //             break;
 //         }
 //         bwdturnPage++;
 //         i++;
 //     }
-
 //     if (fwdturnPage > bwdturnPage) {
 //         return bwdturnPage
 //     }
@@ -2944,8 +3123,8 @@
 
 
 // let array = [1, 3, 3, 4, 5, 6];
-//  let array = ["apple", "banana", "lemon", "mango"];
-//  let results = [];
+// let array = ["apple", "banana", "lemon", "mango"];
+// let results = [];
 
 //  Since you only want pairs, there's no reason
 //  to iterate over the last element directly
@@ -3019,8 +3198,8 @@
 //         }
 //         i += k - 1;
 //     }
-
 // }
+
 // if (c[0] == 0) {
 //     energy--
 // } else {
@@ -3049,10 +3228,9 @@
 //     return output;
 // }
 
-
 // console.log(circularArrayRotation([1, 2, 3], 2, [1, 2, 3]));
-
 // console.log(circularArrayRotation([3, 4, 5], 2, [1, 2]));
+
 
 // function beautifulTriplets(d, arr) {
 
@@ -3060,6 +3238,7 @@
 
 // console.log(beautifulTriplets(3, [1, 2, 4, 5, 7, 8, 10]));
 
+// PUT Method used to replace the entire thing and PATCH will update the portion of it.
 
 // function minimumDistances(a) {
 //     let len = a.length;

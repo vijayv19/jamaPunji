@@ -12,7 +12,7 @@
 
 // This creates a package.json file in your myapp folder. The file contains references for 
 // all npm packages you have downloaded to your project. The command will prompt you to enter 
-//a number of things. You can enter your way through all of them EXCEPT this one:
+// a number of things. You can enter your way through all of them EXCEPT this one:
 
 // entry point: (index.js) 
 
@@ -22,6 +22,7 @@
 // Step 03: Install Express in the myapp directory
 
 // npm install express --save
+
 // Step 04: app.js
 
 // It will create the simple server using express.js
@@ -71,7 +72,7 @@
 // handle multiple types of requests like the GET, PUT, and POST and DELETE requests.
 
 
-// using Express
+// Using Express
 
 // const express = require('express');
 
@@ -89,6 +90,7 @@
 // Install Express Generator
 
 // C:\node>npm install -g express-generator
+
 // Create an Express Project
 
 // C:\node>express --view="ejs" nodetest1
@@ -132,6 +134,35 @@
 
 // > nodetest1@0.0.0 start C:\node\nodetest1
 // > node ./bin/www
+
+//================================================================================================
+//  Express Middleware ?
+
+// It lies in between request and response.
+
+// Use of Express Middleware ?
+
+// Middleware functions are functions that have access to the request object ( req ), 
+// the response object ( res ), and the next function in the application's request-response cycle. 
+// The next function is a function in the Express router which, when invoked, executes the middleware 
+// succeeding the current middleware. 
+
+//================================================================================================
+
+// app.use() method allows us to add new middleware function.
+
+// app.use((req,res,next)=>{
+//    console.log("In the middleware");
+//    next()  => // next function allows to travel int the next middleware function.
+// })
+
+// app.use((req,res,next)=>{
+//    console.log("In the another middleware");
+//    res.send('<h1> Hello from express </h1>')
+// })
+
+// app.listen(2000)
+
 
 //================================================================================================
 

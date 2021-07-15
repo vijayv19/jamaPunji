@@ -34,7 +34,7 @@
 
 // Why Learn Tree ?
 
-// it implements to improve Time complexity interms of insertion, deletion and search.
+// It implements to improve Time complexity in terms of insertion, deletion and search.
 // With the help of this we will try to convert time complexity from O(n) to O(logn).
 
 // Tree Terminologies

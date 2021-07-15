@@ -28,11 +28,11 @@
 
 // weighted Graph : A graph  having a weight associated with any edge.
 
-// Undirected Graph : It is a graph that is set of vertices connected by edges, where the edges don't
-// have a direction associated with them.
+// Undirected Graph : It is a graph that is set of vertices connected by edges, where the edges
+// don't have a direction associated with them.
 
-// Directed Graph : It is a graph that is set of vertices connected by edges, where the edges have a
-// direction associated with them.
+// Directed Graph : It is a graph that is set of vertices connected by edges, where the edges
+// have a direction associated with them.
 
 // Cyclic Graph : A cyclic graph is a graph having one loop.
 

@@ -21,10 +21,10 @@ OOPs Concepts – Table of Contents
 2.What is a class
 3.Constructor in Java
 4.Object Oriented Programming Features
-    Abstraction
-    Encapsulation
-    Inheritance
-    Polymorphism
+   Abstraction
+   Encapsulation
+   Inheritance
+   Polymorphism
 5.Abstract Class and Methods
 6.Interfaces in Java
 
@@ -112,25 +112,26 @@ It is also referred to as Method Invocation. See the diagram below.
                   | Message
                   |
             ______|_______
-            |  ObjectA  |
+            |  ObjectB  |
             | ________  |
             | |Methods| |
             | | Data  | | 
             | |______ | |
             |___________| 
  
+
 What is a Class in OOPs Concepts
 
 A class can be considered as a blueprint using which you can create as many objects as you like.
 For example, here we have a class Website that has two data members (also known as fields, 
-instance variables and object states). This is just a blueprint, it does not represent any 
+instance variables and object states).This is just a blueprint, it does not represent any 
 website, however using this we can create Website objects (or instances) that represents the 
 websites. We have created two objects, while creating objects we provided separate properties 
 to the objects using constructor.
 
 
 public class Website {
-   //fields (or instance variable)
+   // fields (or instance variable)
    String webName;
    int webAge;
 
@@ -139,6 +140,7 @@ public class Website {
       this.webName = name;
       this.webAge = age;
    }
+
    public static void main(String args[]){
       // Creating objects
       Website obj1 = new Website("beginnersbook", 5);
@@ -156,7 +158,7 @@ google 18
 
 
 What is a Constructor
-Constructor looks like a method but it is in fact not a method. It’s name is same as class 
+Constructor looks like a method but it is infact not a method. It’s name is same as class 
 name and it does not return any value. You must have seen this statement in almost all the 
 programs I have shared above:
 

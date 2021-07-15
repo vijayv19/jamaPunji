@@ -72,8 +72,8 @@ Git basic overview
 To create a git project, command is :
   - git init <projectName>
 
-Fork button on github helps to make the copy of the Repository to another github account.
 
+Fork button on github helps to make the copy of the Repository to another github account.
 
 Do add and commit in single command
  - git commit -am "<commit msg>"
@@ -84,7 +84,7 @@ Command to see all tracked files is
 once a new files comes into the Staging area it becomes a new file from untacked files and we 
 can see that file in git ls-files command
 
-If the file is in staging area and we don’t want a coming and revert back to working directory
+If the file is in staging area and we don’t want a commit and revert back to working directory
 then use a command
 
 git reset HEAD <fileName>
@@ -165,8 +165,8 @@ git branch -d <branchName> => it will delete the branch
 
 git checkout -b <branchName> => it will create a new branch and swithced to that branch
 
-
 git merge <branchName> => it will merge all the chages of <branchName> with currently present branch.
+
 
 //----------------------------------------------------------------------------------------------
 

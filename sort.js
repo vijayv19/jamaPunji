@@ -1,4 +1,3 @@
-
 // What is Sorting ?
 
 // Arrange the data in a particular format either ascending or descending order.
@@ -89,10 +88,11 @@
 
 // Time complexity - O(nlogn)
 
-// var unsortedArr = [340, 1, 3, 3, 76, 23, 4, -12, 122, -7642, 646];
+// let unsortedArr = [340, 1, 3, 3, 76, 23, 4, -12, 122, -7642, 646];
 
 // function merge(leftArr, rightArr) {
 //     var sortedArr = [];
+//     console.log('inside merge', leftArr, rightArr);
 //     while (leftArr.length && rightArr.length) {
 //         if (leftArr[0] <= rightArr[0]) {
 //             sortedArr.push(leftArr[0]);
@@ -113,8 +113,7 @@
 // function mergesort(arr) {
 //     if (arr.length < 2) {
 //         return arr;
-//     }
-//     else {
+//     } else {
 //         var midpoint = parseInt(arr.length / 2);
 //         var leftArr = arr.slice(0, midpoint);
 //         var rightArr = arr.slice(midpoint, arr.length);
@@ -131,26 +130,25 @@
 
 // Time complexity: O(n^2), Space complexity: O(1).
 
-function bubbleSort(arr) {
-    let swapped = false;
+// function bubbleSort(arr) {
+//     let swapped = false;
 
-    let len = arr.length;
-    for (let i = 0; i < len; i++) {
-        if (arr[i] > arr[i + 1]) {
-            arr[i + 1] = [arr[i], arr[i] = arr[i + 1]][0];
-            swapped = true;
-        }
-    }
-    console.log(arr);
+//     let len = arr.length;
+//     for (let i = 0; i < len; i++) {
+//         if (arr[i] > arr[i + 1]) {
+//             arr[i + 1] = [arr[i], arr[i] = arr[i + 1]][0];
+//             swapped = true;
+//         }
+//     }
+//     console.log(arr);
 
-    if (swapped === true) {
-        return bubbleSort(arr)
-    }
-    else {
-        return arr;
-    }
+//     if (swapped === true) {
+//         return bubbleSort(arr)
+//     } else {
+//         return arr;
+//     }
 
-}
+// }
 
 // console.log(bubbleSort([3, 0, -2, 5, -1, 4, 1])); // [ -2, -1, 0, 1, 3, 4, 5 ]
 
@@ -179,58 +177,24 @@ function bubbleSort(arr) {
 
 // Quick Sort
 
+// function sort(arr) {
 
+//     let len = arr.length;
+//     let swapped = false;
 
+//     for (let i = 0; i < len; i++) {
+//         if (arr[i] > arr[i + 1]) {
+//             arr[i + 1] = [arr[i], arr[i] = arr[i + 1]][0]
+//             swapped = true;
+//         }
+//     }
+//     if (swapped === true) {
+//         return sort(arr)
+//     }
+//     return arr;
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log(sort([2, 6, 4, 3]));
 
 
 // function binarySearch(sortedArray, ele) {
@@ -254,5 +218,3 @@ function bubbleSort(arr) {
 // var sortedArr = ["blue", "green", "indigo", "orange", "red", "violet", "yellow"];
 // console.log(binarySearch(sortedArr, "violet"));// 5
 // binarySearch(sortedArr, "white") // returns null
-
-

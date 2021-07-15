@@ -116,7 +116,8 @@ of values like ENUM.
 
 Example:
 
-Run MySQL server from the command prompt and execute the following SQL commands to know the use of ENUM and SET data type.
+Run MySQL server from the command prompt and execute the following SQL commands to know the use 
+of ENUM and SET data type.
 
 The following SQL commands create a new database named ‘newdb’ and select the database for use.
 
@@ -136,7 +137,8 @@ ENUM and SET data types?2
 
 INSERT queries will create two records in the table. ENUM field only accepts data from the defined list.
 
-‘Premium’ value does not exist on the ENUM list. Hence, the value of the ENUM field will be empty for the second record. SET can accept multiple values and both the data will be inserted in the second record.
+‘Premium’ value does not exist on the ENUM list. Hence, the value of the ENUM field will be empty for the second record. 
+SET can accept multiple values and both the data will be inserted in the second record.
 
 INSERT INTO clients (name, membership,interest) 
 VALUES ('Sehnaz','Gold', 'Music'), 
@@ -183,6 +185,7 @@ values that exist in the manufacturer's table.
 CREATE TABLE manufacturers (
    id INT AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(50));
+   
 CREATE TABLE items (
    id INT AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(50),
@@ -203,7 +206,8 @@ The differences between these data types are mentioned below:
 CHAR data type is used to store fixed-length string data and the VARCHAR data type is used to
 store variable-length string data.
 The storage size of the CHAR data type will always be the maximum length of this data type and
-the storage size of VARCHAR will be the length of the inserted string data. Hence, it is better to use the CHAR data type when the length of the string will be the same length for all the records.
+the storage size of VARCHAR will be the length of the inserted string data. Hence, it is better to use 
+the CHAR data type when the length of the string will be the same length for all the records.
 CHAR is used to store small data whereas VARCHAR is used to store large data.
 CHAR works faster and VARCHAR works slower.
 Example:
@@ -218,7 +222,6 @@ CREATE TABLE customers (
    id INT AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(50),
    phone CHAR(14))
-differences between CHAR and VARCHAR data types
 
 ------------------------------------------------------------------------------------------------------
 
@@ -315,13 +318,13 @@ Run SELECT query with LIKE clause to search those records from the clients where
 name starts with ‘A’
 
 SELECT * FROM clients WHERE name LIKE "A%";
-statement used in a select query for partial matching3
 
 ------------------------------------------------------------------------------------------------------
 
 Q #15) Which MySQL function is used to concatenate string?
 
-Answer: CONCAT() function is used to combine two or more string data. The use of this function is here with an example.
+Answer: CONCAT() function is used to combine two or more string data. 
+        The use of this function is here with an example.
 
 Example:
 
@@ -330,7 +333,6 @@ The following SELECT query with CONCAT() function will combine five words, ‘We
 
 
 SELECT CONCAT('Welcome ',to ','SoftwareTestingHelp','.',com');
-function used to concatenate string1
 
 
 CONCAT() function can be used on any table as well. The following SELECT query will show the 
@@ -338,7 +340,6 @@ output by combining two fields, brand and type of items table.
 
 
 SELECT CONCAT(brand,'=>',type) from items;
-function used to concatenate string 2
 
 ------------------------------------------------------------------------------------------------------
 
@@ -414,8 +415,6 @@ ALTER TABLE products ADD COLUMN price DECIMAL(5,2);
 
 DESCRIBE products;
 
-add and remove any column of a table
-
 The syntax for removing any column from an existing table is shown below.
 
 ALTER TABLE table_name DROP COLUMN column_name;
@@ -425,7 +424,6 @@ The following ALTER command with a DROP COLUMN clause will remove the field name
 
 ALTER TABLE products DROP COLUMN brand;
 DESCRIBE products;
-add and remove any column of a table?
 
 ------------------------------------------------------------------------------------------------------
 
@@ -507,7 +505,10 @@ A view can select certain columns and/or rows from a table (or tables), and perm
 
 3. Views can simplify supporting legacy code
 
-If you need to refactor a table that would break a lot of code, you can replace the table with a view of the same name. The view provides the exact same schema as the original table, while the actual schema has changed. This keeps the legacy code that references the table from breaking, allowing you to change the legacy code at your leisure.
+If you need to refactor a table that would break a lot of code, 
+you can replace the table with a view of the same name. The view provides the exact same schema 
+as the original table, while the actual schema has changed. This keeps the legacy code that references
+the table from breaking, allowing you to change the legacy code at your leisure.
 
 These are just some of the many examples of how views can be useful.
 
@@ -635,8 +636,8 @@ The records are inserted properly as the unique field supports a NULL value.
 
 
 INSERT INTO users (username, email, password)
-VALUES('admin', 'admin@example.com', '7890'),
-                ('staff', 'NULL', '1234');
+VALUES ('admin', 'admin@example.com', '7890'),
+        ('staff', 'NULL', '1234');
 
 SELECT * FROM users;
 
@@ -698,7 +699,8 @@ INNER JOIN is used in the following SELECT query where all the id and name of th
 
 SELECT products.id, products.name
 FROM products
-INNER JOIN manufacturers ON manufacturers.id= products.manufacturer_id;
+INNER JOIN manufacturers 
+ON manufacturers.id= products.manufacturer_id;
 
 ------------------------------------------------------------------------------------------------------
 
@@ -719,7 +721,6 @@ SELECT query is used to display the records from 2nd to 3rd by using LIMIT 1, 2.
 
 SELECT * FROM products;
 SELECT * FROM products LIMIT 1, 2;
-LIMIT Clause in MySQL
 
 ------------------------------------------------------------------------------------------------------
 
@@ -950,4 +951,10 @@ DELETE FROM products WHERE products.manufacturers_id = OLD.id;
 END;
 //
 TRIGGER in MySQL
+
+
+
+
+
+
 
