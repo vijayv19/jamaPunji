@@ -86,7 +86,7 @@
 
 
 
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 
 // Given an array of integers,return the indices of the two numbers that add up to a given target.
 
@@ -110,28 +110,19 @@
 //--------------------------------------------------------------------------------------------------
 
 // let str = "string";
-
 // let s = str.split('').join('');
-
 // console.log(s);
-
 // console.log(str == s);
 
 // let arr = ["Hi", "i", "am", "Vijay"];
-
 // let str = arr.join('');
-
-// console.log({
-//     str
-// });
+// console.log(str);
 // console.log(str.includes("iam"));
 
 //--------------------------------------------------------------------------------------------------
 
 // const firstRecurringCharacter = (input) => {
-
 //     let map = {};
-
 //     for (let i = 0; i < input.length; i++) {
 //         if (map[input[i]]) {
 //             return input[i]
@@ -153,15 +144,14 @@
 //----------------------------------------------------------------------------------------------------
 
 // String rotation
-var primary = "abcd"
-var test1 = "bcda"
-var test2 = "dacb"
-var test3 = "dabc"
 
-function checkRotationStrings(string, rotated) {
+// var primary = "abcd"
+// var test = "bcda"
+// var test = "dacb"
+// var test = "dabc"
 
-    console.log(rotated.repeat(2), rotated.repeat(2).includes(string));
-    return string.length === rotated.length && rotated.repeat(2).includes(string);
-
-}
-console.log(checkRotationStrings(primary, test3));
+// function checkRotationStrings(string, rotated) {
+//     console.log(rotated.repeat(2), rotated.repeat(2).includes(string));
+//     return string.length === rotated.length && rotated.repeat(2).includes(string);
+// }
+// console.log(checkRotationStrings(primary, test));

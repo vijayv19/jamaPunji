@@ -27,21 +27,25 @@
 
 //     zigZag(arr, n);
 //     for (let i = 0; i < n; i++)
-//         cout << arr[i] << "  ";
+//         count << arr[i] << "  ";
 //     return 0;
 // }
 // console.log(main());
-
 
 // function diagonalDifference(arr) {
 //     let prim_diag = 0;
 //     let sec_diag = 0;
 //     for (let i = 0; i < arr.length; i++) {
-//         prim_diag = prim_diag + arr[i][i]; // 00 11 22
-//         sec_diag = sec_diag + arr[i][arr.length -1--]; // 02 11 20
+//         prim_diag += arr[i][i]; // 00 11 22
+//         sec_diag += arr[i][arr.length - 1 - i]; // 02 11 20
 //     }
 //     return Math.abs(prim_diag - sec_diag)
 // }
+// console.log(diagonalDifference([
+//     [1, 4, 2],
+//     [5, 9, 2],
+//     [9, 1, 2]
+// ])); // 8
 
 
 // function plusMinus(arr) {

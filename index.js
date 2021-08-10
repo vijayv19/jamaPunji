@@ -1,5 +1,5 @@
 // let A = {
-//     // Inside arrow function {this} keyword can't use since it always give empty output.
+//     // Inside arrow function {this} keyword can't use since it always gives empty output.
 //     x: () => {
 //         console.log('x');
 //         return A;
@@ -163,7 +163,7 @@
 // console.log(str.substring(7, 13)); // Banana
 // console.log(str.substring(8)); // anana, Kiwiii
 
-// it takes index, length
+// it takes index,length
 // console.log(str.substr(7, 13)); // Banana, Kiwii
 // console.log(str.substr(7));    // Banana, Kiwiii
 // console.log(str.substr(-4));     // wiii
@@ -462,8 +462,10 @@
 //--------------------------------------------------------------------------------------------------
 
 // function reduce1() {
-//   let arr = [1, 0, 8, -4, 7];
-//   return arr.reduce((a, e) => (a + e));
+//     let arr = [1, 0, 8, -4, 7];
+//     return arr.reduce(function (a, e) {
+//         (a + e)
+//     }, 11)
 // }
 
 // console.log(reduce1()); // 12
@@ -544,7 +546,7 @@
 
 // Replace the element
 // colors.splice(2, 1, 'yellow');
-// console.log(colors); // ['red','purple','yellow'];
+// console.log(colors); // ['red','green','yellow'];
 
 //------------------------------------------------------------------------------------------------
 
@@ -637,15 +639,12 @@
 //---------------------------------------------------------------------------------------------------
 
 // const s = "Hello There!"
-
 // const s = [4, 3, 7, 3, 1, 8, 3, 9, 7, 3];
 
 // let nums = {};
-
 // for (let n of s) {
 //     nums[n] = ++nums[n] || 1
 // }
-
 // console.log(nums);
 
 //--------------------------------------------------------------------------------------------
@@ -809,7 +808,6 @@
 // Null and Undefined are both data types in JavaScript. Undefined is a variable that has been 
 // declared but not assigned a value. Null as an assignment value. ... 
 // However, when you assign null to a variable,you're declaring that this value is explicitly empty.
-
 
 //--------------------------------------------------------------------------------------------
 
@@ -1136,9 +1134,10 @@
 //     };
 // }
 
-// console.log(quadrupleAdd(10)(20)(30, 40, 10, 23, 48));
+// console.log(quadrupleAdd(10)(20)(30, 40, 10, 23, 48)); // 100
 
 //-------------------------------------------------------------------------------------------------
+
 // const pi = 3.14285714286
 // const pi = 22 / 7;       // SyntaxError: Identifier 'pi' has already been declared
 
@@ -1177,7 +1176,7 @@
 
 // const globalVariable = 'global var';
 
-// function outterFunc(param1) {
+// function outerFunc(param1) {
 //     const variable1 = 'var one';
 
 //     function innerFunc(param2) {
@@ -1190,7 +1189,7 @@
 //     }
 //     innerFunc('param two');
 // }
-// outterFunc('param one');
+// outerFunc('param one');
 
 //-------------------------------------------------------------------------------------------------------
 
@@ -1279,7 +1278,6 @@
 // var color;
 // console.log(color);
 // color = "blue";
-// console.log(color);
 // console.log(color);
 // color = "blue";
 // console.log(color);

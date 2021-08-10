@@ -55,11 +55,13 @@
 // console.log(fn2(4));
 
 
-// 1.In browser it will give you window object but here it will be {} object.
+// 1.In browser it will give you window object but here it will be global object inside regular function
+// and inside array function it gives empty({}) object.
+
 // In arrow function if there is one line of code then can write like this
 
 // let fn3 = () => console.log(this);
-// fn3();
+// fn3(); // {}
 
 
 // ** Main difference between regular and arrow function when we running it on browser.
@@ -231,11 +233,9 @@
 //         super('Maxx'); // it passes args to person class
 //         this.age = age;
 //     }
-
 //     greet() {
 //         console.log('Hello');
 //     }
-
 //     greetTwice() {
 //         this.greet();
 //         this.greet();
@@ -289,7 +289,6 @@
 // Promise.all([a, b, c].map(p => p.catch(e => e)))
 //     .then(results => console.log('Result', results)) // 1,Error: 2,3
 //     .catch(e => console.log('Error', e));
-
 
 // Resolve
 
@@ -346,7 +345,7 @@
 //     });
 // }
 
-// waitASec(1)
+// waitASec(2)
 //     .then(waitASec2)
 //     .then((seconds) => {
 //         console.log(seconds);

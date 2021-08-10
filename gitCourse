@@ -94,9 +94,7 @@ git reset HEAD <fileName>
 To discard the changes in working directory
 git  checkout -- <fileName>
 
-
 It will rename the file name and move the file from working directory to staging area.
-
 Git mv fileName newFileName
 
 

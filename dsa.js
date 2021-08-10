@@ -13,7 +13,7 @@
 //     if (i % 3 === 0) console.log("Fizz");
 //     else if (i % 5 === 0) console.log("Buzz");
 //     else if (i % 15 === 0) console.log("FizzBuzz");
-//     else console.log(i);
+//     // else console.log(i);
 // }
 
 //---------------------------------------Queue -------------------------------------------------------
@@ -44,7 +44,6 @@
 // console.log(q1.remove());
 
 
-
 // function weave(sourceOne, sourceTwo) {
 //     const q = new Queue();
 //     console.log('q :', q);
@@ -71,12 +70,9 @@
 // Binary Search
 
 // let a = [1, 2, 4, 6, 1, 100, 0, 10000, 3];
-
-// a.sort(function (a, b) {
-//     return a - b;
-// });
-
+// a.sort((a, b) => a - b);
 // console.log(a);
+
 
 // function binarySearch(arr, i) {
 //     var mid = Math.floor(arr.length / 2);
@@ -85,10 +81,10 @@
 //         console.log('match', arr[mid], i);
 //         return arr[mid];
 //     } else if (arr[mid] < i && arr.length > 1) {
-//         console.log('mid lower', arr[mid], i);
+//         // console.log('mid lower', arr[mid], i);
 //         return binarySearch(arr.splice(mid, Number.MAX_VALUE), i);
 //     } else if (arr[mid] > i && arr.length > 1) {
-//         console.log('mid higher', arr[mid], i);
+//         // console.log('mid higher', arr[mid], i);
 //         return binarySearch(arr.splice(0, mid), i);
 //     } else {
 //         console.log('not here', i);
@@ -101,33 +97,33 @@
 //------------------------------------------------------------------------
 
 
-function addTwoNumbers(l1, l2) {
-    let list = new ListNode(0);
-    let currentNode = list;
+// function addTwoNumbers(l1, l2) {
+//     let list = new ListNode(0);
+//     let currentNode = list;
 
-    let sum = 0;
-    let carry = 0;
+//     let sum = 0;
+//     let carry = 0;
 
-    while (l1 !== null || l2 !== null || sum > 0) {
-        if (l1 !== null) {
-            sum += l1.val;
-            l1 = l1.next;
-        }
+//     while (l1 !== null || l2 !== null || sum > 0) {
+//         if (l1 !== null) {
+//             sum += l1.val;
+//             l1 = l1.next;
+//         }
 
-        if (l2 !== null) {
-            sum += l2.val;
-            l2 = l2.next;
-        }
+//         if (l2 !== null) {
+//             sum += l2.val;
+//             l2 = l2.next;
+//         }
 
-        carry = Math.floor(sum / 10);
-        sum = sum % 10;
+//         carry = Math.floor(sum / 10);
+//         sum = sum % 10;
 
-        currentNode.next = new ListNode(sum);
-        currentNode = currentNode.next;
+//         currentNode.next = new ListNode(sum);
+//         currentNode = currentNode.next;
 
-        sum = carry;
-        carry = 0;
-    }
+//         sum = carry;
+//         carry = 0;
+//     }
 
-    return list.next;
-}
+//     return list.next;
+// }
