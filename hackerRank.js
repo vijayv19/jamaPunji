@@ -134,6 +134,6 @@
 // console.log(findVal(a, 'name2'));
 
 
-let a = [4, 7, 9, 1, 4];
+// let a = [4, 7, 9, 1, 4];
 
-console.log(a.reverse()); // [ 4, 1, 9, 7, 4 ]
+// console.log(a.reverse()); // [ 4, 1, 9, 7, 4 ]

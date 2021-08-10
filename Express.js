@@ -142,8 +142,8 @@
 
 // Use of Express Middleware ?
 
-// Middleware functions are functions that have access to the request object ( req ), 
-// the response object ( res ), and the next function in the application's request-response cycle. 
+// Middleware functions are functions that have access to the request object (req) and 
+// the response object (res), and the next function in the application's request-response cycle. 
 // The next function is a function in the Express router which, when invoked, executes the middleware 
 // succeeding the current middleware. 
 
@@ -153,7 +153,7 @@
 
 // app.use((req,res,next)=>{
 //    console.log("In the middleware");
-//    next()  => // next function allows to travel int the next middleware function.
+//    next()  => // next function allows to travel into the next middleware function.
 // })
 
 // app.use((req,res,next)=>{

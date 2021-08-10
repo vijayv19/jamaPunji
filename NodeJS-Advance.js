@@ -305,13 +305,13 @@
 
 // What is Cluster ?
 
-// Wen we start using cluster inside node application we gonna be starting of multiple node processes
+// When we start using cluster inside node application we gonna be starting of multiple node processes
 // Or multiple Node Servers.
 
 // There is alaways a parent process called Cluster Manager.
 // Cluster manager is responsible for monitoring the health of individual instances of application.
 // that we gonna launch on same time in computer.
-// Cluster manager can start instnces, can stop them , restart them and any kind of administrative task.
+// Cluster manager can start instances, can stop them , restart them and any kind of administrative task.
 
 
 // Cluster runs the multiple node instances in one machine.

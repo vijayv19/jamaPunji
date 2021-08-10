@@ -8,7 +8,7 @@
 
 // What is Node.js Process Model ?
 // Node.js runs in a single process and the application code runs in a single thread and 
-// thereby needs less resources than other platforms. All the user requests to your web 
+// thereby needs less resources than other platforms.All the user requests to your web 
 // application will be handled by a single thread and all the I/O work or long running job is
 // performed asynchronously for a particular request. So, this single thread doesn't have to 
 // wait for the request to  complete and is free to handle the next request. 
@@ -69,7 +69,7 @@
 // If that Client Request Does Not requires any Blocking IO Operations, then process 
 // everything, prepare response and send it back to client.
 
-//- If that Client Request requires some Blocking IO Operations like interacting with Database,
+// If that Client Request requires some Blocking IO Operations like interacting with Database,
 // File System, External Services then it will follow different approach
 // Checks Threads availability from Internal Thread Pool
 // Picks up one Thread and assign this Client Request to that thread.
@@ -174,13 +174,13 @@
 //     },
 
 //     function(arg1, callback) {
-//         //even more
+//         // even more
 //         // arg1 now equals 'done'
 //         callback(null, 'done');
 //     }
 // ], function (err, result) {
-//     //final callback function
-//     //finally do something when all function are done.
+//     // final callback function
+//     // finally do something when all function are done.
 //     // result now equals 'done'
 // });
 
@@ -279,6 +279,7 @@
 // fulfilled - The state of a promise representing a successful operation.
 // rejected - The state of a promise representing a failed operation. Once a promise is 
 // fulfilled or rejected, it is immutable (i.e. it can never change again).
+
 // Creating a Promise
 
 // var myPromise = new Promise(function(resolve, reject){
@@ -302,7 +303,7 @@
 
 // Features of Stub:
 
-// Produces simple, lightweight Objects capable of extending down their tree
+// Produces simple, lightweight Objects capable of extending down their tree 
 // Compatible with Nodejs
 // Easily extendable directly or through an ExtensionManager
 // Comes with predefined, usable extensions
@@ -509,6 +510,7 @@
 // Writable − Stream which is used for write operation.
 // Duplex − Stream which can be used for both read and write operation.
 // Transform − A type of duplex stream where the output is computed based on input.
+
 // Each type of Stream is an EventEmitter instance and throws several events at different 
 // instance of times.
 
@@ -652,39 +654,38 @@
 // to IP addresses. This module provides an asynchronous network wrapper and can be imported 
 // using the following syntax.
 
-// const dns = require('dns'); 
 // Example: dns.lookup() function
 
-// const dns = require('dns');  
-// dns.lookup('www.google.com', (err, addresses, family) => {  
-//   console.log('addresses:', addresses);  
-//   console.log('family:',family);  
-// });  
+// const dns = require('dns');
+// dns.lookup('www.google.com', (err, address, family) => {
+//     console.log('address:', address);
+//     console.log('family:', family);
+// });
 // Example: resolve4() and reverse() functions
 
 
-// const dns = require('dns');  
-// dns.resolve4('www.google.com', (err, addresses) => {  
-//   if (err) throw err;  
-//   console.log(`addresses: ${JSON.stringify(addresses)}`);  
-//   addresses.forEach((a) => {  
-//     dns.reverse(a, (err, hostnames) => {  
-//       if (err) {  
-//         throw err;  
-//       }  
-//       console.log(`reverse for ${a}: ${JSON.stringify(hostnames)}`);  
-//     });  
-//   });  
+// const dns = require('dns');
+// dns.resolve4('www.google.com', (err, addresses) => {
+//     if (err) throw err;
+//     console.log(`addresses: ${JSON.stringify(addresses)}`);
+//     addresses.forEach((a) => {
+//         dns.reverse(a, (err, hostnames) => {
+//             if (err) {
+//                 throw err;
+//             }
+//             console.log(`reverse for ${a}: ${JSON.stringify(hostnames)}`);
+//         });
+//     });
 // });
 
 
 // Example: print the localhost name using lookupService() function
 
-// const dns = require('dns');  
-// dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {  
-//   console.log(hostname, service);  
+// const dns = require('dns');
+// dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
+//     console.log(hostname, service);
 //     // Prints: localhost  
-// }); 
+// });
 
 //==============================================================================================
 
@@ -729,7 +730,7 @@
 //     birthyear: 1994
 // }, schema)
 
-// // result.error === null -> valid
+// result.error === null -> valid
 
 // Securing your Regular Expressions
 // Regular Expressions are a great way to manipulate texts and get the parts that you need 
@@ -791,10 +792,10 @@
 
 // const fs = require('fs');
 // fs.readFile('/file.md', (err, data) => {
-//   if (err) throw err;
-//   console.log(data);
+//     if (err) throw err;
+//     console.log(data);
 // });
-// // moreWork(); will run before console.log
+// moreWork(); // will run before console.log
 
 // Since fs.readFile() is non-blocking, moreWork() does not have to wait for the file read to complete before being called. 
 // This allows for higher throughput.
@@ -1607,16 +1608,11 @@
 
 
 //--------------------------------------------------------------------------------------------
-
-
 // Q. What are the difference between Events and Callbacks?
-
-
 
 //--------------------------------------------------------------------------------------------
 
 // Q. Explain RESTful Web Services in Node.js?
-
 
 //--------------------------------------------------------------------------------------------
 
@@ -1628,14 +1624,10 @@
 
 // Q. how to handle file upload in node js?
 
-
-
-
 //--------------------------------------------------------------------------------------------
 
 // Q. Explain the terms body-parser, cookie-parser, debug, jade, morgan, nodemon, pm2, 
 // serve-favicon, cors in Express JS?
-
 
 //--------------------------------------------------------------------------------------------
 
@@ -1844,10 +1836,6 @@
 // The outer scope of fun in both cases is the caller plus the caller of the caller and so on.
 
 // Just to mention that the C language does not allow nested functions nor dynamic scoping.
-
-
-
-
 
 // Call by value
 // When a variable is passed as a parameter to a function, if any changes are made to the parameter, the original variable will remain unaffected. This is known as call by value and this is true for all values having a primitive data type.
