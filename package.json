@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/vijayv19/jamaPunji#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fibonacci": "^1.6.7",
     "pm2": "^4.4.1",
     "request": "^2.88.2"
